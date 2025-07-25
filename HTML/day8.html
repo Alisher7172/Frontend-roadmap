@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 8: JavaScript Fundamentals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="stylesheet" href="../CSS/animations.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --code-bg: #1e1f29;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 40px;
+            background: linear-gradient(to right, var(--primary), var(--dark));
+            border-radius: 15px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><rect fill="rgba(255,255,255,0.1)" width="100" height="100"/></svg>');
+            background-size: 30px 30px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.6rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--secondary);
+            position: relative;
+        }
+        
+        .progress-container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: rgba(44, 62, 80, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .progress-bar {
+            height: 12px;
+            background: var(--light);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            width: 16%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 6px;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin: 50px 0 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .concept-card {
+            background: rgba(30, 40, 50, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border-top: 5px solid var(--primary);
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .concept-card h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .code-block {
+            background: var(--code-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: monospace;
+            overflow-x: auto;
+            line-height: 1.8;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            color: #f8f8f2;
+            position: relative;
+        }
+        
+        .code-block::before {
+            content: "JS";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 0 0 0 10px;
+            font-size: 0.9rem;
+        }
+        
+        .interactive-section {
+            background: rgba(30, 40, 50, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 50px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .code-editor {
+            background: var(--code-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 200px;
+            font-family: monospace;
+            color: #f8f8f2;
+            white-space: pre-wrap;
+            line-height: 1.8;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .editor-title {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .run-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .run-btn:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+        
+        .output {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 100px;
+            font-family: monospace;
+            color: var(--light);
+            white-space: pre-wrap;
+        }
+        
+        .output::before {
+            content: "Output:";
+            display: block;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .example-card {
+            background: rgba(30, 40, 50, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent);
+        }
+        
+        .example-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .challenge-section {
+            background: rgba(30, 40, 50, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 50px 0;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border: 2px dashed var(--accent);
+        }
+        
+        .challenge-btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--accent), #c0392b);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.4);
+            font-size: 1.2rem;
+        }
+        
+        .challenge-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+            color: #7f8c8d;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day7.html'">&#8592; 7</button>
+        <button class="nav-btn nav-btn-active" disabled>8</button>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-js"></i> JavaScript Fundamentals</h1>
+            <p class="subtitle">Learn the building blocks of JavaScript programming</p>
+        </header>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="progress-text">
+                <span>Day 8 of 50</span>
+                <span>16% Complete</span>
+            </div>
+        </div>
+        
+        <section>
+            <h2><i class="fas fa-cubes"></i> Core Concepts</h2>
+            <div class="concepts-grid">
+                <div class="concept-card">
+                    <h3><i class="fas fa-box"></i> Variables</h3>
+                    <p>Containers for storing data values</p>
+                    <div class="code-block">
+                        // Variable declaration
+                        let message = "Hello World!";
+                        const PI = 3.14159;
+                        var count = 10;
+                        
+                        // Using variables
+                        console.log(message);
+                        console.log("PI value:", PI);
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h3><i class="fas fa-database"></i> Data Types</h3>
+                    <p>JavaScript has dynamic types</p>
+                    <div class="code-block">
+                        // Primitive types
+                        let name = "Alice";    // String
+                        let age = 30;          // Number
+                        let isStudent = true;   // Boolean
+                        let score = null;       // Null
+                        let data;               // Undefined
+                        
+                        // Complex types
+                        let colors = ["red", "green", "blue"]; // Array
+                        let person = {          // Object
+                            firstName: "John",
+                            lastName: "Doe"
+                        };
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h3><i class="fas fa-calculator"></i> Operators</h3>
+                    <p>Perform operations on variables and values</p>
+                    <div class="code-block">
+                        // Arithmetic
+                        let sum = 10 + 5;   // 15
+                        let product = 10 * 5; // 50
+                        
+                        // Comparison
+                        let isEqual = 10 == "10"; // true (loose equality)
+                        let isStrictEqual = 10 === "10"; // false
+                        
+                        // Logical
+                        let andResult = true && false; // false
+                        let orResult = true || false;  // true
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h3><i class="fas fa-code"></i> Functions</h3>
+                    <p>Reusable blocks of code</p>
+                    <div class="code-block">
+                        // Function declaration
+                        function greet(name) {
+                            return `Hello, ${name}!`;
+                        }
+                        
+                        // Function expression
+                        const multiply = function(a, b) {
+                            return a * b;
+                        };
+                        
+                        // Arrow function (ES6)
+                        const square = num => num * num;
+                        
+                        // Calling functions
+                        console.log(greet("Alice")); // "Hello, Alice!"
+                        console.log(multiply(4, 5)); // 20
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="interactive-section">
+            <h2><i class="fas fa-play-circle"></i> Interactive Playground</h2>
+            <div class="editor-header">
+                <div class="editor-title">Try It Yourself:</div>
+                <button class="run-btn">Run Code <i class="fas fa-play"></i></button>
+            </div>
+            <div class="code-editor" id="editor" contenteditable="true">// Welcome to the JavaScript playground!
+// Try writing some code and click "Run Code"
+
+// Example: Create a variable and log it
+let message = "Hello, JavaScript!";
+console.log(message);
+
+// Example: Create a simple calculation
+const a = 15;
+const b = 7;
+console.log(`${a} + ${b} = ${a + b}`);
+
+// Example: Create a function
+function sayHello(name) {
+    return `Hello, ${name}! Welcome to Day 8!`;
+}
+
+console.log(sayHello("Developer"));</div>
+            <div class="output" id="output">Output will appear here after you run the code</div>
+        </section>
+        
+        <section>
+            <h2><i class="fas fa-lightbulb"></i> Practical Examples</h2>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h4>User Interaction</h4>
+                    <div class="code-block">
+                        // Get user input
+                        let userName = prompt("What's your name?");
+                        
+                        // Display personalized message
+                        alert(`Welcome, ${userName}!`);
+                        
+                        // Confirm action
+                        let proceed = confirm("Do you want to continue?");
+                        if (proceed) {
+                            console.log("User chose to continue");
+                        }
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <h4>DOM Manipulation</h4>
+                    <div class="code-block">
+                        // Change element content
+                        document.getElementById("demo").innerHTML = "New Content";
+                        
+                        // Change element style
+                        document.querySelector(".box").style.backgroundColor = "blue";
+                        
+                        // Handle button click
+                        document.getElementById("myBtn").addEventListener("click", function() {
+                            alert("Button clicked!");
+                        });
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <h4>Simple Calculator</h4>
+                    <div class="code-block">
+                        function calculate() {
+                            let num1 = parseFloat(document.getElementById("num1").value);
+                            let num2 = parseFloat(document.getElementById("num2").value);
+                            let operator = document.getElementById("operator").value;
+                            let result;
+                            
+                            switch(operator) {
+                                case '+': result = num1 + num2; break;
+                                case '-': result = num1 - num2; break;
+                                case '*': result = num1 * num2; break;
+                                case '/': result = num1 / num2; break;
+                                default: result = "Invalid operator";
+                            }
+                            
+                            document.getElementById("result").innerText = result;
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="challenge-section">
+            <h2><i class="fas fa-medal"></i> Today's Challenge</h2>
+            <p>Create a temperature converter that converts between Celsius and Fahrenheit</p>
+            <p>Requirements:</p>
+            <ul style="list-style: none; margin: 15px 0; text-align: left; display: inline-block;">
+                <li><i class="fas fa-check-circle"></i> Create input for temperature value</li>
+                <li><i class="fas fa-check-circle"></i> Create buttons for "to Celsius" and "to Fahrenheit"</li>
+                <li><i class="fas fa-check-circle"></i> Display the converted temperature</li>
+                <li><i class="fas fa-check-circle"></i> Use the formulas: F = (C × 9/5) + 32 and C = (F - 32) × 5/9</li>
+            </ul>
+            <button class="challenge-btn">Start Challenge</button>
+        </section>
+        
+        <footer>
+            <p>Created with ❤️ for Day 8 of the 50-Day Front-End Challenge</p>
+            <p>Tomorrow: JavaScript Control Flow and Loops</p>
+        </footer>
+    </div>
+
+    <script>
+        // Interactive code editor functionality
+        document.querySelector('.run-btn').addEventListener('click', function() {
+            const editor = document.getElementById('editor');
+            const output = document.getElementById('output');
+            
+            // Clear previous output
+            output.innerHTML = 'Output:<br>';
+            
+            try {
+                // Capture console.log output
+                const originalLog = console.log;
+                let logs = [];
+                
+                console.log = function() {
+                    logs.push(Array.from(arguments).join(' '));
+                    originalLog.apply(console, arguments);
+                };
+                
+                // Execute the code
+                eval(editor.textContent);
+                
+                // Restore console.log
+                console.log = originalLog;
+                
+                // Display the output
+                if (logs.length > 0) {
+                    output.innerHTML += logs.join('<br>');
+                } else {
+                    output.innerHTML += 'No output. Use console.log() to display values.';
+                }
+            } catch (error) {
+                output.innerHTML += `Error: ${error.message}`;
+            }
+        });
+        
+        // Challenge button functionality
+        document.querySelector('.challenge-btn').addEventListener('click', function() {
+            alert("Challenge started! Create a new HTML file and implement the temperature converter.");
+        });
+        
+        // Add dynamic type examples
+        setTimeout(() => {
+            const output = document.getElementById('output');
+            if (output.innerHTML.includes('Output will appear')) {
+                output.innerHTML = 'Output will appear here after you run the code<br>Try modifying the sample code and click "Run Code"';
+            }
+        }, 3000);
+    </script>
+
+
+    <script src="../JavaScript/animations.js"></script>
+    <script src="../JavaScript/navigation.js"></script>
+    <div style="height: 60vh;"></div>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day7.html'">&#8592; 7</button>
+        <button class="nav-btn nav-btn-active" disabled>8</button>
+    </div>
+</body>
+</html>
