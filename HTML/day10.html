@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 10: JavaScript Functions & Scope</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="stylesheet" href="../CSS/animations.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --code-bg: #090a14;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --function-color: #9b59b6;
+            --scope-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 40px;
+            background: linear-gradient(to right, var(--function-color), var(--dark));
+            border-radius: 15px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><rect fill="rgba(255,255,255,0.1)" width="100" height="100"/></svg>');
+            background-size: 30px 30px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.6rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--secondary);
+            position: relative;
+        }
+        
+        .progress-container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: rgba(44, 62, 80, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .progress-bar {
+            height: 12px;
+            background: var(--light);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            width: 20%;
+            background: linear-gradient(to right, var(--function-color), var(--scope-color));
+            border-radius: 6px;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        h2 {
+            color: var(--function-color);
+            margin: 50px 0 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--function-color);
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .concept-card {
+            background: rgba(30, 40, 50, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border-top: 5px solid var(--function-color);
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .concept-card h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .code-block {
+            background: var(--code-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: monospace;
+            overflow-x: auto;
+            line-height: 1.8;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            color: #f8f8f2;
+            position: relative;
+        }
+        
+        .code-block.function::before {
+            content: "Function";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--function-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 0 0 0 10px;
+            font-size: 0.9rem;
+        }
+        
+        .code-block.scope::before {
+            content: "Scope";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--scope-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 0 0 0 10px;
+            font-size: 0.9rem;
+        }
+        
+        .interactive-section {
+            background: rgba(30, 40, 50, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 50px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .editor-title {
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .run-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .run-btn:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+        
+        .code-editor {
+            background: var(--code-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 200px;
+            font-family: monospace;
+            color: #f8f8f2;
+            white-space: pre-wrap;
+            line-height: 1.8;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+            outline: none;
+        }
+        
+        .output {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 100px;
+            font-family: monospace;
+            color: var(--light);
+            white-space: pre-wrap;
+        }
+        
+        .output::before {
+            content: "Output:";
+            display: block;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .visualization {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .scope-level {
+            background: rgba(243, 156, 18, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .scope-title {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--scope-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .variables {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .variable {
+            background: rgba(52, 152, 219, 0.3);
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .variable-name {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .variable-value {
+            color: var(--secondary);
+        }
+        
+        .closure-demo {
+            background: rgba(155, 89, 182, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .closure-title {
+            color: var(--function-color);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .challenge-section {
+            background: rgba(30, 40, 50, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 50px 0;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border: 2px dashed var(--accent);
+        }
+        
+        .challenge-btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--accent), #c0392b);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.4);
+            font-size: 1.2rem;
+        }
+        
+        .challenge-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6);
+        }
+        
+        .solution {
+            background: rgba(46, 204, 113, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .solution.show {
+            display: block;
+        }
+        
+        .toggle-solution {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+            color: #7f8c8d;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day9.html'">&#8592; 9</button>
+        <button class="nav-btn" onclick="location.href='day10.html'">10</button>
+        <button class="nav-btn" onclick="location.href='day11.html'">11 &#8594;</button>
+    </div>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-cube"></i> Functions & Scope</h1>
+            <p class="subtitle">Master JavaScript functions and understand scope mechanics</p>
+        </header>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="progress-text">
+                <span>Day 10 of 50</span>
+                <span>20% Complete</span>
+            </div>
+        </div>
+        
+        <section>
+            <h2><i class="fas fa-code"></i> Function Types</h2>
+            <div class="concepts-grid">
+                <div class="concept-card">
+                    <h3><i class="fas fa-file-code"></i> Function Declarations</h3>
+                    <p>Named functions that are hoisted to the top</p>
+                    <div class="code-block function">
+                        // Function declaration
+                        function greet(name) {
+                            return `Hello, ${name}!`;
+                        }
+                        
+                        // Can be called before declaration
+                        console.log(greet("Alice"));
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h3><i class="fas fa-bolt"></i> Function Expressions</h3>
+                    <p>Functions assigned to variables (not hoisted)</p>
+                    <div class="code-block function">
+                        // Function expression
+                        const greet = function(name) {
+                            return `Hello, ${name}!`;
+                        };
+                        
+                        // Must be defined before calling
+                        console.log(greet("Bob"));
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h3><i class="fas fa-arrow-right"></i> Arrow Functions</h3>
+                    <p>Concise syntax (ES6) with lexical 'this' binding</p>
+                    <div class="code-block function">
+                        // Arrow function
+                        const greet = (name) => `Hello, ${name}!`;
+                        
+                        // Implicit return
+                        const add = (a, b) => a + b;
+                        
+                        // No 'this' binding
+                        const person = {
+                            name: "John",
+                            greet: () => console.log(this.name) // undefined
+                        };
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="interactive-section">
+            <h2><i class="fas fa-play-circle"></i> Function Playground</h2>
+            <div class="editor-header">
+                <div class="editor-title">Try It Yourself:</div>
+                <button class="run-btn">Run Code <i class="fas fa-play"></i></button>
+            </div>
+            <div class="code-editor" id="functionEditor" contenteditable="true">// Function declaration
+function square(x) {
+    return x * x;
+}
+
+// Function expression
+const cube = function(x) {
+    return x * x * x;
+};
+
+// Arrow function
+const power = (base, exponent) => base ** exponent;
+
+// Test the functions
+console.log("Square of 5:", square(5));
+console.log("Cube of 3:", cube(3));
+console.log("2 to the power of 8:", power(2, 8));
+
+// Higher-order function example
+function applyOperation(x, operation) {
+    return operation(x);
+}
+
+console.log("Apply square to 4:", applyOperation(4, square));
+console.log("Apply cube to 2:", applyOperation(2, cube));</div>
+            <div class="output" id="functionOutput">Output will appear here after you run the code</div>
+        </section>
+        
+        <section>
+            <h2 style="color: var(--scope-color);"><i class="fas fa-layer-group"></i> Scope & Closures</h2>
+            <div class="concepts-grid">
+                <div class="concept-card">
+                    <h3><i class="fas fa-globe"></i> Global Scope</h3>
+                    <p>Variables declared outside any function</p>
+                    <div class="code-block scope">
+                        // Global scope
+                        const globalVar = "I'm global";
+                        
+                        function checkScope() {
+                            console.log(globalVar); // Accessible
+                        }
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h3><i class="fas fa-box"></i> Function Scope</h3>
+                    <p>Variables declared inside a function</p>
+                    <div class="code-block scope">
+                        function example() {
+                            // Function scope
+                            let functionVar = "I'm in function scope";
+                            console.log(functionVar);
+                        }
+                        
+                        // console.log(functionVar); // Error - not accessible
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h3><i class="fas fa-lock"></i> Block Scope</h3>
+                    <p>Variables declared with let/const inside blocks</p>
+                    <div class="code-block scope">
+                        if (true) {
+                            // Block scope
+                            let blockVar = "I'm in block scope";
+                            console.log(blockVar);
+                        }
+                        
+                        // console.log(blockVar); // Error - not accessible
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h3><i class="fas fa-box-open"></i> Closures</h3>
+                    <p>Functions that remember their lexical scope</p>
+                    <div class="code-block function">
+                        function createCounter() {
+                            let count = 0;
+                            
+                            return function() {
+                                count++;
+                                return count;
+                            };
+                        }
+                        
+                        const counter = createCounter();
+                        console.log(counter()); // 1
+                        console.log(counter()); // 2
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="interactive-section">
+            <h2 style="color: var(--scope-color);"><i class="fas fa-eye"></i> Scope Visualization</h2>
+            
+            <div class="visualization">
+                <div class="scope-level">
+                    <div class="scope-title">Global Scope</div>
+                    <div class="variables">
+                        <div class="variable">
+                            <span class="variable-name">globalVar</span>
+                            <span class="variable-value">"Global Value"</span>
+                        </div>
+                    </div>
+                    
+                    <div class="closure-demo">
+                        <div class="closure-title">Function: outerFunction</div>
+                        <div class="variables">
+                            <div class="variable">
+                                <span class="variable-name">outerVar</span>
+                                <span class="variable-value">"Outer Value"</span>
+                            </div>
+                        </div>
+                        
+                        <div class="closure-demo" style="background: rgba(155, 89, 182, 0.3);">
+                            <div class="closure-title">Function: innerFunction (Closure)</div>
+                            <div class="variables">
+                                <div class="variable">
+                                    <span class="variable-name">innerVar</span>
+                                    <span class="variable-value">"Inner Value"</span>
+                                </div>
+                                <div class="variable" style="background: rgba(243, 156, 18, 0.3);">
+                                    <span class="variable-name">outerVar</span>
+                                    <span class="variable-value">"Outer Value"</span>
+                                    <i class="fas fa-link" style="color: var(--function-color);"></i>
+                                </div>
+                                <div class="variable" style="background: rgba(52, 152, 219, 0.3);">
+                                    <span class="variable-name">globalVar</span>
+                                    <span class="variable-value">"Global Value"</span>
+                                    <i class="fas fa-link" style="color: var(--primary);"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="editor-header" style="margin-top: 30px;">
+                <div class="editor-title">Closure Code:</div>
+            </div>
+            <div class="code-block function">
+                // Global scope
+                const globalVar = "Global Value";
+                
+                function outerFunction() {
+                    // Outer function scope
+                    const outerVar = "Outer Value";
+                    
+                    function innerFunction() {
+                        // Inner function scope
+                        const innerVar = "Inner Value";
+                        
+                        // Closure captures outerVar and globalVar
+                        return `${innerVar}, ${outerVar}, ${globalVar}`;
+                    }
+                    
+                    return innerFunction;
+                }
+                
+                const closure = outerFunction();
+                console.log(closure()); // "Inner Value, Outer Value, Global Value"
+            </div>
+        </section>
+        
+        <section class="challenge-section">
+            <h2><i class="fas fa-medal"></i> Closure Challenge</h2>
+            <p>Create a function that generates private counters:</p>
+            <ul style="list-style: none; margin: 15px 0; text-align: left; display: inline-block;">
+                <li><i class="fas fa-check-circle"></i> Implement createCounter() that returns an object with increment, decrement, and getValue methods</li>
+                <li><i class="fas fa-check-circle"></i> The count should be private and only accessible through the methods</li>
+                <li><i class="fas fa-check-circle"></i> Start with an initial value of 0</li>
+                <li><i class="fas fa-check-circle"></i> Test by creating two counters that operate independently</li>
+            </ul>
+            
+            <button class="challenge-btn" id="challengeBtn">Solve Challenge</button>
+            
+            <div class="solution" id="solution">
+                <h3>Solution:</h3>
+                <div class="code-block function">
+                    function createCounter() {
+                        let count = 0;
+                        
+                        return {
+                            increment: function() {
+                                count++;
+                            },
+                            decrement: function() {
+                                count--;
+                            },
+                            getValue: function() {
+                                return count;
+                            }
+                        };
+                    }
+                    
+                    const counter1 = createCounter();
+                    counter1.increment();
+                    counter1.increment();
+                    console.log(counter1.getValue()); // 2
+                    
+                    const counter2 = createCounter();
+                    counter2.decrement();
+                    console.log(counter2.getValue()); // -1
+                </div>
+            </div>
+            
+            <button class="toggle-solution" id="toggleSolution">Show Solution</button>
+        </section>
+        
+        <footer>
+            <p>Created with ❤️ for Day 10 of the 50-Day Front-End Challenge</p>
+            <p>Tomorrow: JavaScript Arrays and Array Methods</p>
+        </footer>
+    </div>
+
+    <script>
+        // Function Editor Functionality
+        document.querySelector('#functionEditor + .run-btn').addEventListener('click', function() {
+            const editor = document.getElementById('functionEditor');
+            const output = document.getElementById('functionOutput');
+            
+            // Clear previous output
+            output.innerHTML = 'Output:<br>';
+            
+            try {
+                // Capture console.log output
+                const originalLog = console.log;
+                let logs = [];
+                
+                console.log = function() {
+                    logs.push(Array.from(arguments).join(' '));
+                    originalLog.apply(console, arguments);
+                };
+                
+                // Execute the code
+                eval(editor.textContent);
+                
+                // Restore console.log
+                console.log = originalLog;
+                
+                // Display the output
+                if (logs.length > 0) {
+                    output.innerHTML += logs.join('<br>');
+                } else {
+                    output.innerHTML += 'No output. Use console.log() to display values.';
+                }
+            } catch (error) {
+                output.innerHTML += `Error: ${error.message}`;
+            }
+        });
+        
+        // Challenge button functionality
+        document.getElementById('challengeBtn').addEventListener('click', function() {
+            const solution = document.getElementById('solution');
+            solution.classList.add('show');
+            
+            // Execute counter example
+            function createCounter() {
+                let count = 0;
+                return {
+                    increment: function() { count++; },
+                    decrement: function() { count--; },
+                    getValue: function() { return count; }
+                };
+            }
+            
+            const counter = createCounter();
+            counter.increment();
+            counter.increment();
+            counter.decrement();
+            
+            console.log("Counter value:", counter.getValue());
+        });
+        
+        // Toggle solution
+        document.getElementById('toggleSolution').addEventListener('click', function() {
+            const solution = document.getElementById('solution');
+            solution.classList.toggle('show');
+            this.textContent = solution.classList.contains('show') ? 'Hide Solution' : 'Show Solution';
+        });
+        
+        // Add some dynamic behavior to scope visualization
+        const scopeLevels = document.querySelectorAll('.scope-level');
+        scopeLevels.forEach(scope => {
+            scope.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.3)';
+            });
+            
+            scope.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.boxShadow = 'var(--shadow)';
+            });
+        });
+        
+        // Add closure animation
+        const closureLinks = document.querySelectorAll('.fa-link');
+        closureLinks.forEach(link => {
+            setInterval(() => {
+                link.style.opacity = link.style.opacity === '0.5' ? '1' : '0.5';
+            }, 1000);
+        });
+    </script>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day9.html'">&#8592; 9</button>
+        <button class="nav-btn" onclick="location.href='day10.html'">10</button>
+        <button class="nav-btn" onclick="location.href='da11.html'">11 &#8594;</button>
+    </div>
+    <script src="../JavaScript/animations.js"></script>
+    <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>
