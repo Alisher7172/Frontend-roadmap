@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transitions and Animations Tutorial</title>
+    <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="stylesheet" href="../CSS/day13.css">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day12.html'">&#8592; 12</button>
+        <button class="nav-btn" onclick="location.href='day13.html'">13</button>
+        <button class="nav-btn" onclick="location.href='day14.html'">14 &#8594;</button>
+    </div>
+    <div class="container">
+        <h1>CSS Transitions and Animations Tutorial</h1>
+        <p>Welcome to this interactive guide on CSS Transitions and Animations! These powerful CSS features allow you to add dynamic visual effects to your web pages, making elements move, change, and react smoothly without relying heavily on JavaScript for basic animations.</p>
+
+        <h2>1. CSS Transitions: Smooth State Changes</h2>
+        <p>CSS transitions provide a way to control the speed of animation when CSS properties change. Instead of an immediate change, transitions allow these changes to occur smoothly over a specified period. This creates "implicit transitions" where the browser defines the intermediate states between the start and end of a property change.</p>
+
+        <h3>Key Transition Properties:</h3>
+        <ul>
+            <li><code>transition-property</code>: Specifies which CSS properties should be animated. You can list specific properties (e.g., <code>background-color</code>, <code>width</code>), or use <code>all</code> to animate all animatable properties.</li>
+            <li><code>transition-duration</code>: Defines how long the transition should take to complete one cycle, typically in seconds (<code>s</code>) or milliseconds (<code>ms</code>).</li>
+            <li><code>transition-timing-function</code>: Controls the acceleration curve of the transition, determining how intermediate values are computed. Common values include <code>ease</code> (default), <code>linear</code>, <code>ease-in</code>, <code>ease-out</code>, and <code>ease-in-out</code>.</li>
+            <li><code>transition-delay</code>: Specifies a delay before the transition begins.</li>
+        </ul>
+
+        <h3>Live Demo: Simple Hover Transition</h3>
+        <p>Hover over the box below to see its background color, size, and shape smoothly transition.</p>
+        <div class="live-demo">
+            <div class="transition-box">Hover Me</div>
+        </div>
+
+        <h3>Code for Simple Hover Transition:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS */
+.transition-box {
+    width: 100px;
+    height: 100px;
+    background-color: #28a745; /* Green */
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    /* Define transition properties */
+    transition-property: background-color, transform, border-radius;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+}
+
+.transition-box:hover {
+    background-color: #007bff; /* Blue */
+    transform: scale(1.2) rotate(5deg);
+    border-radius: 50%;
+}
+            </code></pre>
+        </div>
+
+        <h3>The <code>transition</code> Shorthand Property:</h3>
+        <p>You can combine all transition properties into a single <code>transition</code> shorthand property for conciseness. The order is typically <code>property duration timing-function delay</code>.</p>
+
+        <h3>Live Demo: Shorthand Transition Button</h3>
+        <p>Hover over this button to see a smooth color change using the shorthand <code>transition</code> property.</p>
+        <div class="live-demo">
+            <button class="transition-button">Click Me (or Hover)</button>
+        </div>
+
+        <h3>Code for Shorthand Transition Button:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS */
+.transition-button {
+    padding: 12px 25px;
+    font-size: 1em;
+    background-color: #6c757d; /* Grey */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* Shorthand: property duration timing-function delay */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.transition-button:hover {
+    background-color: #dc3545; /* Red */
+    color: #ffeb3b; /* Yellow */
+}
+            </code></pre>
+        </div>
+
+        <h2>2. CSS Animations: Keyframes and Sequences</h2>
+        <p>CSS animations allow for more complex, multi-step animations compared to transitions. They consist of two main components:</p>
+        <ol>
+            <li>A style describing the CSS animation, applied to the element using the <code>animation</code> property or its sub-properties.</li>
+            <li>A set of keyframes (<code>@keyframes</code>) that define the actual appearance of the animation by specifying the CSS styles at various points (percentages) throughout the animation sequence.</li>
+        </ol>
+
+        <h3>Key Animation Properties:</h3>
+        <ul>
+            <li><code>animation-name</code>: Specifies the name of the <code>@keyframes</code> rule to be used.</li>
+            <li><code>animation-duration</code>: Sets the length of time for one cycle of the animation.</li>
+            <li><code>animation-timing-function</code>: Defines the speed curve of the animation.</li>
+            <li><code>animation-delay</code>: Specifies a delay before the animation starts.</li>
+            <li><code>animation-iteration-count</code>: Determines how many times the animation should repeat (e.g., <code>1</code>, <code>infinite</code>).</li>
+            <li><code>animation-direction</code>: Specifies whether the animation should play forward, backward, or alternate directions.</li>
+            <li><code>animation-fill-mode</code>: Defines how styles are applied to the target before and after the animation runs.</li>
+        </ul>
+
+        <h3>Live Demo: Loading Spinner Animation</h3>
+        <p>This common loading spinner uses <code>@keyframes</code> to define a continuous rotation.</p>
+        <div class="live-demo">
+            <div class="spinner"></div>
+        </div>
+
+        <h3>Code for Loading Spinner Animation:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS */
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #007bff; /* Blue */
+    border-radius: 50%;
+    /* Define the animation */
+    animation-name: spin;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* Define the keyframes for the 'spin' animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+            </code></pre>
+        </div>
+
+        <h3>Live Demo: Pulsing Box Animation</h3>
+        <p>This box demonstrates a pulsing effect, changing its size and opacity over time.</p>
+        <div class="live-demo">
+            <div class="pulse-box"></div>
+        </div>
+
+        <h3>Code for Pulsing Box Animation:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS */
+.pulse-box {
+    width: 80px;
+    height: 80px;
+    background-color: #ffc107; /* Yellow */
+    margin: 20px;
+    border-radius: 10px;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate; /* Plays forward then backward */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+            </code></pre>
+        </div>
+
+        <h3>Live Demo: Bouncing Text Animation</h3>
+        <p>Watch this text bounce up and down, demonstrating a more complex keyframe sequence.</p>
+        <div class="live-demo">
+            <span class="bounce-text">Bounce!</span>
+        </div>
+
+        <h3>Code for Bouncing Text Animation:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS */
+.bounce-text {
+    font-size: 2em;
+    font-weight: bold;
+    color: #17a2b8; /* Teal */
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1); /* Custom timing */
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-15px); /* Move up */
+    }
+    50% {
+        transform: translateY(0); /* Back to original */
+    }
+    75% {
+        transform: translateY(-5px); /* Small bounce up */
+    }
+}
+            </code></pre>
+        </div>
+
+        <h2>Conclusion</h2>
+        <p>CSS transitions and animations are fundamental for creating engaging and interactive web experiences. Transitions are ideal for smooth changes between two states, often triggered by user interaction like hovering. Animations, powered by <code>@keyframes</code>, allow for more intricate, multi-step sequences that can run automatically or on demand.</p>
+        <p>By mastering these CSS features, you can significantly enhance the visual appeal and user experience of your web projects, making them more dynamic and professional.</p>
+    </div>
+     <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day12.html'">&#8592; 12</button>
+        <button class="nav-btn" onclick="location.href='day13.html'">13</button>
+        <button class="nav-btn" onclick="location.href='day14.html'">14 &#8594;</button>
+    </div>
+    <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>

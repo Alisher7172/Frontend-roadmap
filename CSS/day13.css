@@ -1,0 +1,232 @@
+       body {
+           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+           line-height: 1.6;
+           margin: 0;
+           padding: 20px;
+           background-color: #f4f7f6;
+           color: #333;
+       }
+
+       .container {
+           max-width: 900px;
+           margin: 20px auto;
+           background-color: #fff;
+           padding: 30px;
+           border-radius: 8px;
+           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+       }
+
+       h1,
+       h2,
+       h3 {
+           color: #0056b3;
+           border-bottom: 2px solid #e0e0e0;
+           padding-bottom: 10px;
+           margin-top: 30px;
+       }
+
+       h1 {
+           text-align: center;
+           font-size: 2.5em;
+           border-bottom: 3px solid #007bff;
+       }
+
+       h2 {
+           font-size: 1.8em;
+       }
+
+       h3 {
+           font-size: 1.4em;
+           color: #007bff;
+           border-bottom: none;
+           padding-bottom: 0;
+           margin-top: 20px;
+       }
+
+       p {
+           margin-bottom: 15px;
+       }
+
+       .code-example {
+           background-color: #e8f0f7;
+           border-left: 5px solid #007bff;
+           padding: 15px;
+           margin: 20px 0;
+           overflow-x: auto;
+           border-radius: 4px;
+       }
+
+       pre {
+           margin: 0;
+           font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+           font-size: 0.9em;
+           color: #333;
+       }
+
+       .live-demo {
+           border: 1px dashed #ccc;
+           padding: 30px;
+           margin: 20px 0;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           min-height: 150px;
+           background-color: #f9f9f9;
+           border-radius: 4px;
+       }
+
+       /* --- Transition Examples --- */
+       .transition-box {
+           width: 100px;
+           height: 100px;
+           background-color: #28a745;
+           /* Green */
+           margin: 20px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           color: white;
+           font-weight: bold;
+           border-radius: 8px;
+           cursor: pointer;
+           /* Transition properties */
+           transition-property: background-color, transform, border-radius;
+           /* */
+           transition-duration: 0.5s;
+           /* */
+           transition-timing-function: ease-in-out;
+           /* */
+           transition-delay: 0s;
+           /* */
+       }
+
+       .transition-box:hover {
+           background-color: #007bff;
+           /* Blue */
+           transform: scale(1.2) rotate(5deg);
+           border-radius: 50%;
+       }
+
+       .transition-button {
+           padding: 12px 25px;
+           font-size: 1em;
+           background-color: #6c757d;
+           /* Grey */
+           color: white;
+           border: none;
+           border-radius: 5px;
+           cursor: pointer;
+           transition: background-color 0.3s ease, color 0.3s ease;
+           /* Shorthand */
+       }
+
+       .transition-button:hover {
+           background-color: #dc3545;
+           /* Red */
+           color: #ffeb3b;
+           /* Yellow */
+       }
+
+       /* --- Animation Examples --- */
+       .spinner {
+           width: 60px;
+           height: 60px;
+           border: 6px solid #f3f3f3;
+           border-top: 6px solid #007bff;
+           /* Blue */
+           border-radius: 50%;
+           animation-name: spin;
+           /* */
+           animation-duration: 1.5s;
+           /* */
+           animation-timing-function: linear;
+           /* */
+           animation-iteration-count: infinite;
+           /* */
+       }
+
+       @keyframes spin {
+
+           /* */
+           0% {
+               transform: rotate(0deg);
+           }
+
+           100% {
+               transform: rotate(360deg);
+           }
+       }
+
+       .pulse-box {
+           width: 80px;
+           height: 80px;
+           background-color: #ffc107;
+           /* Yellow */
+           margin: 20px;
+           border-radius: 10px;
+           animation-name: pulse;
+           /* */
+           animation-duration: 2s;
+           /* */
+           animation-timing-function: ease-in-out;
+           /* */
+           animation-iteration-count: infinite;
+           /* */
+           animation-direction: alternate;
+           /* */
+       }
+
+       @keyframes pulse {
+
+           /* */
+           0% {
+               transform: scale(1);
+               opacity: 1;
+           }
+
+           50% {
+               transform: scale(1.1);
+               opacity: 0.7;
+           }
+
+           100% {
+               transform: scale(1);
+               opacity: 1;
+           }
+       }
+
+       .bounce-text {
+           font-size: 2em;
+           font-weight: bold;
+           color: #17a2b8;
+           /* Teal */
+           animation-name: bounce;
+           /* */
+           animation-duration: 1s;
+           /* */
+           animation-iteration-count: infinite;
+           /* */
+           animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+           /* Custom timing */
+       }
+
+       @keyframes bounce {
+
+           /* */
+           0%,
+           100% {
+               transform: translateY(0);
+           }
+
+           25% {
+               transform: translateY(-15px);
+           }
+
+           50% {
+               transform: translateY(0);
+           }
+
+           75% {
+               transform: translateY(-5px);
+           }
+       }

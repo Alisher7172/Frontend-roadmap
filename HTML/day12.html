@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 12: JavaScript Objects & OOP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/CSS/day12.css">
+    <link rel="stylesheet" href="../CSS/button.css">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day11.html'">&#8592; 11</button>
+        <button class="nav-btn" onclick="location.href='day12.html'">12</button>
+        <button class="nav-btn" onclick="location.href='day13.html'">13 &#8594;</button>
+    </div>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-cubes"></i> Objects & OOP</h1>
+            <p class="subtitle">Master JavaScript objects and object-oriented programming</p>
+        </header>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="progress-text">
+                <span>Day 12 of 50</span>
+                <span>24% Complete</span>
+            </div>
+        </div>
+        
+        <section>
+            <h2><i class="fas fa-cube"></i> Object Fundamentals</h2>
+            <div class="concepts-grid">
+                <div class="concept-card">
+                    <h3><i class="fas fa-object-group"></i> Creating Objects</h3>
+                    <p>Different ways to create objects</p>
+                    <div class="code-block object">
+                        // Object literal
+                        const person = {
+                            name: "Alice",
+                            age: 30,
+                            greet() {
+                                console.log(`Hello, I'm ${this.name}`);
+                            }
+                        };
+                        
+                        // Constructor function
+                        function Person(name, age) {
+                            this.name = name;
+                            this.age = age;
+                            this.greet = function() {
+                                console.log(`Hello, I'm ${this.name}`);
+                            };
+                        }
+                        const bob = new Person("Bob", 25);
+                        
+                        // Object.create()
+                        const proto = { greet() { console.log("Hello!") } };
+                        const carl = Object.create(proto);
+                        carl.name = "Carl";
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h3><i class="fas fa-key"></i> Accessing Properties</h3>
+                    <p>Working with object properties</p>
+                    <div class="code-block object">
+                        const book = {
+                            title: "JavaScript: The Good Parts",
+                            author: "Douglas Crockford",
+                            year: 2008
+                        };
+                        
+                        // Dot notation
+                        console.log(book.title);
+                        
+                        // Bracket notation
+                        console.log(book["author"]);
+                        
+                        // Dynamic property access
+                        const prop = "year";
+                        console.log(book[prop]);
+                        
+                        // Adding new properties
+                        book.pages = 176;
+                        
+                        // Deleting properties
+                        delete book.year;
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h3><i class="fas fa-sitemap"></i> Object Methods</h3>
+                    <p>Essential Object methods</p>
+                    <div class="code-block object">
+                        const obj = { a: 1, b: 2, c: 3 };
+                        
+                        // Get keys
+                        const keys = Object.keys(obj);
+                        // ['a', 'b', 'c']
+                        
+                        // Get values
+                        const values = Object.values(obj);
+                        // [1, 2, 3]
+                        
+                        // Get entries
+                        const entries = Object.entries(obj);
+                        // [['a', 1], ['b', 2], ['c', 3]]
+                        
+                        // Merge objects
+                        const newObj = Object.assign({}, obj, { d: 4 });
+                        
+                        // Freeze object
+                        Object.freeze(obj); // Prevents modification
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2><i class="fas fa-project-diagram"></i> Object Visualization</h2>
+            <div class="object-visual">
+                <div class="object-card">
+                    <div class="object-title">Person</div>
+                    <div class="properties">
+                        <div class="property">
+                            <span class="property-name">name</span>
+                            <span class="property-value">"Alice"</span>
+                        </div>
+                        <div class="property">
+                            <span class="property-name">age</span>
+                            <span class="property-value">30</span>
+                        </div>
+                        <div class="property" style="background: rgba(46, 204, 113, 0.3);">
+                            <span class="property-name">greet()</span>
+                            <span class="property-value">function()</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="object-card">
+                    <div class="object-title">Book</div>
+                    <div class="properties">
+                        <div class="property">
+                            <span class="property-name">title</span>
+                            <span class="property-value">"Clean Code"</span>
+                        </div>
+                        <div class="property">
+                            <span class="property-name">author</span>
+                            <span class="property-value">"Robert Martin"</span>
+                        </div>
+                        <div class="property">
+                            <span class="property-name">pages</span>
+                            <span class="property-value">464</span>
+                        </div>
+                        <div class="property" style="background: rgba(46, 204, 113, 0.3);">
+                            <span class="property-name">getInfo()</span>
+                            <span class="property-value">function()</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="interactive-section">
+            <h2><i class="fas fa-play-circle"></i> Object Playground</h2>
+            <div class="editor-header">
+                <div class="editor-title">Try It Yourself:</div>
+                <button class="run-btn">Run Code <i class="fas fa-play"></i></button>
+            </div>
+            <div class="code-editor" id="objectEditor" contenteditable="true">// Create a person object
+const person = {
+  name: "John",
+  age: 30,
+  hobbies: ["reading", "hiking", "coding"],
+  address: {
+    street: "123 Main St",
+    city: "Anytown",
+    country: "USA"
+  },
+  bio() {
+    return `Hi, I'm ${this.name}, ${this.age} years old. I live in ${this.address.city}.`;
+  }
+};
+
+// Access and modify properties
+console.log("Name:", person.name);
+console.log("City:", person.address.city);
+console.log("First hobby:", person.hobbies[0]);
+
+person.age = 31;
+person.hobbies.push("gaming");
+console.log("Updated age:", person.age);
+console.log("All hobbies:", person.hobbies);
+
+// Use object method
+console.log(person.bio());
+
+// Create another object using constructor
+function Car(make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+  this.getInfo = function() {
+    return `${this.year} ${this.make} ${this.model}`;
+  };
+}
+
+const myCar = new Car("Toyota", "Camry", 2022);
+console.log(myCar.getInfo());
+
+// Add a method to the prototype
+Car.prototype.startEngine = function() {
+  return "Engine started! Vroom vroom!";
+};
+
+console.log(myCar.startEngine());</div>
+            <div class="output" id="objectOutput">Output will appear here after you run the code</div>
+        </section>
+        
+        <section>
+            <h2 style="color: var(--class-color);"><i class="fas fa-cogs"></i> Classes & OOP</h2>
+            <div class="concepts-grid">
+                <div class="concept-card">
+                    <h3><i class="fas fa-cogs"></i> Class Syntax</h3>
+                    <p>Creating classes with ES6 syntax</p>
+                    <div class="code-block class">
+                        class Person {
+                            // Constructor
+                            constructor(name, age) {
+                                this.name = name;
+                                this.age = age;
+                            }
+                            
+                            // Method
+                            greet() {
+                                console.log(`Hello, I'm ${this.name}`);
+                            }
+                            
+                            // Getter
+                            get birthYear() {
+                                return new Date().getFullYear() - this.age;
+                            }
+                        }
+                        
+                        const alice = new Person("Alice", 30);
+                        alice.greet();
+                        console.log("Born in", alice.birthYear);
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h3><i class="fas fa-sitemap"></i> Inheritance</h3>
+                    <p>Extending classes with inheritance</p>
+                    <div class="code-block class">
+                        class Student extends Person {
+                            constructor(name, age, major) {
+                                super(name, age); // Call parent constructor
+                                this.major = major;
+                            }
+                            
+                            // Override method
+                            greet() {
+                                console.log(`Hi, I'm ${this.name}, studying ${this.major}`);
+                            }
+                            
+                            // New method
+                            study() {
+                                console.log(`${this.name} is studying hard!`);
+                            }
+                        }
+                        
+                        const student = new Student("Bob", 20, "Computer Science");
+                        student.greet();
+                        student.study();
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h3><i class="fas fa-shield-alt"></i> Encapsulation</h3>
+                    <p>Private fields and methods</p>
+                    <div class="code-block class">
+                        class BankAccount {
+                            // Private field (starts with #)
+                            #balance = 0;
+                            
+                            constructor(owner) {
+                                this.owner = owner;
+                            }
+                            
+                            deposit(amount) {
+                                if (amount > 0) {
+                                    this.#balance += amount;
+                                }
+                            }
+                            
+                            withdraw(amount) {
+                                if (amount > 0 && amount <= this.#balance) {
+                                    this.#balance -= amount;
+                                    return amount;
+                                }
+                                return 0;
+                            }
+                            
+                            getBalance() {
+                                return this.#balance;
+                            }
+                        }
+                        
+                        const account = new BankAccount("Alice");
+                        account.deposit(500);
+                        account.withdraw(200);
+                        console.log("Balance:", account.getBalance());
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2 style="color: var(--class-color);"><i class="fas fa-tools"></i> OOP Principles</h2>
+            <div class="methods-grid">
+                <div class="method-card">
+                    <h4><i class="fas fa-box"></i> Encapsulation</h4>
+                    <div class="code-block class">
+                        // Bundling data and methods
+                        class Person {
+                            #name; // Private field
+                            
+                            constructor(name) {
+                                this.#name = name;
+                            }
+                            
+                            getName() { // Access method
+                                return this.#name;
+                            }
+                        }
+                    </div>
+                </div>
+                
+                <div class="method-card">
+                    <h4><i class="fas fa-sitemap"></i> Inheritance</h4>
+                    <div class="code-block class">
+                        // Child classes inherit from parents
+                        class Animal {
+                            constructor(name) {
+                                this.name = name;
+                            }
+                            
+                            speak() {
+                                console.log(`${this.name} makes a sound`);
+                            }
+                        }
+                        
+                        class Dog extends Animal {
+                            speak() {
+                                console.log(`${this.name} barks`);
+                            }
+                        }
+                    </div>
+                </div>
+                
+                <div class="method-card">
+                    <h4><i class="fas fa-puzzle-piece"></i> Polymorphism</h4>
+                    <div class="code-block class">
+                        // Different classes can be used interchangeably
+                        class Circle {
+                            draw() {
+                                console.log("Drawing a circle");
+                            }
+                        }
+                        
+                        class Square {
+                            draw() {
+                                console.log("Drawing a square");
+                            }
+                        }
+                        
+                        const shapes = [new Circle(), new Square()];
+                        shapes.forEach(shape => shape.draw());
+                    </div>
+                </div>
+                
+                <div class="method-card">
+                    <h4><i class="fas fa-layer-group"></i> Abstraction</h4>
+                    <div class="code-block class">
+                        // Hiding complex implementation
+                        class Engine {
+                            #ignite() { /* complex logic */ }
+                            start() { 
+                                this.#ignite();
+                                console.log("Engine started");
+                            }
+                        }
+                        
+                        const engine = new Engine();
+                        engine.start(); // Simple interface
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="challenge-section">
+            <h2><i class="fas fa-medal"></i> OOP Challenge</h2>
+            <p>Create a library management system using classes:</p>
+            <ul style="list-style: none; margin: 15px 0; text-align: left; display: inline-block;">
+                <li><i class="fas fa-check-circle"></i> Book class with title, author, ISBN, and availability status</li>
+                <li><i class="fas fa-check-circle"></i> Library class to manage books (add, remove, find, list)</li>
+                <li><i class="fas fa-check-circle"></i> User class with name and list of borrowed books</li>
+                <li><i class="fas fa-check-circle"></i> Methods to borrow and return books</li>
+            </ul>
+            
+            <button class="challenge-btn" id="challengeBtn">Solve Challenge</button>
+            
+            <div class="solution" id="solution">
+                <h3>Solution:</h3>
+                <div class="code-block class">
+                    class Book {
+                        constructor(title, author, isbn) {
+                            this.title = title;
+                            this.author = author;
+                            this.isbn = isbn;
+                            this.available = true;
+                        }
+                        
+                        borrow() {
+                            if (this.available) {
+                                this.available = false;
+                                return true;
+                            }
+                            return false;
+                        }
+                        
+                        returnBook() {
+                            this.available = true;
+                        }
+                    }
+                    
+                    class Library {
+                        constructor() {
+                            this.books = [];
+                        }
+                        
+                        addBook(book) {
+                            this.books.push(book);
+                        }
+                        
+                        findBook(isbn) {
+                            return this.books.find(book => book.isbn === isbn);
+                        }
+                        
+                        listBooks() {
+                            return this.books;
+                        }
+                    }
+                    
+                    class User {
+                        constructor(name) {
+                            this.name = name;
+                            this.borrowedBooks = [];
+                        }
+                        
+                        borrowBook(library, isbn) {
+                            const book = library.findBook(isbn);
+                            if (book && book.borrow()) {
+                                this.borrowedBooks.push(book);
+                                return true;
+                            }
+                            return false;
+                        }
+                        
+                        returnBook(isbn) {
+                            const index = this.borrowedBooks.findIndex(book => book.isbn === isbn);
+                            if (index !== -1) {
+                                const book = this.borrowedBooks[index];
+                                book.returnBook();
+                                this.borrowedBooks.splice(index, 1);
+                                return true;
+                            }
+                            return false;
+                        }
+                    }
+                    
+                    // Test the system
+                    const library = new Library();
+                    const book1 = new Book("Clean Code", "Robert Martin", "12345");
+                    library.addBook(book1);
+                    
+                    const user = new User("Alice");
+                    user.borrowBook(library, "12345");
+                    console.log("User borrowed books:", user.borrowedBooks);
+                    console.log("Book availability:", book1.available);
+                </div>
+            </div>
+            
+            <button class="toggle-solution" id="toggleSolution">Show Solution</button>
+        </section>
+        
+        <footer>
+            <p>Created with ❤️ for Day 12 of the 50-Day Front-End Challenge</p>
+            <p>Tomorrow: JavaScript Asynchronous Programming</p>
+        </footer>
+    </div>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day11.html'">&#8592; 11</button>
+        <button class="nav-btn" onclick="location.href='day12.html'">12</button>
+        <button class="nav-btn" onclick="location.href='day13.html'">13 &#8594;</button>
+    </div>
+    <script src="../JavaScript/day12.js"></script>
+    <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>
