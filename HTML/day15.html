@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Media Queries Tutorial</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-15.svg">
+    <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="stylesheet" href="../CSS/day15.css">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day14.html'">&#8592; 14</button>
+        <button class="nav-btn" onclick="location.href='day15.html'">15</button>
+        <button class="nav-btn" onclick="location.href='day16.html'">16 &#8594;</button>
+    </div>
+    <div class="container">
+        <h1>Mastering CSS Media Queries</h1>
+        <p>CSS Media Queries are a fundamental part of modern web development, allowing your website to adapt its appearance and behavior based on the user's device characteristics and preferences. This tutorial will guide you through the syntax, common features, and strategic implementation of media queries.</p>
+
+        <h2>1. The Viewport Meta Tag: The Foundation</h2>
+        <p>Before diving into media queries, it's crucial to set up the viewport meta tag in your HTML's <code>&lt;head&gt;</code>. This tag instructs the browser on how to control the page's dimensions and scaling, ensuring your responsive styles work as intended, especially on mobile devices.</p>
+
+        <h3>Code for Viewport Meta Tag:</h3>
+        <div class="code-example">
+            <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;My Responsive Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Your content here --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+        </div>
+        <ul>
+            <li><code>width=device-width</code>: Sets the width of the page to the width of the device's screen in CSS pixels. [1, 2]</li>
+            <li><code>initial-scale=1.0</code>: Sets the initial zoom level to 100%. [1, 2]</li>
+        </ul>
+        <p>Without this tag, mobile browsers might render your page at a desktop width and then zoom out, making your media queries ineffective. [3, 4, 1]</p>
+
+        <h3>Live Demo: Viewport Information</h3>
+        <p>Your current viewport width is: <span id="viewport-width"></span>px</p>
+        <p>Your current viewport height is: <span id="viewport-height"></span>px</p>
+        <p>Resize your browser window to see these values change.</p>
+        <div class="live-demo">
+            <div class="viewport-info">
+                <p>This box helps visualize the viewport.</p>
+            </div>
+        </div>
+        <script>
+            function updateViewportInfo() {
+                document.getElementById('viewport-width').textContent = window.innerWidth;
+                document.getElementById('viewport-height').textContent = window.innerHeight;
+            }
+            window.addEventListener('resize', updateViewportInfo);
+            updateViewportInfo(); // Initial call
+        </script>
+
+        <h2>2. Fluid Layouts and Flexible Images</h2>
+        <p>Responsive design also relies on fluid layouts (using relative units like percentages, <code>em</code>, <code>rem</code>, <code>vw</code>) and flexible images (<code>max-width: 100%</code>) to ensure content scales gracefully before media queries kick in. [5, 6, 2]</p>
+
+        <h3>Live Demo: Fluid Boxes</h3>
+        <p>These boxes use percentages for width. Resize your browser to see them adjust proportionally.</p>
+        <div class="live-demo">
+            <div class="fluid-box">Box 1 (45%)</div>
+            <div class="fluid-box">Box 2 (45%)</div>
+        </div>
+
+        <h3>Code for Fluid Layouts:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS */
+.fluid-box {
+    width: 45%; /* Takes 45% of its parent's width */
+    padding: 20px;
+    background-color: #28a745;
+    color: white;
+    text-align: center;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+}
+            </code></pre>
+        </div>
+
+        <h3>Live Demo: Flexible Image</h3>
+        <p>The image below will scale down to fit its container, but won't grow larger than its original size. Resize your browser to observe.</p>
+        <div class="live-demo">
+            <div class="responsive-image-container">
+                <img src="https://via.placeholder.com/400x200/007bff/ffffff?text=Responsive+Image" alt="Responsive Image" class="responsive-image">
+            </div>
+        </div>
+
+        <h3>Code for Flexible Images:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS */
+.responsive-image {
+    max-width: 100%; /* Image will shrink to fit its container */
+    height: auto;    /* Maintains aspect ratio */
+    display: block;  /* Removes extra space below the image */
+}
+            </code></pre>
+        </div>
+
+        <h2>3. Anatomy of a Media Query: Syntax and Features</h2>
+        <p>A media query starts with the <code>@media</code> at-rule, followed by a media type and optional media features. [7]</p>
+
+        <h3>Basic Syntax:</h3>
+        <div class="code-example">
+            <pre><code>
+@media media-type and (media-feature-rule) {
+    /* CSS rules go here */
+}
+            </code></pre>
+        </div>
+        <ul>
+            <li><code>media-type</code>: Specifies the type of device (e.g., <code>screen</code>, <code>print</code>, <code>all</code>). [7, 8]</li>
+            <li><code>media-feature-rule</code>: A condition that must be met (e.g., <code>min-width</code>, <code>orientation</code>). [7, 8]</li>
+        </ul>
+
+        <h3>Live Demo: Width-Based Media Queries (Resize your browser!)</h3>
+        <p>This box changes color and size based on your browser's width:</p>
+        <ul>
+            <li>Below 600px: Yellow</li>
+            <li>600px to 899px: Blue</li>
+            <li>900px and above: Red</li>
+        </ul>
+        <div class="live-demo">
+            <div class="mq-box">Resize Me!</div>
+        </div>
+
+        <h3>Code for Width-Based Media Queries:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS */
+.mq-box {
+    width: 150px;
+    height: 150px;
+    background-color: #ffc107; /* Default: Yellow */
+    /*... other styles... */
+}
+
+/* Styles applied when viewport is 600px or wider */
+@media screen and (min-width: 600px) {
+  .mq-box {
+        background-color: #007bff; /* Blue */
+        color: white;
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Styles applied when viewport is 900px or wider */
+@media screen and (min-width: 900px) {
+  .mq-box {
+        background-color: #dc3545; /* Red */
+        width: 250px;
+        height: 250px;
+    }
+}
+            </code></pre>
+        </div>
+
+        <h3>Live Demo: Orientation Media Query (Rotate your device or browser!)</h3>
+        <p>This box changes color and size when your device or browser window switches between portrait and landscape orientation.</p>
+        <div class="live-demo">
+            <div class="orientation-box">Orientation Test</div>
+        </div>
+
+        <h3>Code for Orientation Media Query:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS */
+.orientation-box {
+    width: 150px;
+    height: 100px;
+    background-color: #6f42c1; /* Purple (default) */
+    color: white;
+    /*... other styles... */
+}
+
+@media screen and (orientation: landscape) {
+  .orientation-box {
+        background-color: #20c997; /* Teal in landscape */
+        width: 200px;
+        height: 80px;
+    }
+}
+            </code></pre>
+        </div>
+
+        <h3>Live Demo: User Preference - Dark Mode (Change your OS/Browser theme!)</h3>
+        <p>This box will adapt its colors if your operating system or browser is set to a dark color scheme.</p>
+        <div class="live-demo">
+            <div class="color-scheme-box">I adapt to your theme!</div>
+        </div>
+
+        <h3>Code for <code>prefers-color-scheme</code>:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS */
+.color-scheme-box {
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    background-color: #f0f0f0; /* Light mode default */
+    color: #333;
+    /*... other styles... */
+}
+
+@media (prefers-color-scheme: dark) {
+  .color-scheme-box {
+        background-color: #333;
+        color: #f0f0f0;
+        border-color: #f0f0f0;
+    }
+}
+            </code></pre>
+        </div>
+
+        <h3>Live Demo: User Preference - Reduced Motion (Change your OS accessibility settings!)</h3>
+        <p>This pulsing box will stop animating if your operating system's accessibility settings are configured to "reduce motion."</p>
+        <div class="live-demo">
+            <div class="motion-box">Motion Test</div>
+        </div>
+
+        <h3>Code for <code>prefers-reduced-motion</code>:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS */
+.motion-box {
+    width: 80px;
+    height: 80px;
+    background-color: #fd7e14; /* Orange */
+    border-radius: 50%;
+    /*... other styles... */
+    animation: pulse-motion 2s infinite ease-in-out; /* Default animation */
+}
+
+@keyframes pulse-motion {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-box {
+                animation: none; /* Disable animation */
+                background-color: #6c757d; /* Grey when motion reduced */
+            }
+        }
+            </code></pre>
+        </div>
+
+        <h2>4. Strategic Implementation: Mobile-First with Flexbox and Grid</h2>
+        <p>A mobile-first approach (designing for small screens first, then adding styles for larger ones using <code>min-width</code> media queries) is a best practice for performance and maintainability. [9, 10, 11] Media queries work hand-in-hand with Flexbox and CSS Grid to create complex, adaptable layouts. [9]</p>
+
+        <h3>Live Demo: Responsive Flexbox Layout</h3>
+        <p>These items stack on small screens and arrange into two columns on larger screens.</p>
+        <div class="live-demo">
+            <div class="flex-container">
+                <div class="flex-item">Flex Item 1</div>
+                <div class="flex-item">Flex Item 2</div>
+                <div class="flex-item">Flex Item 3</div>
+                <div class="flex-item">Flex Item 4</div>
+            </div>
+        </div>
+
+        <h3>Code for Responsive Flexbox:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS */
+.flex-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    gap: 15px;
+    padding: 10px;
+    background-color: #e0f7fa;
+    border-radius: 8px;
+}
+.flex-item {
+    flex: 1 1 calc(50% - 15px); /* Default: two columns with gap */
+    background-color: #4dd0e1;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Single column on small screens (max-width for mobile-first override) */
+@media screen and (max-width: 599px) {
+  .flex-item {
+        flex: 1 1 100%; /* Take full width */
+    }
+}
+            </code></pre>
+        </div>
+
+        <h3>Live Demo: Responsive CSS Grid Layout</h3>
+        <p>This grid changes from a single column to two, then three columns as you resize the window.</p>
+        <div class="live-demo">
+            <div class="grid-container">
+                <div class="grid-item">Grid Item 1</div>
+                <div class="grid-item">Grid Item 2</div>
+                <div class="grid-item">Grid Item 3</div>
+                <div class="grid-item">Grid Item 4</div>
+                <div class="grid-item">Grid Item 5</div>
+                <div class="grid-item">Grid Item 6</div>
+            </div>
+        </div>
+
+        <h3>Code for Responsive CSS Grid:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Default: single column */
+    gap: 15px;
+    padding: 10px;
+    background-color: #e8f5e9;
+    border-radius: 8px;
+}
+.grid-item {
+    background-color: #66bb6a;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Two columns on medium screens */
+@media screen and (min-width: 600px) {
+  .grid-container {
+        grid-template-columns: 1fr 1fr; /* Two equal columns */
+    }
+}
+
+/* Three columns on large screens */
+@media screen and (min-width: 900px) {
+  .grid-container {
+        grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
+    }
+}
+            </code></pre>
+        </div>
+
+        <h2>Conclusion</h2>
+        <p>CSS Media Queries are an essential tool for creating responsive and accessible web experiences. By understanding their syntax, various features (including user preferences), and how to integrate them with modern layout techniques like Flexbox and CSS Grid, you can build websites that adapt beautifully to any device and cater to diverse user needs. Remember to always test your designs across different screen sizes and devices to ensure optimal performance and usability.</p>
+    </div>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day14.html'">&#8592; 14</button>
+        <button class="nav-btn" onclick="location.href='day15.html'">15</button>
+        <button class="nav-btn" onclick="location.href='day16.html'">16 &#8594;</button>
+    </div>
+     <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>

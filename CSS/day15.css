@@ -1,0 +1,318 @@
+/* General Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* Container for content */
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+    color: #0056b3;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-top: 30px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    border-bottom: 3px solid #007bff;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.4em;
+    color: #007bff;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-top: 20px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+/* Code Example Styling */
+.code-example {
+    background-color: #e8f0f7;
+    border-left: 5px solid #007bff;
+    padding: 15px;
+    margin: 20px 0;
+    overflow-x: auto;
+    border-radius: 4px;
+}
+
+pre {
+    margin: 0;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+    font-size: 0.9em;
+    color: #333;
+}
+
+/* Live Demo Styling */
+.live-demo {
+    border: 1px dashed #ccc;
+    padding: 30px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    flex-wrap: wrap;
+    /* Allow items to wrap in demos */
+    gap: 15px;
+}
+
+/* --- Viewport Demo --- */
+.viewport-info {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+/* --- Fluid Layout Demo --- */
+.fluid-box {
+    width: 45%;
+    /* Use percentage for fluid width */
+    padding: 20px;
+    background-color: #28a745;
+    /* Green */
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+    /* Include padding in width */
+    font-size: 1.2em;
+    border-radius: 5px;
+}
+
+/* --- Flexible Image Demo --- */
+.responsive-image-container {
+    width: 80%;
+    /* Container for the image */
+    max-width: 400px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 20px auto;
+}
+
+.responsive-image {
+    max-width: 100%;
+    /* Image will scale down to fit its container */
+    height: auto;
+    /* Maintain aspect ratio */
+    display: block;
+    /* Remove extra space below image */
+}
+
+/* --- Basic Media Query Demo --- */
+.mq-box {
+    width: 150px;
+    height: 150px;
+    background-color: #ffc107;
+    /* Yellow */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+/* Styles applied when viewport is 600px or wider */
+@media screen and (min-width: 600px) {
+    .mq-box {
+        background-color: #007bff;
+        /* Blue */
+        color: white;
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Styles applied when viewport is 900px or wider */
+@media screen and (min-width: 900px) {
+    .mq-box {
+        background-color: #dc3545;
+        /* Red */
+        width: 250px;
+        height: 250px;
+    }
+}
+
+/* --- Orientation Media Query Demo --- */
+.orientation-box {
+    width: 150px;
+    height: 100px;
+    background-color: #6f42c1;
+    /* Purple */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+@media screen and (orientation: landscape) {
+    .orientation-box {
+        background-color: #20c997;
+        /* Teal */
+        width: 200px;
+        height: 80px;
+    }
+}
+
+/* --- User Preference Media Query Demo (Dark Mode) --- */
+.color-scheme-box {
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+    .color-scheme-box {
+        background-color: #333;
+        color: #f0f0f0;
+        border-color: #f0f0f0;
+    }
+}
+
+/* --- User Preference Media Query Demo (Reduced Motion) --- */
+.motion-box {
+    width: 80px;
+    height: 80px;
+    background-color: #fd7e14;
+    /* Orange */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    animation: pulse-motion 2s infinite ease-in-out;
+}
+
+@keyframes pulse-motion {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .motion-box {
+        animation: none;
+        /* Disable animation */
+        background-color: #6c757d;
+        /* Grey when motion reduced */
+    }
+}
+
+/* --- Responsive Layout Demo (Flexbox) --- */
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allows items to wrap to the next line */
+    gap: 15px;
+    padding: 10px;
+    background-color: #e0f7fa;
+    /* Light blue */
+    border-radius: 8px;
+}
+
+.flex-item {
+    flex: 1 1 calc(50% - 15px);
+    /* Default: two columns */
+    background-color: #4dd0e1;
+    /* Cyan */
+    padding: 20px;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Flexbox: Single column on small screens */
+@media screen and (max-width: 599px) {
+    .flex-item {
+        flex: 1 1 100%;
+        /* One column */
+    }
+}
+
+/* --- Responsive Layout Demo (CSS Grid) --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Default: single column */
+    gap: 15px;
+    padding: 10px;
+    background-color: #e8f5e9;
+    /* Light green */
+    border-radius: 8px;
+}
+
+.grid-item {
+    background-color: #66bb6a;
+    /* Green */
+    padding: 20px;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Grid: Two columns on medium screens */
+@media screen and (min-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr 1fr;
+        /* Two equal columns */
+    }
+}
+
+/* Grid: Three columns on large screens */
+@media screen and (min-width: 900px) {
+    .grid-container {
+        grid-template-columns: 1fr 1fr 1fr;
+        /* Three equal columns */
+    }
+}
