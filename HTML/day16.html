@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 16 | Mobile-First Design Tutorial</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-2.svg">
+    <link rel="stylesheet" href="../CSS/day16.css">
+    <link rel="stylesheet" href="../CSS/button.css">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day15.html'">&#8592; 15</button>
+        <button class="nav-btn" onclick="location.href='day16.html'">16</button>
+        <button class="nav-btn" onclick="location.href='day17.html'">17 &#8594;</button>
+    </div>
+    <div class="container">
+        <h1>Mobile-First Design: Building for Everyone</h1>
+        <p>Mobile-first design is a strategic approach to web development that prioritizes designing and developing for the smallest screens (mobile devices) first, then progressively enhancing the experience for larger screens like tablets and desktops. This tutorial will demonstrate its core principles and implementation.</p>
+
+        <h2>1. The Viewport Meta Tag: The Essential Start</h2>
+        <p>The <code>&lt;meta name="viewport"&gt;</code> tag is crucial. It tells the browser how to control the page's dimensions and scaling. Without it, mobile browsers might render your page at a desktop width and then zoom out, making your responsive styles ineffective. [1, 2, 3]</p>
+
+        <h3>Code for Viewport Meta Tag:</h3>
+        <div class="code-example">
+            <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;My Mobile-First Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Your content here --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+        </div>
+        <ul>
+            <li><code>width=device-width</code>: Sets the page width to the device's screen width in CSS pixels. [2, 4]</li>
+            <li><code>initial-scale=1.0</code>: Sets the initial zoom level to 100%. [2, 4]</li>
+        </ul>
+
+        <h3>Live Demo: Viewport Information</h3>
+        <p>Your current viewport width: <span id="viewport-width"></span>px</p>
+        <p>Your current viewport height: <span id="viewport-height"></span>px</p>
+        <p>Resize your browser window to see these values change. This is what your CSS media queries react to.</p>
+        <div class="live-demo">
+            <div class="viewport-info">
+                <p>This box helps visualize the viewport.</p>
+            </div>
+        </div>
+        <script>
+            function updateViewportInfo() {
+                document.getElementById('viewport-width').textContent = window.innerWidth;
+                document.getElementById('viewport-height').textContent = window.innerHeight;
+            }
+            window.addEventListener('resize', updateViewportInfo);
+            updateViewportInfo(); // Initial call
+        </script>
+
+        <h2>2. Fluid Layouts and Flexible Images</h2>
+        <p>Mobile-first design uses fluid layouts (relative units like percentages, <code>em</code>, <code>rem</code>, <code>vw</code>) and flexible images (<code>max-width: 100%</code>) to ensure content scales gracefully before media queries apply. [5, 6, 4]</p>
+
+        <h3>Live Demo: Fluid Boxes</h3>
+        <p>These boxes use percentages for width. On mobile, they take up most of the width. As you widen the browser, they will arrange into columns.</p>
+        <div class="live-demo">
+            <div class="fluid-box">Box 1</div>
+            <div class="fluid-box">Box 2</div>
+            <div class="fluid-box">Box 3</div>
+            <div class="fluid-box">Box 4</div>
+        </div>
+
+        <h3>Code for Fluid Layouts:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS (Mobile-First Base) */
+.fluid-box {
+    width: 90%; /* Nearly full width for mobile */
+    /*... other styles... */
+}
+
+/* Media Query for larger screens */
+@media screen and (min-width: 576px) {
+  .fluid-box {
+        width: 48%; /* Two columns on wider screens */
+    }
+}
+/*... further breakpoints for more columns... */
+            </code></pre>
+        </div>
+
+        <h3>Live Demo: Flexible Image</h3>
+        <p>The image below will scale down to fit its container, but won't grow larger than its original size. This is crucial for performance and preventing horizontal scrolling. [5, 6]</p>
+        <div class="live-demo">
+            <div class="responsive-image-container">
+                <img src="https://via.placeholder.com/400x200/007bff/ffffff?text=Responsive+Image" alt="Responsive Image" class="responsive-image">
+            </div>
+        </div>
+
+        <h3>Code for Flexible Images:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS */
+.responsive-image {
+    max-width: 100%; /* Image will shrink to fit its container */
+    height: auto;    /* Maintains aspect ratio */
+    display: block;  /* Removes extra space below the image */
+}
+            </code></pre>
+        </div>
+
+        <h2>3. Mobile-First CSS Architecture with <code>min-width</code> Media Queries</h2>
+        <p>In mobile-first, your base CSS applies to the smallest screens. Then, you use <code>min-width</code> media queries to <b>add</b> styles for progressively larger viewports. This ensures mobile devices download and process less CSS, improving performance. [7, 8, 9]</p>
+
+        <h3>Live Demo: Mobile-First Box (Resize your browser!)</h3>
+        <p>This box starts yellow (mobile default). It turns blue at 576px, red at 768px, and teal at 992px.</p>
+        <div class="live-demo">
+            <div class="mq-box">Resize Me!</div>
+        </div>
+
+        <h3>Code for Mobile-First Width-Based Media Queries:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS (Mobile-First Base) */
+.mq-box {
+    width: 120px;
+    height: 120px;
+    background-color: #ffc107; /* Yellow (default for mobile) */
+    /*... other styles... */
+}
+
+/* Styles for Small devices (>= 576px) */
+@media screen and (min-width: 576px) {
+  .mq-box {
+        background-color: #007bff; /* Blue */
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* Styles for Medium devices (>= 768px) */
+@media screen and (min-width: 768px) {
+  .mq-box {
+        background-color: #dc3545; /* Red */
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Styles for Large devices (>= 992px) */
+@media screen and (min-width: 992px) {
+  .mq-box {
+        background-color: #17a2b8; /* Teal */
+        width: 250px;
+        height: 250px;
+    }
+}
+            </code></pre>
+        </div>
+
+        <h2>4. Responsive Layouts with Flexbox and CSS Grid</h2>
+        <p>Flexbox and CSS Grid are powerful layout tools that integrate perfectly with mobile-first media queries to create adaptable designs. [10, 11, 12, 13, 14]</p>
+
+        <h3>Live Demo: Responsive Flexbox Layout</h3>
+        <p>These items start stacked on mobile (default <code>flex-direction: column</code>). They arrange into rows as the screen widens.</p>
+        <div class="live-demo">
+            <div class="flex-container">
+                <div class="flex-item">Flex Item 1</div>
+                <div class="flex-item">Flex Item 2</div>
+                <div class="flex-item">Flex Item 3</div>
+                <div class="flex-item">Flex Item 4</div>
+            </div>
+        </div>
+
+        <h3>Code for Responsive Flexbox:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS (Mobile-First Base) */
+.flex-container {
+    display: flex;
+    flex-direction: column; /* Default: single column for mobile */
+    gap: 10px;
+    /*... other styles... */
+}
+.flex-item {
+    /*... item styles... */
+}
+
+/* Styles for Small devices (>= 576px) */
+@media screen and (min-width: 576px) {
+  .flex-container {
+        flex-direction: row; /* Change to row layout */
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+  .flex-item {
+        flex: 1 1 calc(48% - 15px); /* Two items per row */
+    }
+}
+/*... further breakpoints for more columns... */
+            </code></pre>
+        </div>
+
+        <h3>Live Demo: Responsive CSS Grid Layout</h3>
+        <p>This grid starts as a single column on mobile. It transitions to two, then three, then four columns as you resize the window.</p>
+        <div class="live-demo">
+            <div class="grid-container">
+                <div class="grid-item">Grid Item 1</div>
+                <div class="grid-item">Grid Item 2</div>
+                <div class="grid-item">Grid Item 3</div>
+                <div class="grid-item">Grid Item 4</div>
+                <div class="grid-item">Grid Item 5</div>
+                <div class="grid-item">Grid Item 6</div>
+            </div>
+        </div>
+
+        <h3>Code for Responsive CSS Grid:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS (Mobile-First Base) */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Default: single column for mobile */
+    gap: 10px;
+    /*... other styles... */
+}
+.grid-item {
+    /*... item styles... */
+}
+
+/* Styles for Small devices (>= 576px) */
+@media screen and (min-width: 576px) {
+  .grid-container {
+        grid-template-columns: 1fr 1fr; /* Two equal columns */
+        gap: 15px;
+    }
+}
+/*... further breakpoints for more columns... */
+            </code></pre>
+        </div>
+
+        <h2>5. Enhancing Accessibility with User Preference Media Queries</h2>
+        <p>Mobile-first design also embraces accessibility. Media queries can adapt your site based on user preferences set in their operating system, such as dark mode or reduced motion. </p>
+
+        <h3>Live Demo: User Preference - Dark Mode (Change your OS/Browser theme!)</h3>
+        <p>This box will adapt its colors if your operating system or browser is set to a dark color scheme. Try changing your system's theme to see it in action.</p>
+        <div class="live-demo">
+            <div class="color-scheme-box">I adapt to your theme!</div>
+        </div>
+
+        <h3>Code for <code>prefers-color-scheme</code>:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS (Light mode default) */
+.color-scheme-box {
+    background-color: #f0f0f0;
+    color: #333;
+    border-color: #333;
+    /*... other styles... */
+}
+
+@media (prefers-color-scheme: dark) {
+  .color-scheme-box {
+        background-color: #333;
+        color: #f0f0f0;
+        border-color: #f0f0f0;
+    }
+}
+            </code></pre>
+        </div>
+
+        <h3>Live Demo: User Preference - Reduced Motion (Change your OS accessibility settings!)</h3>
+        <p>This pulsing box will stop animating if your operating system's accessibility settings are configured to "reduce motion." This is crucial for users with motion sensitivities. </p>
+        <div class="live-demo">
+            <div class="motion-box">Motion Test</div>
+        </div>
+
+        <h3>Code for <code>prefers-reduced-motion</code>:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS (Default animation) */
+.motion-box {
+    animation: pulse-motion 2s infinite ease-in-out;
+    /*... other styles... */
+}
+
+@keyframes pulse-motion {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-box {
+        animation: none; /* Disable animation */
+        background-color: #6c757d; /* Grey when motion reduced */
+    }
+}
+            </code></pre>
+        </div>
+
+        <h3>Live Demo: Orientation Media Query (Rotate your device or browser!)</h3>
+        <p>This box changes color and size when your device or browser window switches between portrait and landscape orientation. (Purple in portrait, Teal in landscape). [15, 16]</p>
+        <div class="live-demo">
+            <div class="orientation-box">Orientation Test</div>
+        </div>
+
+        <h3>Code for Orientation Media Query:</h3>
+        <div class="code-example">
+            <pre><code>
+/* CSS (Portrait default) */
+.orientation-box {
+    width: 140px;
+    height: 90px;
+    background-color: #6f42c1; /* Purple */
+    /*... other styles... */
+}
+
+@media screen and (orientation: landscape) {
+  .orientation-box {
+        background-color: #20c997; /* Teal in landscape */
+        width: 200px;
+        height: 80px;
+    }
+}
+            </code></pre>
+        </div>
+
+        <h2>Conclusion</h2>
+        <p>Mobile-first design is a strategic imperative for modern web development. By starting with the most constrained environment, you create streamlined, high-performing, and inherently accessible experiences that scale beautifully across all devices. This approach not only enhances user satisfaction and engagement but also aligns perfectly with current SEO best practices, ensuring your website is well-positioned for success in today's mobile-dominated digital landscape. </p>
+    </div>
+    <div class="nav-buttons-bottom>
+        <button class="nav-btn" onclick="location.href='day15.html'">&#8592; 15</button>
+        <button class="nav-btn" onclick="location.href='day16.html'">16</button>
+        <button class="nav-btn" onclick="location.href='day17.html'">17 &#8594;</button>
+    </div>
+    <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>

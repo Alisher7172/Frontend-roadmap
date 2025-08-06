@@ -1,0 +1,487 @@
+ /* General Body Styles - These are the BASE styles, applied to the smallest screens first (mobile-first) */
+ body {
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     line-height: 1.6;
+     margin: 0;
+     padding: 15px;
+     /* Slightly less padding for small screens */
+     background-color: #f4f7f6;
+     color: #333;
+ }
+
+ /* Container for content */
+ .container {
+     max-width: 900px;
+     margin: 15px auto;
+     /* Smaller margin for mobile */
+     background-color: #fff;
+     padding: 20px;
+     /* Smaller padding for mobile */
+     border-radius: 8px;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+     /* Lighter shadow for mobile */
+ }
+
+ /* Headings */
+ h1,
+ h2,
+ h3 {
+     color: #0056b3;
+     border-bottom: 1px solid #e0e0e0;
+     /* Lighter border for mobile */
+     padding-bottom: 8px;
+     margin-top: 25px;
+ }
+
+ h1 {
+     text-align: center;
+     font-size: 2em;
+     /* Smaller font size for mobile */
+     border-bottom: 2px solid #007bff;
+ }
+
+ h2 {
+     font-size: 1.5em;
+     /* Smaller font size for mobile */
+ }
+
+ h3 {
+     font-size: 1.2em;
+     /* Smaller font size for mobile */
+     color: #007bff;
+     border-bottom: none;
+     padding-bottom: 0;
+     margin-top: 15px;
+ }
+
+ p {
+     margin-bottom: 10px;
+ }
+
+ /* Code Example Styling */
+ .code-example {
+     background-color: #e8f0f7;
+     border-left: 4px solid #007bff;
+     /* Thinner border for mobile */
+     padding: 12px;
+     margin: 15px 0;
+     overflow-x: auto;
+     border-radius: 4px;
+ }
+
+ pre {
+     margin: 0;
+     font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+     font-size: 0.85em;
+     /* Smaller font for code on mobile */
+     color: #333;
+ }
+
+ /* Live Demo Styling */
+ .live-demo {
+     border: 1px dashed #ccc;
+     padding: 20px;
+     /* Smaller padding for mobile */
+     margin: 15px 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 120px;
+     /* Smaller min-height for mobile */
+     background-color: #f9f9f9;
+     border-radius: 4px;
+     flex-wrap: wrap;
+     /* Allow items to wrap in demos */
+     gap: 10px;
+     /* Smaller gap for mobile */
+ }
+
+ /* --- Viewport Demo --- */
+ .viewport-info {
+     font-size: 1em;
+     /* Smaller font for mobile */
+     font-weight: bold;
+     color: #333;
+     text-align: center;
+ }
+
+ /* --- Fluid Layout Demo --- */
+ .fluid-box {
+     width: 90%;
+     /* Default: nearly full width for mobile */
+     padding: 15px;
+     background-color: #28a745;
+     /* Green */
+     color: white;
+     text-align: center;
+     box-sizing: border-box;
+     font-size: 1.1em;
+     border-radius: 5px;
+ }
+
+ /* --- Flexible Image Demo --- */
+ .responsive-image-container {
+     width: 95%;
+     /* Nearly full width for mobile */
+     max-width: 300px;
+     /* Smaller max-width for mobile */
+     border: 1px solid #ddd;
+     padding: 8px;
+     box-sizing: border-box;
+     margin: 15px auto;
+ }
+
+ .responsive-image {
+     max-width: 100%;
+     height: auto;
+     display: block;
+ }
+
+ /* --- Basic Mobile-First Media Query Demo --- */
+ .mq-box {
+     width: 120px;
+     /* Smaller default size for mobile */
+     height: 120px;
+     background-color: #ffc107;
+     /* Yellow (mobile default) */
+     color: #333;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-weight: bold;
+     text-align: center;
+     border-radius: 8px;
+     transition: background-color 0.3s ease, width 0.3s ease, height 0.3s ease;
+ }
+
+ /* --- Orientation Media Query Demo --- */
+ .orientation-box {
+     width: 140px;
+     /* Default for portrait */
+     height: 90px;
+     background-color: #6f42c1;
+     /* Purple (portrait default) */
+     color: white;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-weight: bold;
+     border-radius: 8px;
+ }
+
+ /* --- User Preference Media Query Demo (Dark Mode) --- */
+ .color-scheme-box {
+     padding: 15px;
+     border: 1px solid #333;
+     border-radius: 8px;
+     background-color: #f0f0f0;
+     /* Light mode default */
+     color: #333;
+     text-align: center;
+     font-weight: bold;
+     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+ }
+
+ /* --- User Preference Media Query Demo (Reduced Motion) --- */
+ .motion-box {
+     width: 70px;
+     /* Smaller default size for mobile */
+     height: 70px;
+     background-color: #fd7e14;
+     /* Orange */
+     border-radius: 50%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     color: white;
+     font-weight: bold;
+     animation: pulse-motion 2s infinite ease-in-out;
+     /* Default animation */
+ }
+
+ @keyframes pulse-motion {
+     0% {
+         transform: scale(1);
+         opacity: 1;
+     }
+
+     50% {
+         transform: scale(1.1);
+         opacity: 0.7;
+     }
+
+     100% {
+         transform: scale(1);
+         opacity: 1;
+     }
+ }
+
+ /* --- Responsive Layout Demo (Flexbox) --- */
+ .flex-container {
+     display: flex;
+     flex-direction: column;
+     /* Default: single column for mobile */
+     gap: 10px;
+     padding: 10px;
+     background-color: #e0f7fa;
+     border-radius: 8px;
+ }
+
+ .flex-item {
+     background-color: #4dd0e1;
+     padding: 15px;
+     text-align: center;
+     color: white;
+     border-radius: 5px;
+     box-sizing: border-box;
+ }
+
+ /* --- Responsive Layout Demo (CSS Grid) --- */
+ .grid-container {
+     display: grid;
+     grid-template-columns: 1fr;
+     /* Default: single column for mobile */
+     gap: 10px;
+     padding: 10px;
+     background-color: #e8f5e9;
+     border-radius: 8px;
+ }
+
+ .grid-item {
+     background-color: #66bb6a;
+     padding: 15px;
+     text-align: center;
+     color: white;
+     border-radius: 5px;
+     box-sizing: border-box;
+ }
+
+ /* ==================================================================== */
+ /* Mobile-First Media Queries: Styles for LARGER screens (min-width) */
+ /* ==================================================================== */
+
+ /* Small devices (landscape phones, 576px and up) */
+ @media screen and (min-width: 576px) {
+     body {
+         padding: 20px;
+     }
+
+     .container {
+         margin: 20px auto;
+         padding: 25px;
+         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+     }
+
+     h1 {
+         font-size: 2.2em;
+     }
+
+     h2 {
+         font-size: 1.6em;
+     }
+
+     h3 {
+         font-size: 1.3em;
+     }
+
+     .code-example {
+         padding: 15px;
+         margin: 20px 0;
+     }
+
+     pre {
+         font-size: 0.9em;
+     }
+
+     .live-demo {
+         padding: 25px;
+         min-height: 140px;
+         gap: 12px;
+     }
+
+     .viewport-info {
+         font-size: 1.1em;
+     }
+
+     .fluid-box {
+         width: 48%;
+         /* Two columns on wider screens */
+     }
+
+     .mq-box {
+         width: 150px;
+         height: 150px;
+         background-color: #007bff;
+         /* Blue for small desktop */
+         color: white;
+     }
+
+     .orientation-box {
+         width: 180px;
+         height: 120px;
+     }
+
+     .flex-container {
+         flex-direction: row;
+         /* Two columns for flexbox */
+         flex-wrap: wrap;
+         justify-content: center;
+         gap: 15px;
+     }
+
+     .flex-item {
+         flex: 1 1 calc(48% - 15px);
+         /* Two items per row */
+     }
+
+     .grid-container {
+         grid-template-columns: 1fr 1fr;
+         /* Two equal columns */
+         gap: 15px;
+     }
+ }
+
+ /* Medium devices (tablets, 768px and up) */
+ @media screen and (min-width: 768px) {
+     .container {
+         padding: 30px;
+         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+     }
+
+     h1 {
+         font-size: 2.5em;
+     }
+
+     h2 {
+         font-size: 1.8em;
+     }
+
+     h3 {
+         font-size: 1.4em;
+     }
+
+     .code-example {
+         border-left-width: 5px;
+     }
+
+     pre {
+         font-size: 0.95em;
+     }
+
+     .live-demo {
+         padding: 30px;
+         min-height: 160px;
+         gap: 15px;
+     }
+
+     .viewport-info {
+         font-size: 1.2em;
+     }
+
+     .fluid-box {
+         width: 30%;
+         /* Three columns */
+     }
+
+     .mq-box {
+         width: 200px;
+         height: 200px;
+         background-color: #dc3545;
+         /* Red for medium desktop */
+     }
+
+     .orientation-box {
+         width: 220px;
+         height: 140px;
+     }
+
+     .flex-item {
+         flex: 1 1 calc(30% - 15px);
+         /* Three items per row */
+     }
+
+     .grid-container {
+         grid-template-columns: 1fr 1fr 1fr;
+         /* Three equal columns */
+     }
+ }
+
+ /* Large devices (desktops, 992px and up) */
+ @media screen and (min-width: 992px) {
+     .container {
+         padding: 35px;
+     }
+
+     h1 {
+         font-size: 2.8em;
+     }
+
+     h2 {
+         font-size: 2em;
+     }
+
+     h3 {
+         font-size: 1.6em;
+     }
+
+     pre {
+         font-size: 1em;
+     }
+
+     .live-demo {
+         min-height: 180px;
+     }
+
+     .viewport-info {
+         font-size: 1.3em;
+     }
+
+     .fluid-box {
+         width: 22%;
+         /* Four columns */
+     }
+
+     .mq-box {
+         width: 250px;
+         height: 250px;
+         background-color: #17a2b8;
+         /* Teal for large desktop */
+     }
+
+     .orientation-box {
+         width: 250px;
+         height: 160px;
+     }
+
+     .flex-item {
+         flex: 1 1 calc(22% - 15px);
+         /* Four items per row */
+     }
+
+     .grid-container {
+         grid-template-columns: repeat(4, 1fr);
+         /* Four equal columns */
+     }
+ }
+
+ /* User Preference Media Query for Reduced Motion */
+ @media (prefers-reduced-motion: reduce) {
+     .motion-box {
+         animation: none;
+         /* Disable animation */
+         background-color: #6c757d;
+         /* Grey when motion reduced */
+     }
+ }
+
+ /* User Preference Media Query for Landscape Orientation (overrides portrait default) */
+ @media screen and (orientation: landscape) {
+     .orientation-box {
+         background-color: #20c997;
+         /* Teal in landscape */
+         width: 200px;
+         /* Wider in landscape */
+         height: 80px;
+         /* Shorter in landscape */
+     }
+ }
