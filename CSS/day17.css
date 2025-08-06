@@ -1,0 +1,9 @@
+ /* Custom styles for the Inter font */
+ body {
+     font-family: 'Inter', sans-serif;
+    }
+
+/* Base font size for rem calculation reference */
+    html {
+      font-size: 16px; /* Default browser font size */
+}

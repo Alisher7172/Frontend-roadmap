@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 17 | Understanding CSS Units</title>
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../CSS/day17.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-17.svg">
+    <link rel="stylesheet" href="../CSS/button.css">
+</head>
+<body class="bg-gray-100 text-gray-800 antialiased p-4 sm:p-6 lg:p-8">
+     <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day16.html'">&#8592; 16</button>
+        <button class="nav-btn" onclick="location.href='day17.html'">17</button>
+        <button class="nav-btn" onclick="location.href='day18.html'">18 &#8594;</button>
+    </div>
+    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-6 sm:p-8 lg:p-10">
+        <!-- Header Section -->
+        <header class="text-center mb-10">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-700 mb-4">Understanding CSS Units</h1>
+            <p class="text-lg text-gray-600">
+                A quick guide to `px`, `%`, `rem`, `em`, `vw`, `vh`, and `ch` for responsive web design.
+            </p>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="space-y-10">
+            <!-- PX Unit Section -->
+            <section class="bg-blue-50 p-6 rounded-lg shadow-md border border-blue-200">
+                <h2 class="text-2xl sm:text-3xl font-bold text-blue-800 mb-4">1. Pixels (`px`)</h2>
+                <p class="mb-4 leading-relaxed">
+                    Pixels are <strong class="font-semibold">absolute units</strong>. They define a fixed size based on the physical pixels of the display. While straightforward, they can lead to accessibility issues as they don't scale with user preferences (like browser font size settings) and can make layouts less flexible on different screen sizes.
+                </p>
+                <div class="bg-white p-4 rounded-md border border-gray-300 flex flex-col sm:flex-row items-center justify-around space-y-4 sm:space-y-0 sm:space-x-4">
+                    <div class="w-full sm:w-1/2 bg-blue-200 p-3 rounded-md text-center">
+                        <p class="text-base" style="font-size: 16px;">16px text size</p>
+                    </div>
+                    <div class="w-full sm:w-1/2 bg-blue-300 p-3 rounded-md text-center">
+                        <p class="text-xl" style="font-size: 24px;">24px text size</p>
+                    </div>
+                </div>
+                <p class="mt-4 text-sm text-gray-600">
+                    <code class="bg-gray-200 px-2 py-1 rounded">font-size: 16px;</code> and <code class="bg-gray-200 px-2 py-1 rounded">font-size: 24px;</code>
+                </p>
+            </section>
+
+            <!-- % Unit Section -->
+            <section class="bg-green-50 p-6 rounded-lg shadow-md border border-green-200">
+                <h2 class="text-2xl sm:text-3xl font-bold text-green-800 mb-4">2. Percentages (`%`)</h2>
+                <p class="mb-4 leading-relaxed">
+                    Percentages are <strong class="font-semibold">relative units</strong>. They are relative to the parent element's property. For font sizes, it's relative to the parent's font size. For widths, it's relative to the parent's width. This makes them excellent for creating fluid and responsive layouts.
+                </p>
+                <div class="bg-white p-4 rounded-md border border-gray-300">
+                    <div class="w-full bg-green-200 p-3 rounded-md mb-4">
+                        <div class="w-1/2 bg-green-300 p-3 rounded-md mx-auto text-center">
+                            <p class="text-sm">This div is 50% of its parent's width.</p>
+                        </div>
+                    </div>
+                    <div class="bg-green-200 p-3 rounded-md text-center">
+                        <p style="font-size: 100%;">100% text size (relative to parent)</p>
+                        <p style="font-size: 150%;">150% text size (relative to parent)</p>
+                    </div>
+                </div>
+                <p class="mt-4 text-sm text-gray-600">
+                    <code class="bg-gray-200 px-2 py-1 rounded">width: 50%;</code>, <code class="bg-gray-200 px-2 py-1 rounded">font-size: 100%;</code>, <code class="bg-gray-200 px-2 py-1 rounded">font-size: 150%;</code>
+                </p>
+            </section>
+
+            <!-- REM Unit Section -->
+            <section class="bg-purple-50 p-6 rounded-lg shadow-md border border-purple-200">
+                <h2 class="text-2xl sm:text-3xl font-bold text-purple-800 mb-4">3. Root EM (`rem`)</h2>
+                <p class="mb-4 leading-relaxed">
+                    `rem` stands for "root em". It's a <strong class="font-semibold">relative unit</strong> that is always relative to the font size of the root HTML element (`<html>`). This makes it incredibly powerful for responsive typography and consistent scaling across your entire website, as changing the root font size will proportionally adjust all `rem` values.
+                </p>
+                <p class="mb-4 text-sm text-gray-600">
+                    <strong class="font-medium">Note:</strong> The default browser root font size is usually 16px. So, 1rem = 16px by default.
+                </p>
+                <div class="bg-white p-4 rounded-md border border-gray-300 flex flex-col sm:flex-row items-center justify-around space-y-4 sm:space-y-0 sm:space-x-4">
+                    <div class="w-full sm:w-1/2 bg-purple-200 p-3 rounded-md text-center">
+                        <p class="text-base" style="font-size: 1rem;">1rem text size</p>
+                    </div>
+                    <div class="w-full sm:w-1/2 bg-purple-300 p-3 rounded-md text-center">
+                        <p class="text-xl" style="font-size: 1.5rem;">1.5rem text size</p>
+                    </div>
+                </div>
+                <p class="mt-4 text-sm text-gray-600">
+                    <code class="bg-gray-200 px-2 py-1 rounded">font-size: 1rem;</code> and <code class="bg-gray-200 px-2 py-1 rounded">font-size: 1.5rem;</code>
+                </p>
+            </section>
+
+            <!-- EM Unit Section -->
+            <section class="bg-yellow-50 p-6 rounded-lg shadow-md border border-yellow-200">
+                <h2 class="text-2xl sm:text-3xl font-bold text-yellow-800 mb-4">4. EM (`em`)</h2>
+                <p class="mb-4 leading-relaxed">
+                    Similar to `rem`, `em` is a <strong class="font-semibold">relative unit</strong>. However, `em` is relative to the font size of its <strong class="font-semibold">parent element</strong>. This can sometimes lead to compounding issues (where sizes multiply unexpectedly) if not managed carefully, but it's useful for scaling elements within a specific component.
+                </p>
+                <div class="bg-white p-4 rounded-md border border-gray-300">
+                    <div class="bg-yellow-200 p-3 rounded-md mb-4" style="font-size: 20px;">
+                        <p class="text-base">Parent font size is 20px</p>
+                        <p style="font-size: 1em;">1em text (20px)</p>
+                        <p style="font-size: 1.2em;">1.2em text (24px)</p>
+                        <div style="font-size: 0.8em;">
+                            <p>Nested div, font size is 0.8em (16px)</p>
+                            <p style="font-size: 1.5em;">1.5em text (24px, relative to its new parent)</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-4 text-sm text-gray-600">
+                    <code class="bg-gray-200 px-2 py-1 rounded">font-size: 1em;</code> and <code class="bg-gray-200 px-2 py-1 rounded">font-size: 1.2em;</code>
+                </p>
+            </section>
+
+            <!-- Viewport Units Section -->
+            <section class="bg-red-50 p-6 rounded-lg shadow-md border border-red-200">
+                <h2 class="text-2xl sm:text-3xl font-bold text-red-800 mb-4">5. Viewport Units (`vw`, `vh`)</h2>
+                <p class="mb-4 leading-relaxed">
+                    Viewport units are <strong class="font-semibold">relative units</strong> that are based on the size of the viewport (the browser window).
+                </p>
+                <ul class="list-disc list-inside mb-4 pl-4">
+                    <li><strong class="font-semibold">`vw` (viewport width):</strong> 1vw is 1% of the viewport's width.</li>
+                    <li><strong class="font-semibold">`vh` (viewport height):</strong> 1vh is 1% of the viewport's height.</li>
+                </ul>
+                <p class="mb-4 leading-relaxed">
+                    These are incredibly useful for creating elements that scale perfectly with the browser window, ensuring a truly responsive design.
+                </p>
+                <div class="bg-white p-4 rounded-md border border-gray-300 overflow-hidden">
+                    <div class="w-[50vw] h-[10vh] bg-red-200 p-3 rounded-md mx-auto flex items-center justify-center text-center text-sm">
+                        <p>This box is 50vw wide and 10vh tall.</p>
+                    </div>
+                    <p class="text-center mt-4" style="font-size: 3vw;">This text is 3vw (3% of viewport width)</p>
+                </div>
+                <p class="mt-4 text-sm text-gray-600">
+                    <code class="bg-gray-200 px-2 py-1 rounded">width: 50vw;</code>, <code class="bg-gray-200 px-2 py-1 rounded">height: 10vh;</code>, <code class="bg-gray-200 px-2 py-1 rounded">font-size: 3vw;</code>
+                </p>
+            </section>
+
+            <!-- CH Unit Section -->
+            <section class="bg-teal-50 p-6 rounded-lg shadow-md border border-teal-200">
+                <h2 class="text-2xl sm:text-3xl font-bold text-teal-800 mb-4">6. Character Unit (`ch`)</h2>
+                <p class="mb-4 leading-relaxed">
+                    The `ch` unit is a <strong class="font-semibold">relative unit</strong> that represents the width of the "0" (zero) character in the current font. It's particularly useful for setting widths of text containers to ensure a consistent number of characters per line, which can improve readability, especially for monospaced fonts.
+                </p>
+                <div class="bg-white p-4 rounded-md border border-gray-300">
+                    <div class="bg-teal-200 p-3 rounded-md mb-4 max-w-lg mx-auto">
+                        <p class="font-mono text-sm" style="width: 40ch;">
+                            This paragraph has a width of 40ch, meaning it tries to fit 40 '0' characters. This is great for code blocks or fixed-width text.
+                        </p>
+                    </div>
+                </div>
+                <p class="mt-4 text-sm text-gray-600">
+                    <code class="bg-gray-200 px-2 py-1 rounded">width: 40ch;</code>
+                </p>
+            </section>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="text-center mt-10 text-gray-500 text-sm">
+            <p>&copy; 2024 CSS Units Guide. Designed with Tailwind CSS.</p>
+        </footer>
+    </div>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day16.html'">&#8592; 16</button>
+        <button class="nav-btn" onclick="location.href='day17.html'">17</button>
+        <button class="nav-btn" onclick="location.href='day18.html'">18 &#8594;</button>
+    </div>
+    <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>
