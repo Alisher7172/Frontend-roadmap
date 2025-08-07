@@ -1,0 +1,396 @@
+/* General Body Styles - Mobile-First Base */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 1.5rem;
+    /* Base padding for mobile */
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* Container for content */
+.container {
+    max-width: 90rem;
+    /* Max width for the entire tutorial content */
+    margin: 1.5rem auto;
+    /* Base margin for mobile */
+    background-color: #fff;
+    padding: 1.5rem;
+    /* Base padding for mobile */
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+    /* Lighter shadow for mobile */
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+    color: #0056b3;
+    border-bottom: 0.0625rem solid #e0e0e0;
+    /* Lighter border for mobile */
+    padding-bottom: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    /* Base font size for mobile */
+    border-bottom: 0.1875rem solid #007bff;
+}
+
+h2 {
+    font-size: 1.5rem;
+    /* Base font size for mobile */
+}
+
+h3 {
+    font-size: 1.2rem;
+    /* Base font size for mobile */
+    color: #007bff;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-top: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* Code Example Styling */
+.code-example {
+    background-color: #e8f0f7;
+    border-left: 0.25rem solid #007bff;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    border-radius: 0.25rem;
+}
+
+pre {
+    margin: 0;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+    font-size: 0.85rem;
+    /* Smaller font for code on mobile */
+    color: #333;
+}
+
+/* Live Demo Styling */
+.live-demo {
+    border: 0.0625rem dashed #ccc;
+    padding: 1.5rem;
+    /* Base padding for mobile */
+    margin: 1.5rem 0;
+    display: flex;
+    /* Default to flex for simple stacking on mobile */
+    justify-content: center;
+    align-items: center;
+    min-height: 10rem;
+    /* Base min-height for mobile */
+    background-color: #f9f9f9;
+    border-radius: 0.25rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    /* Base gap for mobile */
+}
+
+/* Grid Item Common Styles */
+.grid-item {
+    background-color: #66bb6a;
+    /* Green */
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+    border: 0.0625rem solid #4CAF50;
+}
+
+/* --- Viewport Info --- */
+.viewport-info {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+/* --- Basic Grid Demo --- */
+.basic-grid-container {
+    display: grid;
+    /* Mobile-first: single column by default */
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    background-color: #e8f5e9;
+    padding: 1rem;
+    border-radius: 0.25rem;
+}
+
+/* --- Fr Unit Demo --- */
+.fr-grid-container {
+    display: grid;
+    /* Mobile-first: single column by default */
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    background-color: #e0f7fa;
+    padding: 1rem;
+    border-radius: 0.25rem;
+}
+
+/* --- Minmax Demo --- */
+.minmax-grid-container {
+    display: grid;
+    /* Mobile-first: single column by default */
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    background-color: #ffe0b2;
+    padding: 1rem;
+    border-radius: 0.25rem;
+}
+
+/* --- Named Areas Demo --- */
+.named-areas-grid-container {
+    display: grid;
+    /* Mobile-first: single column layout by default */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    /* Rows will size to content */
+    grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "sidebar"
+        "footer";
+    gap: 1rem;
+    background-color: #e1bee7;
+    padding: 1rem;
+    border-radius: 0.25rem;
+}
+
+.header-item {
+    grid-area: header;
+    background-color: #9c27b0;
+}
+
+.nav-item {
+    grid-area: nav;
+    background-color: #673ab7;
+}
+
+.main-item {
+    grid-area: main;
+    background-color: #3f51b5;
+}
+
+.sidebar-item {
+    grid-area: sidebar;
+    background-color: #2196f3;
+}
+
+.footer-item {
+    grid-area: footer;
+    background-color: #03a9f4;
+}
+
+/* ==================================================================== */
+/* Media Queries for Larger Screens (Mobile-First Approach) */
+/* ==================================================================== */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 36rem) {
+
+    /* 576px / 16px = 36rem */
+    body {
+        padding: 2rem;
+    }
+
+    .container {
+        margin: 2rem auto;
+        padding: 2rem;
+        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    .code-example {
+        padding: 1.25rem;
+        margin: 2rem 0;
+    }
+
+    pre {
+        font-size: 0.9rem;
+    }
+
+    .live-demo {
+        padding: 2rem;
+        min-height: 12rem;
+        gap: 1.25rem;
+    }
+
+    .viewport-info {
+        font-size: 1.1rem;
+    }
+
+    /* Basic Grid: Two columns */
+    .basic-grid-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Fr Unit: 1fr 2fr */
+    .fr-grid-container {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    /* Minmax: Two columns, flexible */
+    .minmax-grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+
+    /* Named Areas: Two columns */
+    .named-areas-grid-container {
+        grid-template-columns: 1fr 2fr;
+        /* Sidebar on right, main content wider */
+        grid-template-areas:
+            "header header"
+            "nav    nav"
+            "main   sidebar"
+            "footer footer";
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 48rem) {
+
+    /* 768px / 16px = 48rem */
+    .container {
+        padding: 2.5rem;
+        box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    .code-example {
+        border-left-width: 0.3125rem;
+    }
+
+    pre {
+        font-size: 0.95rem;
+    }
+
+    .live-demo {
+        padding: 2.5rem;
+        min-height: 14rem;
+        gap: 1.5rem;
+    }
+
+    .viewport-info {
+        font-size: 1.2rem;
+    }
+
+    /* Basic Grid: Three columns */
+    .basic-grid-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Fr Unit: 1fr 1fr 2fr */
+    .fr-grid-container {
+        grid-template-columns: 1fr 1fr 2fr;
+    }
+
+    /* Minmax: Three columns, flexible */
+    .minmax-grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    }
+
+    /* Named Areas: Three columns */
+    .named-areas-grid-container {
+        grid-template-columns: 1fr 3fr 1fr;
+        /* Nav, Main, Sidebar */
+        grid-template-areas:
+            "header header header"
+            "nav    main   sidebar"
+            "footer footer footer";
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 62rem) {
+
+    /* 992px / 16px = 62rem */
+    .container {
+        padding: 3rem;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    pre {
+        font-size: 1rem;
+    }
+
+    .live-demo {
+        min-height: 16rem;
+    }
+
+    .viewport-info {
+        font-size: 1.3rem;
+    }
+
+    /* Basic Grid: Four columns */
+    .basic-grid-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Fr Unit: 1fr 1fr 1fr 2fr */
+    .fr-grid-container {
+        grid-template-columns: 1fr 1fr 1fr 2fr;
+    }
+
+    /* Minmax: Four columns, flexible */
+    .minmax-grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    }
+
+    /* Named Areas: Complex desktop layout */
+    .named-areas-grid-container {
+        grid-template-columns: 1fr 4fr 1fr;
+        /* Nav, Main, Sidebar */
+        grid-template-rows: auto 1fr auto;
+        /* Header, Main content (flexible), Footer */
+        grid-template-areas:
+            "header header header"
+            "nav    main   sidebar"
+            "footer footer footer";
+    }
+}
