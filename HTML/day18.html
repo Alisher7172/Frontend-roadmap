@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 18 | Responsive Navbar Tutorial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-2.svg">
+    <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="stylesheet" href="../CSS/day18.css">
+</head>
+<body>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day17.html'">&#8592; 17</button>
+        <button class="nav-btn" onclick="location.href='day18.html'">18</button>
+        <button class="nav-btn" onclick="location.href='day19.html'">19 &#8594;</button>
+    </div>
+    <header class="main-header">
+        <a href="#" class="logo">MySite</a>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-controls="main-navigation" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav class="main-nav" id="main-navigation" role="navigation" aria-label="Main navigation">
+            <ul class="nav-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="content-section">
+            <h2>Welcome to Our Website!</h2>
+            <p>This is a demonstration of a responsive navigation bar. Resize your browser window or view this page on a mobile device to see how the navigation adapts.</p>
+            <p>On smaller screens, the navigation collapses into a hamburger menu. Click the icon to toggle it open and closed. On larger screens, the full navigation bar is visible horizontally.</p>
+            <p>We've used a **mobile-first approach** in the CSS, meaning the base styles are optimized for mobile, and then styles are progressively added for larger screens using `min-width` media queries. [1, 2, 3]</p>
+        </section>
+
+        <section id="about" class="content-section">
+            <h2>About Us</h2>
+            <p>Our mission is to provide high-quality solutions tailored to your needs. We believe in creating intuitive and user-friendly experiences for everyone.</p>
+            <p>This responsive navbar also incorporates **accessibility best practices** by using semantic HTML elements like `<header>`, `<nav>`, `<ul>`, `<li>`, and `<button>`. [1, 4]</p>
+            <p>The hamburger toggle button includes ARIA attributes (`aria-label`, `aria-controls`, `aria-expanded`) to improve usability for screen reader users. [4, 5, 6]</p>
+        </section>
+
+        <section id="services" class="content-section">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Web Design & Development</li>
+                <li>Mobile App Development</li>
+                <li>SEO & Digital Marketing</li>
+                <li>UI/UX Consulting</li>
+            </ul>
+            <p>Notice how the navigation links are designed with **touch-friendly tap targets** (minimum 44x44 pixels) and sufficient spacing to prevent accidental taps on mobile devices. [4]</p>
+        </section>
+
+        <section id="portfolio" class="content-section">
+            <h2>Our Portfolio</h2>
+            <p>Explore some of our recent projects that showcase our expertise in responsive design and user experience.</p>
+            <p>The menu opening and closing features **smooth CSS transitions** for a better visual experience, avoiding reliance on JavaScript for basic animations where CSS is more performant. [1, 4]</p>
+        </section>
+
+        <section id="contact" class="content-section">
+            <h2>Contact Us</h2>
+            <p>Have a question or a project in mind? Feel free to reach out to us!</p>
+            <p>Email: info@mysite.com</p>
+            <p>Phone: (123) 456-7890</p>
+        </section>
+    </main>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day17.html'">&#8592; 17</button>
+        <button class="nav-btn" onclick="location.href='day18.html'">18</button>
+        <button class="nav-btn" onclick="location.href='day19.html'">19 &#8594;</button>
+    </div>
+  <script src="../JavaScript/navigation.js"></script>
+  <script src="../JavaScript/day18.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+/* General Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* Header and Navigation Base Styles (Mobile-First) */
+.main-header {
+    background-color: #007bff;
+    /* Primary blue color */
+    color: white;
+    padding: 1rem 1.5rem;
+    /* Padding for mobile */
+    display: flex;
+    justify-content: space-between;
+    /* Space out logo and menu icon */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    /* Makes header sticky at the top */
+    top: 0;
+    z-index: 1000;
+    /* Ensures header stays on top of other content */
+}
+
+.logo {
+    font-size: 1.8rem;
+    /* Larger font for logo */
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+/* Mobile Menu Icon (Hamburger) */
+.menu-toggle {
+    display: block;
+    /* Show hamburger on mobile by default */
+    font-size: 1.8rem;
+    background-color: transparent;
+    border: 1px solid white;
+    /* Added: Ensure button is visible even if icon doesn't load */
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+    /* Ensure touch target is large enough for accessibility */
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    /* Use flex to center icon if padding makes button larger */
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    /* Added: Include padding/border in min-width/height */
+}
+
+/* Navigation Links (Hidden by default on mobile) */
+.main-nav {
+    /* Position off-screen for mobile */
+    position: fixed;
+    top: 0;
+    left: -100%;
+    /* Start off-screen to the left */
+    width: 70%;
+    /* Take up 70% of screen width */
+    max-width: 300px;
+    /* Limit max width for larger mobile devices */
+    height: 100%;
+    background-color: #333;
+    /* Dark background for mobile menu */
+    padding-top: 4rem;
+    /* Space for content below header */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: left 0.3s ease-in-out;
+    /* Smooth slide-in/out transition */
+    z-index: 999;
+    /* Below header, above main content */
+    overflow-y: auto;
+    /* Enable scrolling for long menus */
+}
+
+.main-nav.active {
+    left: 0;
+    /* Slide into view when active */
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Separator for menu items */
+}
+
+.nav-list li:last-child {
+    border-bottom: none;
+}
+
+.nav-list a {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: background-color 0.2s ease;
+}
+
+.nav-list a:hover,
+.nav-list a:focus {
+    background-color: #0056b3;
+    /* Darker blue on hover/focus */
+}
+
+/* Main Content Area */
+.content-section {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ==================================================================== */
+/* Media Queries for Larger Screens (Mobile-First Approach) */
+/* ==================================================================== */
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .main-header {
+        padding: 1rem 3rem;
+        /* More padding for larger screens */
+    }
+
+    .menu-toggle {
+        display: none;
+        /* Hide hamburger on larger screens */
+    }
+
+    .main-nav {
+        position: static;
+        /* Remove fixed positioning */
+        width: auto;
+        /* Auto width */
+        max-width: none;
+        /* Remove max-width constraint */
+        height: auto;
+        /* Auto height */
+        background-color: transparent;
+        /* Transparent background */
+        padding-top: 0;
+        /* Remove top padding */
+        box-shadow: none;
+        /* Remove shadow */
+        transition: none;
+        /* Disable transition */
+        left: auto;
+        /* Reset left property */
+    }
+
+    .nav-list {
+        display: flex;
+        /* Display links horizontally */
+        justify-content: flex-end;
+        /* Align links to the right */
+    }
+
+    .nav-list li {
+        border-bottom: none;
+        /* Remove border between items */
+        margin-left: 1.5rem;
+        /* Space between links */
+    }
+
+    .nav-list a {
+        padding: 0.5rem 0.8rem;
+        /* Adjust padding for horizontal links */
+        color: white;
+        /* Keep text white */
+        background-color: transparent;
+        /* Transparent background */
+    }
+
+    .nav-list a:hover,
+    .nav-list a:focus {
+        background-color: rgba(255, 255, 255, 0.1);
+        /* Subtle hover effect */
+        border-radius: 4px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .main-header {
+        padding: 1rem 5rem;
+        /* Even more padding for large desktops */
+    }
+
+    .nav-list li {
+        margin-left: 2rem;
+        /* More space between links */
+    }
+}
