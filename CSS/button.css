@@ -17,7 +17,7 @@
 }
 
 .nav-btn {
-    background: #04AA6D;
+    background: #0a2ae4e7;
     color: white;
     border: none;
     border-radius: 4px;
@@ -28,13 +28,13 @@
 }
 
 .nav-btn:hover {
-    background: #038e5a;
+    background: #45058f;
 }
 
 .nav-btn-active {
     background: #fff;
-    color: #04AA6D;
-    border: 2px solid #04AA6D;
+    color: #3413c7ec;
+    border: 2px solid #2f1ec4;
     font-weight: bold;
     cursor: default;
     pointer-events: none;
