@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 20 | Modern Responsive Landing Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-20.svg">
+    <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="stylesheet" href="../CSS/day20.css">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day19.html'">&#8592; 19</button>
+        <button class="nav-btn nav-btn-active" disabled>20</button>
+        <button class="nav-btn" onclick="location.href='day21.html'">21 &#8594;</button>
+    </div>
+
+    <!-- Learning Challenge Header -->
+    <div class="challenge-banner">
+        <div class="container">
+            <h2 class="challenge-title">🎯 Clone This Webpage Challenge!</h2>
+            <p class="challenge-text">Practice your HTML, CSS & JavaScript skills by recreating this modern landing page</p>
+            <div class="difficulty-badge">Difficulty: <span>Intermediate</span></div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">YourBrand</a>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-controls="main-navigation" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav" id="main-navigation" role="navigation" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-background"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Your Solution for Modern Web Experiences</h1>
+                    <p class="hero-subtitle">We build stunning, responsive, and high-performing websites tailored to your needs.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">Get Started Today</a>
+                        <a href="#features" class="btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="100">0</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="50">0</span>
+                        <span class="stat-label">Clients</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="5">0</span>
+                        <span class="stat-label">Years</span>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section-title">Key Features</h2>
+                <p class="section-subtitle">Everything you need to create amazing web experiences</p>
+                <div class="features-grid">
+                    <div class="feature-item" data-aos="fade-up" data-delay="100">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Responsive Design</h3>
+                        <p>Our websites adapt seamlessly to any device, ensuring an optimal experience for all users.</p>
+                        <div class="feature-overlay"></div>
+                    </div>
+                    <div class="feature-item" data-aos="fade-up" data-delay="200">
+                        <div class="feature-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3>Fast Performance</h3>
+                        <p>Optimized for speed and efficiency, our sites load quickly, keeping your visitors engaged.</p>
+                        <div class="feature-overlay"></div>
+                    </div>
+                    <div class="feature-item" data-aos="fade-up" data-delay="300">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h3>User-Friendly Interface</h3>
+                        <p>Intuitive navigation and clean layouts make our websites a joy to use.</p>
+                        <div class="feature-overlay"></div>
+                    </div>
+                    <div class="feature-item" data-aos="fade-up" data-delay="400">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>SEO Optimized</h3>
+                        <p>Built with search engine best practices to improve your online visibility and rankings.</p>
+                        <div class="feature-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2>About Us</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>We are a team of passionate web developers dedicated to crafting exceptional digital experiences. With a focus on modern technologies and user-centric design, we bring your vision to life.</p>
+                        <p>Our expertise spans HTML for semantic structure, CSS for beautiful and responsive layouts, and JavaScript for dynamic interactivity. We adhere to mobile-first principles, ensuring your site performs flawlessly on every screen.</p>
+                    </div>
+                    <img src="https://via.placeholder.com/400x300/6c757d/ffffff?text=Our+Team" alt="Our Team" class="about-image">
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Transform Your Online Presence?</h2>
+                <p>Let's build something amazing together. Contact us today for a free consultation!</p>
+                <a href="#contact" class="btn">Contact Us Now</a>
+            </div>
+        </section>
+    </main>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day19.html'">&#8592; 19</button>
+        <button class="nav-btn" onclick="location.href='day20.html'">20</button>
+        <button class="nav-btn" onclick="location.href='day21.html'">21 &#8594;</button>
+    </div>
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 YourBrand. All rights reserved.</p>
+            <p>Designed with <i class="fas fa-heart"></i> for the modern web.</p>
+        </div>
+    </footer>
+    <script src="../JavaScript/day20.js"></script>
+    <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>
