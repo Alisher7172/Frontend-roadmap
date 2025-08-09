@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 23 | JS Conditionals & Loops</title>
+  <link rel="icon" type="image/svg+xml" href="../images/favicon-23.svg">
+  <link rel="stylesheet" href="../CSS/button.css">
+  <link rel="stylesheet" href="../CSS/day23.css">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day22.html'">&#8592; 22</button>
+        <button class="nav-btn" onclick="location.href='day23.html'">23</button>
+        <button class="nav-btn" onclick="location.href='day24.html'">24 &#8594;</button>
+    </div>
+  <header class="header">
+    <h1>JavaScript: Conditionals & Loops</h1>
+    <nav>
+      <a href="#conditionals">Conditionals</a>
+      <a href="#loops">Loops</a>
+      <a href="#examples">Examples</a>
+      <a href="#quiz">Quiz</a>
+    </nav>
+  </header>
+  <main>
+    <section id="conditionals" class="section">
+      <h2>Conditionals</h2>
+      <p>Conditionals let you run code based on certain conditions. They are essential for making decisions in your programs. The most common are <code>if</code>, <code>else if</code>, <code>else</code>, and <code>switch</code>:</p>
+      <ul>
+        <li><b>if</b>: Runs a block of code if a condition is true.</li>
+        <li><b>else if</b>: Checks another condition if the previous <code>if</code> was false.</li>
+        <li><b>else</b>: Runs if none of the previous conditions were true.</li>
+        <li><b>switch</b>: Selects one of many code blocks to run, based on a variable's value.</li>
+      </ul>
+      <p>Conditionals help your code "think" and respond to different situations, like checking user input or handling different cases in a game.</p>
+      <pre><code class="code-block">let age = 18;
+if (age &gt;= 18) {
+  console.log("Adult");
+} else {
+  console.log("Minor");
+}
+</code></pre>
+      <pre><code class="code-block">let fruit = "apple";
+switch (fruit) {
+  case "apple":
+    console.log("It is an apple");
+    break;
+  case "banana":
+    console.log("It is a banana");
+    break;
+  default:
+    console.log("Unknown fruit");
+}</code></pre>
+    </section>
+    <section id="loops" class="section">
+      <h2>Loops</h2>
+      <p>Loops let you repeat code multiple times, which is useful for tasks like processing lists or running animations. The most common are <code>for</code>, <code>while</code>, and <code>do...while</code>:</p>
+      <ul>
+        <li><b>for</b>: Best when you know how many times you want to repeat something.</li>
+        <li><b>while</b>: Repeats as long as a condition is true. Good when you don't know the exact number of repetitions in advance.</li>
+        <li><b>do...while</b>: Like <code>while</code>, but always runs the code at least once before checking the condition.</li>
+      </ul>
+      <p>Loops help you avoid repeating code manually and make your programs more efficient and powerful.</p>
+      <pre><code class="code-block">for (let i = 0; i &lt; 5; i++) {
+  console.log(i);
+}</code></pre>
+      <pre><code class="code-block">let n = 0;
+while (n &lt; 3) {
+  console.log(n);
+  n++;
+}</code></pre>
+      <pre><code class="code-block">let x = 0;
+do {
+  console.log(x);
+  x++;
+} while (x &lt; 2);</code></pre>
+    </section>
+    <section id="examples" class="section">
+      <h2>Try It Yourself</h2>
+      <div class="tryit-block">
+        <label for="numInput">Enter a number:</label>
+        <input type="number" id="numInput" value="5">
+        <button class="btn" id="checkEven">Check Even/Odd</button>
+        <div id="evenResult"></div>
+      </div>
+      <div class="tryit-block">
+        <label for="loopInput">How many times to loop?</label>
+        <input type="number" id="loopInput" value="3">
+        <button class="btn" id="runLoop">Run Loop</button>
+        <div id="loopResult"></div>
+      </div>
+    </section>
+    <section id="quiz" class="section quiz-section">
+      <h2>Quick Quiz</h2>
+      <div id="quiz-area"></div>
+      <button class="btn" id="startQuiz">Start Quiz</button>
+      <div id="quiz-result"></div>
+    </section>
+  </main>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day22.html'">&#8592; 22</button>
+        <button class="nav-btn" onclick="location.href='day23.html'">23</button>
+        <button class="nav-btn" onclick="location.href='day24.html'">24 &#8594;</button>
+    </div>
+  <footer class="footer">
+    <p>&copy; 2025 JavaScript Learning Roadmap</p>
+  </footer>
+  <script src="../JavaScript/day23.js"></script>
+  <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>
