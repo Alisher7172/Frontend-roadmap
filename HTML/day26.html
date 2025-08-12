@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 26 | JavaScript DOM Manipulation</title>
+  <link rel="icon" type="image/svg+xml" href="../images/favicon-26.svg">
+  <link rel="stylesheet" href="../CSS/day26.css">
+  <link rel="stylesheet" href="../CSS/button.css">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day25.html'">&#8592; 25</button>
+        <button class="nav-btn" onclick="location.href='day26.html'">26</button>
+        <button class="nav-btn" onclick="location.href='day27.html'">27 &#8594;</button>
+    </div>
+  <header class="header">
+    <div class="container">
+      <h1>JavaScript: DOM Manipulation</h1>
+      <nav>
+        <a href="#intro">Intro</a>
+        <a href="#selectors">Selectors</a>
+        <a href="#modify">Modify</a>
+        <a href="#events">Events</a>
+        <a href="#practice">Practice</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <section id="intro" class="card">
+      <h2>What is the DOM?</h2>
+      <p>The <b>Document Object Model (DOM)</b> is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. JavaScript can access and modify the DOM to create interactive web pages.</p>
+      <div>// Access the DOM<br>document.body.style.background = "#f0f0f0";</div>
+    </section>
+    <section id="selectors" class="card">
+      <h2>Selecting Elements</h2>
+      <ul>
+        <li><b>By ID:</b> document.getElementById('myId')</li>
+        <li><b>By Class:</b> document.getElementsByClassName('myClass')</li>
+        <li><b>By Tag:</b> document.getElementsByTagName('div')</li>
+        <li><b>Query Selector:</b> document.querySelector('.myClass')</li>
+      </ul>
+      <div>const el = document.querySelector('#main');<br>const items = document.querySelectorAll('.item');</div>
+    </section>
+    <section id="modify" class="card">
+      <h2>Modifying the DOM</h2>
+      <ul>
+        <li><b>Change Text:</b> el.textContent = 'Hello!'</li>
+        <li><b>Change HTML:</b> el.innerHTML = '&lt;b&gt;Bold!&lt;/b&gt;'</li>
+        <li><b>Change Style:</b> el.style.color = 'red'</li>
+        <li><b>Add/Remove Class:</b> el.classList.add('active')</li>
+        <li><b>Create/Remove Element:</b> document.createElement('div')</li>
+      </ul>
+      <div>const newDiv = document.createElement('div');<br>newDiv.textContent = 'I am new!';<br>document.body.appendChild(newDiv);</div>
+    </section>
+    <section id="events" class="card">
+      <h2>Events</h2>
+      <p>Events let you respond to user actions like clicks, input, and more.</p>
+      <ul>
+        <li><b>Click:</b> el.addEventListener('click', fn)</li>
+        <li><b>Input:</b> el.addEventListener('input', fn)</li>
+      </ul>
+      <div>button.addEventListener('click', function() {<br>  alert('Button clicked!');<br>});</div>
+    </section>
+    <section id="practice" class="card">
+      <h2>Practice: Play with the DOM</h2>
+      <div class="practice-block">
+        <label for="colorInput">Change background color:</label>
+        <input type="color" id="colorInput" value="#74b9ff">
+        <button class="btn" id="colorBtn">Apply</button>
+      </div>
+      <div class="practice-block">
+        <label for="addText">Add a new item:</label>
+        <input type="text" id="addText" placeholder="Type something...">
+        <button class="btn" id="addBtn">Add</button>
+        <ul id="itemList" class="item-list"></ul>
+      </div>
+      <div class="practice-block">
+        <button class="btn" id="toggleBtn">Toggle Highlight</button>
+        <div id="toggleBox" class="toggle-box">Highlight me!</div>
+      </div>
+    </section>
+  </main>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day25.html'">&#8592; 25</button>
+        <button class="nav-btn" onclick="location.href='day26.html'">26</button>
+        <button class="nav-btn" onclick="location.href='day27.html'">27 &#8594;</button>
+    </div>
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 JS Roadmap</p>
+    </div>
+  </footer>
+  <script src="../JavaScript/navigation.js"></script>
+  <script src="../JavaScript/day26.js"></script>
+</body>
+</html>
