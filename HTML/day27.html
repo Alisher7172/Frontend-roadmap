@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Day 27 — Events & Event Listeners (Advanced)</title>
+		<meta
+			name="description"
+			content="A professional, animated playground demonstrating advanced JavaScript events and event listeners: propagation, delegation, options (once, passive, signal), custom events, keyboard shortcuts, drag & drop, and more."
+		/>
+		<link rel="icon" href="../images/favicon-27.svg" />
+        <link rel="stylesheet" href="../CSS/button.css" />		
+        <link rel="stylesheet" href="../CSS/day27.css" />
+	</head> 
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day26.html'">&#8592; 26</button>
+        <button class="nav-btn" onclick="location.href='day27.html'">27</button>
+        <button class="nav-btn" onclick="location.href='day28.html'">28 &#8594;</button>
+    </div>
+	<body data-theme="dark">
+		<header class="site-header container">
+			<div class="brand">
+				<img src="../images/favicon-27.svg" alt="logo" class="logo" />
+				<div>
+					<h1>Day 27 — Events & Event Listeners</h1>
+					<p class="subtitle">Modern patterns, real-world demos, and clear explanations</p>
+				</div>
+			</div>
+			<div class="header-actions">
+				<label class="switch" title="Toggle theme">
+					<input type="checkbox" id="themeToggle" />
+					<span class="slider"></span>
+				</label>
+			</div>
+		</header>
+
+		<main class="container">
+			<section class="intro card reveal">
+				<h2>What you’ll learn</h2>
+				<p>
+					Events power interactivity on the web. This playground shows advanced concepts with hands-on widgets:
+				</p>
+				<ul class="pill-list">
+					<li>Propagation: capture ➜ target ➜ bubble</li>
+					<li>stopPropagation, stopImmediatePropagation</li>
+					<li>Event delegation</li>
+					<li>Listener options: once, passive, signal (AbortController)</li>
+					<li>Custom events</li>
+					<li>Keyboard shortcuts & command palette</li>
+					<li>Drag & drop reordering</li>
+					<li>Scroll reveal (IntersectionObserver)</li>
+				</ul>
+			</section>
+
+			<section class="grid two-col">
+				<article class="card reveal">
+					<h3>1) Propagation Visualizer</h3>
+					<p>
+						Click the inner box. Toggle listeners on each layer and choose capture or bubble. Observe the exact firing order.
+					</p>
+					<div class="controls">
+						<div class="control-group">
+							<h4>Outer</h4>
+							<label><input type="checkbox" id="capOuter" /> Capture</label>
+							<label><input type="checkbox" id="bubOuter" checked /> Bubble</label>
+						</div>
+						<div class="control-group">
+							<h4>Middle</h4>
+							<label><input type="checkbox" id="capMiddle" /> Capture</label>
+							<label><input type="checkbox" id="bubMiddle" checked /> Bubble</label>
+						</div>
+						<div class="control-group">
+							<h4>Inner</h4>
+							<label><input type="checkbox" id="capInner" /> Capture</label>
+							<label><input type="checkbox" id="bubInner" checked /> Bubble</label>
+						</div>
+						<div class="control-group">
+							<h4>Stops</h4>
+							<label title="Call stopPropagation() during capture at inner">
+								<input type="checkbox" id="stopAtInnerCapture" /> stop at inner (capture)
+							</label>
+							<label title="Call stopPropagation() during bubble at inner">
+								<input type="checkbox" id="stopAtInnerBubble" /> stop at inner (bubble)
+							</label>
+						</div>
+					</div>
+					<div class="propagate-stack" id="outer">
+						outer
+						<div class="layer" id="middle">
+							middle
+							<div class="layer layer-inner" id="inner" tabindex="0" role="button" aria-label="Click inner">
+								inner (click me)
+							</div>
+						</div>
+					</div>
+				</article>
+
+				<aside class="card reveal" id="logCard">
+					<div class="log-header">
+						<h3>Event Log</h3>
+						<div class="log-actions">
+							<button class="btn ghost" id="copyLogBtn" aria-label="Copy log">Copy</button>
+							<button class="btn danger" id="clearLogBtn" aria-label="Clear log">Clear</button>
+						</div>
+					</div>
+					<ol id="eventLog" class="log-list" aria-live="polite"></ol>
+				</aside>
+			</section>
+
+			<section class="grid two-col">
+				<article class="card reveal">
+					<h3>2) Event Delegation</h3>
+					<p>
+						One listener on the parent handles interactions for current and future items. Efficient and scalable.
+					</p>
+					<form id="addItemForm" class="row gap">
+						<input id="newItem" type="text" placeholder="New item name" required />
+						<button class="btn" type="submit">Add item</button>
+					</form>
+					<ul id="delegatedList" class="list">
+						<li>
+							<button class="chip" data-action="toggle" aria-pressed="false">Mark</button>
+							<span class="text">Sample item</span>
+							<button class="icon" data-action="remove" aria-label="Remove">✕</button>
+						</li>
+					</ul>
+					<p class="note">Tip: mouseover bubbles, mouseenter does not. Choose the right event for delegation.</p>
+				</article>
+
+				<article class="card reveal">
+					<h3>3) Listener Options: once, passive, signal</h3>
+					<div class="controls">
+						<label><input type="checkbox" id="useOnce" /> once</label>
+						<label><input type="checkbox" id="usePassive" /> passive (wheel)</label>
+					</div>
+					<div class="row gap">
+						<button class="btn" id="onceBtn">Click with once</button>
+						<button class="btn outline" id="startTrack">Start tracking (mousemove)</button>
+						<button class="btn danger outline" id="stopTrack">Abort tracking</button>
+					</div>
+					<div class="play-area">
+						<div class="track-box" id="trackBox" tabindex="0">Move mouse here</div>
+						<div class="wheel-box" id="wheelArea" tabindex="0">
+							Scroll the mouse wheel here
+							<label class="inline"><input type="checkbox" id="preventWheel" /> try preventDefault()</label>
+						</div>
+					</div>
+					<p class="note">AbortController stops all listeners wired with the same signal.</p>
+				</article>
+			</section>
+
+			<section class="grid two-col">
+				<article class="card reveal">
+					<h3>4) Custom Events</h3>
+					<p>Components can fire domain-specific events that bubble up.</p>
+					<div class="like" id="likeComponent">
+						<button class="btn" id="likeBtn" aria-pressed="false">♡ Like</button>
+						<span id="likeStatus" class="muted">Not liked</span>
+					</div>
+					<div class="analytics">
+						<strong>Analytics:</strong> Likes changed
+						<span id="likeCount">0</span>
+						times
+					</div>
+				</article>
+
+				<article class="card reveal">
+					<h3>5) Keyboard Shortcuts</h3>
+					<ul class="pill-list">
+						<li>/ focuses search</li>
+						<li>? opens command palette</li>
+						<li>Esc closes dialogs</li>
+					</ul>
+					<input id="siteSearch" class="search" placeholder="Type / to focus me" />
+				</article>
+			</section>
+
+			<section class="card reveal">
+				<h3>6) Drag & Drop Reordering</h3>
+				<p>Drag items to reorder. Powered by HTML5 drag and drop events.</p>
+				<ul id="dndList" class="dnd-list">
+					<li draggable="true">Alpha</li>
+					<li draggable="true">Bravo</li>
+					<li draggable="true">Charlie</li>
+					<li draggable="true">Delta</li>
+				</ul>
+			</section>
+		</main>
+
+		<div id="palette" class="palette" aria-hidden="true" role="dialog" aria-modal="true">
+			<div class="palette-content card">
+				<div class="palette-header">
+					<strong>Command Palette</strong>
+					<button class="icon" id="closePalette" aria-label="Close palette">✕</button>
+				</div>
+				<input class="search" id="paletteSearch" placeholder="Type to search commands…" />
+				<ul class="list" id="paletteList">
+					<li data-cmd="toggle-theme">Toggle theme</li>
+					<li data-cmd="clear-log">Clear log</li>
+					<li data-cmd="copy-log">Copy log</li>
+				</ul>
+			</div>
+		</div>
+     <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day26.html'">&#8592; 26</button>
+        <button class="nav-btn" onclick="location.href='day27.html'">27</button>
+        <button class="nav-btn" onclick="location.href='day28.html'">28 &#8594;</button>
+    </div>
+
+		<footer class="site-footer container">
+			<p>Built with thoughtful event handling. Explore the source</p>
+		</footer>
+
+		<script src="../JavaScript/day27.js" defer></script>
+         <script src="../JavaScript/navigation.js"></script>
+	</body>
+	<style>
+		/* Inline fail-safe to avoid FOUC before CSS loads */
+		body { opacity: 0; }
+		html.loaded body { opacity: 1; transition: opacity .3s ease; }
+	</style>
+	<script>
+		// Mark HTML as loaded ASAP
+		window.addEventListener('DOMContentLoaded', () => document.documentElement.classList.add('loaded'))
+	</script>
+</html>
