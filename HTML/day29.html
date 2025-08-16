@@ -1,0 +1,211 @@
+
+	
+	<script>
+	function submitQuiz() {
+		const answers = [
+			'const', '5', '...', 'const { name } = obj;', 'constructor',
+			'Template literals', 'function fn(param = 1)', 'Promises', "import { fn } from './file.js'"
+		];
+		let score = 0;
+		for (let i = 0; i < answers.length; i++) {
+			const radios = document.getElementsByName('q' + i);
+			let selected = '';
+			for (const radio of radios) {
+				if (radio.checked) selected = radio.value;
+			}
+			if (selected === answers[i]) score++;
+		}
+		const result = document.getElementById('quiz-result');
+		result.textContent = 'You scored ' + score + ' out of ' + answers.length + '!';
+		result.style.color = (score === answers.length) ? '#22c55e' : '#2563eb';
+	}
+	</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Advanced ES6+ JavaScript Tutorial & Quiz</title>
+	<link rel="stylesheet" href="../CSS/day29.css">
+	<link rel="icon" href="../images/favicon-29.svg">
+    <link rel="stylesheet" href="../CSS/button.css">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day28.html'">&#8592; 28</button>
+        <button class="nav-btn" onclick="location.href='day29.html'">29</button>
+        <button class="nav-btn" onclick="location.href='day30.html'">30 &#8594;</button>
+    </div>
+	<header>
+		<h1>Advanced ES6+ JavaScript Tutorial</h1>
+		<p>Master modern JavaScript features with interactive examples and a quiz!</p>
+	</header>
+	<main>
+		<section id="tutorial">
+			<h2>ES6+ Features Explained</h2>
+			<div class="feature" id="let-const">
+				<h3>let &amp; const</h3>
+				<pre><code id="code-let-const"></code></pre>
+				<p id="explain-let-const">
+					<b>let</b> and <b>const</b> are block-scoped. <b>let</b> allows reassignment, <b>const</b> does not.<br>
+					<b>var</b> is function-scoped and can cause bugs due to hoisting.<br>
+					Prefer <b>const</b> for values that never change, and <b>let</b> for those that do.<br>
+					Example: <code>const PI = 3.14;</code> (cannot be reassigned)
+				</p>
+			</div>
+			<div class="feature" id="arrow-functions">
+				<h3>Arrow Functions</h3>
+				<pre><code id="code-arrow"></code></pre>
+				<p id="explain-arrow">
+					Arrow functions (<code>=&gt;</code>) provide a shorter syntax and inherit <b>this</b> from their parent scope.<br>
+					They do not have their own <b>this</b>, <b>arguments</b>, or <b>super</b>.<br>
+					Useful for callbacks and array methods.<br>
+					Example: <code>const add = (a, b) =&gt; a + b;</code>
+				</p>
+			</div>
+			<div class="feature" id="spread">
+				<h3>Spread &amp; Rest Operators</h3>
+				<pre><code id="code-spread"></code></pre>
+				<p id="explain-spread">
+					<b>Spread</b> (<code>...</code>) expands arrays/objects.<br>
+					<b>Rest</b> (<code>...</code>) collects multiple arguments into an array.<br>
+					Example: <code>const arr2 = [...arr1, 4, 5];</code> (spread)<br>
+					Example: <code>function sum(...nums) {}</code> (rest)
+				</p>
+			</div>
+			<div class="feature" id="destructuring">
+				<h3>Destructuring</h3>
+				<pre><code id="code-destructuring"></code></pre>
+				<p id="explain-destructuring">
+					Destructuring lets you extract values from arrays or properties from objects into distinct variables.<br>
+					Example: <code>const [a, b] = [1, 2];</code><br>
+					Example: <code>const {name, age} = user;</code>
+				</p>
+			</div>
+			<div class="feature" id="classes">
+				<h3>Classes</h3>
+				<pre><code id="code-classes"></code></pre>
+				<p id="explain-classes">
+					ES6 classes provide a clear syntax for creating objects and inheritance.<br>
+					Use <code>constructor</code> for initialization, and methods for behavior.<br>
+					Example: <code>class Dog extends Animal { speak() { ... } }</code>
+				</p>
+			</div>
+			<div class="feature" id="template-literals">
+				<h3>Template Literals</h3>
+				<pre><code id="code-template"></code></pre>
+				<p id="explain-template">
+					Template literals use backticks (<code>`</code>) for multi-line strings and variable interpolation.<br>
+					Example: <code>const msg = `Hello, ${name}!`;</code>
+				</p>
+			</div>
+			<div class="feature" id="default-params">
+				<h3>Default Parameters</h3>
+				<pre><code id="code-default"></code></pre>
+				<p id="explain-default">
+					Functions can have default parameter values.<br>
+					Example: <code>function greet(name = 'Guest') { ... }</code>
+				</p>
+			</div>
+			<div class="feature" id="promises">
+				<h3>Promises</h3>
+				<pre><code id="code-promises"></code></pre>
+				<p id="explain-promises">
+					Promises handle asynchronous operations and avoid callback hell.<br>
+					Example: <code>fetch(url).then(res =&gt; res.json()).catch(err =&gt; ...);</code>
+				</p>
+			</div>
+			<div class="feature" id="modules">
+				<h3>Modules (import/export)</h3>
+				<pre><code id="code-modules"></code></pre>
+				<p id="explain-modules">
+					ES6 modules allow you to split code into reusable files.<br>
+					Example: <code>import { add } from './math.js';</code><br>
+					Example: <code>export function add(a, b) { return a + b; }</code>
+				</p>
+			</div>
+		</section>
+	<!-- Quiz section removed as requested -->
+	</main>
+	<footer>
+        <section id="quiz">
+		<h2>ES6+ Quiz</h2>
+		<form id="quiz-form">
+			<div class="quiz-question">
+				<h4>Q1: Which keyword prevents reassignment?</h4>
+				<label><input type="radio" name="q0" value="let"> let</label><br>
+				<label><input type="radio" name="q0" value="var"> var</label><br>
+				<label><input type="radio" name="q0" value="const"> const</label><br>
+				<label><input type="radio" name="q0" value="function"> function</label>
+			</div>
+			<div class="quiz-question">
+				<h4>Q2: What is the output of: const add = (a, b) =&gt; a + b; add(2,3);</h4>
+				<label><input type="radio" name="q1" value="23"> "23"</label><br>
+				<label><input type="radio" name="q1" value="5"> 5</label><br>
+				<label><input type="radio" name="q1" value="undefined"> undefined</label><br>
+				<label><input type="radio" name="q1" value="Error"> Error</label>
+			</div>
+			<div class="quiz-question">
+				<h4>Q3: Which operator is used to copy all elements of an array?</h4>
+				<label><input type="radio" name="q2" value="..."> ...</label><br>
+				<label><input type="radio" name="q2" value="=="> ==</label><br>
+				<label><input type="radio" name="q2" value="=>"> =&gt;</label><br>
+				<label><input type="radio" name="q2" value="&&"> &amp;&amp;</label>
+			</div>
+			<div class="quiz-question">
+				<h4>Q4: How do you extract the property "name" from object {name: "Bob", age: 30}?</h4>
+				<label><input type="radio" name="q3" value="const name = obj.name;"> const name = obj.name;</label><br>
+				<label><input type="radio" name="q3" value="const { name } = obj;"> const { name } = obj;</label><br>
+				<label><input type="radio" name="q3" value="obj[name];"> obj[name];</label><br>
+				<label><input type="radio" name="q3" value="let name = obj;"> let name = obj;</label>
+			</div>
+			<div class="quiz-question">
+				<h4>Q5: Which class method is called when creating an instance?</h4>
+				<label><input type="radio" name="q4" value="constructor"> constructor</label><br>
+				<label><input type="radio" name="q4" value="init"> init</label><br>
+				<label><input type="radio" name="q4" value="create"> create</label><br>
+				<label><input type="radio" name="q4" value="setup"> setup</label>
+			</div>
+			<div class="quiz-question">
+				<h4>Q6: Which syntax allows multi-line strings and variable interpolation?</h4>
+				<label><input type="radio" name="q5" value="Template literals"> Template literals</label><br>
+				<label><input type="radio" name="q5" value="Arrow functions"> Arrow functions</label><br>
+				<label><input type="radio" name="q5" value="Destructuring"> Destructuring</label><br>
+				<label><input type="radio" name="q5" value="Rest operator"> Rest operator</label>
+			</div>
+			<div class="quiz-question">
+				<h4>Q7: How do you set a default parameter value in a function?</h4>
+				<label><input type="radio" name="q6" value="function fn(param = 1)"> function fn(param = 1)</label><br>
+				<label><input type="radio" name="q6" value="function fn(param)"> function fn(param)</label><br>
+				<label><input type="radio" name="q6" value="let param = 1"> let param = 1</label><br>
+				<label><input type="radio" name="q6" value="const param = 1"> const param = 1</label>
+			</div>
+			<div class="quiz-question">
+				<h4>Q8: Which ES6 feature helps avoid callback hell?</h4>
+				<label><input type="radio" name="q7" value="Promises"> Promises</label><br>
+				<label><input type="radio" name="q7" value="Classes"> Classes</label><br>
+				<label><input type="radio" name="q7" value="Spread"> Spread</label><br>
+				<label><input type="radio" name="q7" value="Modules"> Modules</label>
+			</div>
+			<div class="quiz-question">
+				<h4>Q9: How do you import a function from another file in ES6?</h4>
+				<label><input type="radio" name="q8" value="import { fn } from './file.js'"> import { fn } from './file.js'</label><br>
+				<label><input type="radio" name="q8" value="require('./file.js')"> require('./file.js')</label><br>
+				<label><input type="radio" name="q8" value="include 'file.js'"> include 'file.js'</label><br>
+				<label><input type="radio" name="q8" value="load('file.js')"> load('file.js')</label>
+			</div>
+			<button type="button" onclick="submitQuiz()">Submit Quiz</button>
+		</form>
+		<div id="quiz-result"></div>
+	</section>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day28.html'">&#8592; 28</button>
+        <button class="nav-btn" onclick="location.href='day29.html'">29</button>
+        <button class="nav-btn" onclick="location.href='day30.html'">30 &#8594;</button>
+    </div>
+		<p>Created by Alisher &mdash; Frontend Roadmap</p>
+	</footer>
+	<script src="../JavaScript/day29.js"></script>
+    <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>
