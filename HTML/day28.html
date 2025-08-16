@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Day 29 — To-Do List App</title>
+	<link rel="icon" href="../images/favicon-28.svg">
+	<link rel="stylesheet" href="../CSS/day28.css">
+    <link rel="stylesheet" href="../CSS/button.css">
+</head>
+<body>
+	<h1>Create a To-Do List</h1>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day27.html'">&#8592; 27</button>
+        <button class="nav-btn" onclick="location.href='day28.html'">28</button>
+        <button class="nav-btn" onclick="location.href='day29.html'">29 &#8594;</button>
+    </div>
+	<main class="todo-container">
+		<header class="todo-header">
+			<img src="../images/favicon-28.svg" alt="logo" class="logo">
+			<h1>To-Do List</h1>
+			<p class="subtitle">Organize your tasks with style</p>
+		</header>
+		<form id="todoForm" autocomplete="off" class="todo-form">
+			<input id="todoInput" type="text" placeholder="Add a new task..." required>
+			<button type="submit" class="btn">Add</button>
+		</form>
+		<div class="filters">
+			<button class="filter-btn" data-filter="all">All</button>
+			<button class="filter-btn" data-filter="active">Active</button>
+			<button class="filter-btn" data-filter="completed">Completed</button>
+		</div>
+		<ul id="todoList" class="todo-list"></ul>
+		<footer class="todo-footer">
+			<span id="todoCount">0 tasks</span>
+			<button id="clearCompleted" class="btn danger">Clear Completed</button>
+		</footer>
+	</main>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day27.html'">&#8592; 27</button>
+        <button class="nav-btn" onclick="location.href='day28.html'">28</button>
+        <button class="nav-btn" onclick="location.href='day29.html'">29 &#8594;</button>
+    </div>
+	<script src="../JavaScript/day29.js" defer></script>
+    <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>
