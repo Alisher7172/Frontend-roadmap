@@ -1,0 +1,82 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #f0f4ff 0%, #e0ffe0 100%);
+    color: #222;
+    margin: 0;
+    min-height: 100vh;
+}
+header {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 2rem 0 1rem 0;
+    text-align: center;
+}
+header h1 {
+    color: #22c55e;
+    margin-bottom: 0.5rem;
+}
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 24px rgba(34,197,94,0.08);
+    padding: 2rem;
+}
+.feature {
+    margin-bottom: 2rem;
+    border-left: 4px solid #22c55e;
+    background: #f1fdf5;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+}
+.feature h2 {
+    color: #22c55e;
+}
+.result {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #2563eb;
+    font-weight: bold;
+}
+#quiz {
+    margin-top: 3rem;
+    background: #fef9c3;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(202,138,4,0.08);
+}
+#quiz h2 {
+    color: #ca8a04;
+}
+.quiz-question {
+    background: #fffde7;
+    border: 1px solid #fde68a;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.quiz-question h4 {
+    margin: 0 0 0.5rem 0;
+    color: #ca8a04;
+}
+button[type="button"] {
+    background: #22c55e;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(34,197,94,0.12);
+    transition: background 0.2s;
+}
+button[type="button"]:hover {
+    background: #166534;
+}
+footer {
+    text-align: center;
+    padding: 2rem 0 1rem 0;
+    color: #888;
+    background: #f0f4ff;
+}
