@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 31: Fetch API & JSON</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-31.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="stylesheet" href="../CSS/day31.css">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day30.html'">&#8592; 30</button>
+        <button class="nav-btn" onclick="location.href='day31.html'">31</button>
+        <button class="nav-btn" onclick="location.href='day32.html'">32 &#8594;</button>
+    </div>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-cloud-download-alt"></i> Fetch API & JSON</h1>
+            <p class="subtitle">Modern data fetching and working with JSON in JavaScript</p>
+        </header>
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress" style="width:62%;"></div>
+            </div>
+            <div class="progress-text">
+                <span>Day 31 of 50</span>
+                <span>62% Complete</span>
+            </div>
+        </div>
+        <section>
+            <h2><i class="fas fa-code"></i> What is the Fetch API?</h2>
+            <div class="concepts-grid">
+                <div class="concept-card">
+                    <h3><i class="fas fa-arrow-right"></i> Fetch API Basics</h3>
+                    <p>The Fetch API is a modern way to make HTTP requests in JavaScript. It returns a Promise and is used to get data from servers.</p>
+                    <div class="code-block array">
+                        // Basic fetch
+                        fetch('https://jsonplaceholder.typicode.com/users')
+                          .then(response => response.json())
+                          .then(data => console.log(data));
+                    </div>
+                </div>
+                <div class="concept-card">
+                    <h3><i class="fas fa-file-code"></i> What is JSON?</h3>
+                    <p>JSON (JavaScript Object Notation) is a lightweight data format for storing and exchanging data. It's easy to read and write for humans and machines.</p>
+                    <div class="code-block array">
+                        // Example JSON
+                        {
+                          "name": "Alice",
+                          "age": 25,
+                          "email": "alice@example.com"
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2><i class="fas fa-laptop-code"></i> Live Demo: Fetch & Display JSON</h2>
+            <div class="concepts-grid">
+                <div class="concept-card">
+                    <h3><i class="fas fa-play"></i> Try it!</h3>
+                    <p>Click the button to fetch user data from a public API and display it below.</p>
+                    <button class="nav-btn" id="fetchBtn">Fetch Users</button>
+                    <div id="jsonResult" class="code-block array"></div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2><i class="fas fa-question-circle"></i> Quick Quiz: Fetch & JSON</h2>
+            <form id="quiz-form">
+                <div class="quiz-question">
+                    <h4>Q1: What does the Fetch API return?</h4>
+                    <label><input type="radio" name="q0" value="A Promise"> A Promise</label><br>
+                    <label><input type="radio" name="q0" value="A JSON object"> A JSON object</label><br>
+                    <label><input type="radio" name="q0" value="An Array"> An Array</label><br>
+                    <label><input type="radio" name="q0" value="A String"> A String</label>
+                </div>
+                <div class="quiz-question">
+                    <h4>Q2: Which method converts a response to JSON?</h4>
+                    <label><input type="radio" name="q1" value="response.json()"> response.json()</label><br>
+                    <label><input type="radio" name="q1" value="JSON.parse()"> JSON.parse()</label><br>
+                    <label><input type="radio" name="q1" value="toJSON()"> toJSON()</label><br>
+                    <label><input type="radio" name="q1" value="parseJSON()"> parseJSON()</label>
+                </div>
+                <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+            </form>
+            <div id="quiz-result"></div>
+        </section>
+    </div>
+    <div class="nav-buttons-bottom">
+    <button class="nav-btn" onclick="location.href='day30.html'">&#8592; 30</button>
+    <button class="nav-btn" onclick="location.href='day31.html'">31</button>
+    <button class="nav-btn" onclick="location.href='day32.html'">32 &#8594;</button>
+    </div>
+    <footer>
+        <p>Created by Alisher &mdash; Frontend Roadmap</p>
+    </footer>
+    <script src="../JavaScript/day31.js"></script>
+    <script src="../JavaScript/navigation.js"></script>
+    <script>
+    function submitQuiz() {
+        const answers = ["A Promise", "response.json()"];
+        let score = 0;
+        for (let i = 0; i < answers.length; i++) {
+            const radios = document.getElementsByName('q' + i);
+            let selected = '';
+            for (const radio of radios) {
+                if (radio.checked) selected = radio.value;
+            }
+            if (selected === answers[i]) score++;
+        }
+        const result = document.getElementById('quiz-result');
+        result.textContent = 'You scored ' + score + ' out of ' + answers.length + '!';
+        result.style.color = (score === answers.length) ? '#2ecc71' : '#3498db';
+    }
+    </script>
+</body>
+</html>
