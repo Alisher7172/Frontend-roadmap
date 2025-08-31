@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript localStorage Tutorial</title>
+    <link rel="stylesheet" href="../CSS/day32.css">
+    <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-31.svg">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day31.html'">&#8592; 31</button>
+        <button class="nav-btn" onclick="location.href='day32.html'">32</button>
+        <button class="nav-btn" onclick="location.href='day33.html'">33 &#8594;</button>
+    </div>
+    <main class="container">
+        <h1>JavaScript <code>localStorage</code> Tutorial</h1>
+        <section class="explanation">
+            <h2>What is <code>localStorage</code>?</h2>
+            <p><code>localStorage</code> is a browser API that allows you to store key-value pairs in a user's browser. Data persists even after the browser is closed, making it useful for saving user preferences, settings, or simple data between sessions.</p>
+            <ul>
+                <li>Stores data as strings (key-value pairs)</li>
+                <li>Persists data until explicitly cleared</li>
+                <li>Accessible via <code>localStorage.setItem</code>, <code>getItem</code>, <code>removeItem</code>, <code>clear</code></li>
+            </ul>
+            <h3>Key Features</h3>
+            <ul>
+                <li>Storage limit: ~5MB per domain (varies by browser)</li>
+                <li>Data is accessible only from the same origin (protocol, host, port)</li>
+                <li>Data is not sent to the server with HTTP requests</li>
+                <li>Works synchronously (can block UI if used with large data)</li>
+            </ul>
+            <h3>Common Use Cases</h3>
+            <ul>
+                <li>Saving user preferences (theme, language)</li>
+                <li>Storing simple app state (e.g., last visited page)</li>
+                <li>Persisting form data between sessions</li>
+                <li>Shopping cart contents in e-commerce sites</li>
+            </ul>
+            <h3>Limitations & Security</h3>
+            <ul>
+                <li>Only strings can be stored (use <code>JSON.stringify</code> and <code>JSON.parse</code> for objects)</li>
+                <li>Not suitable for sensitive data (can be accessed by any JS running on the page)</li>
+                <li>Data can be cleared by the user or browser settings</li>
+                <li>Not shared between browsers or devices</li>
+            </ul>
+            <h3>Code Examples</h3>
+            <pre class="code-block"><code>// Save data
+    localStorage.setItem('theme', 'dark');
+
+    // Load data
+    const theme = localStorage.getItem('theme');
+
+    // Remove a key
+    localStorage.removeItem('theme');
+
+    // Clear all data
+    localStorage.clear();
+
+    // Store objects
+    const user = { name: 'Alice', age: 25 };
+    localStorage.setItem('user', JSON.stringify(user));
+    const loadedUser = JSON.parse(localStorage.getItem('user'));
+    </code></pre>
+        </section>
+        <section class="demo">
+            <h2>Try it Yourself</h2>
+            <div class="form-group">
+                <input type="text" id="ls-key" placeholder="Key">
+                <input type="text" id="ls-value" placeholder="Value">
+            </div>
+            <div class="button-group">
+                <button id="save-btn">Save to LocalStorage</button>
+                <button id="load-btn">Load from LocalStorage</button>
+                <button id="clear-btn">Clear LocalStorage</button>
+            </div>
+            <div id="output" class="output"></div>
+        </section>
+        <section class="quiz-section">
+            <h2>Quiz: Test Your Knowledge of <code>localStorage</code></h2>
+            <form id="localStorage-quiz">
+                <div class="quiz-question">
+                    <label>1. What type of data can be stored directly in <code>localStorage</code>?</label><br>
+                    <input type="radio" name="q1" value="a"> Objects<br>
+                    <input type="radio" name="q1" value="b"> Strings<br>
+                    <input type="radio" name="q1" value="c"> Numbers<br>
+                </div>
+                <div class="quiz-question">
+                    <label>2. Which method removes all data from <code>localStorage</code>?</label><br>
+                    <input type="radio" name="q2" value="a"> removeItem()<br>
+                    <input type="radio" name="q2" value="b"> clear()<br>
+                    <input type="radio" name="q2" value="c"> deleteAll()<br>
+                </div>
+                <div class="quiz-question">
+                    <label>3. Is <code>localStorage</code> data shared between different browsers or devices?</label><br>
+                    <input type="radio" name="q3" value="a"> Yes<br>
+                    <input type="radio" name="q3" value="b"> No<br>
+                </div>
+                <button type="button" id="quiz-submit">Submit Answers</button>
+            </form>
+            <div id="quiz-result" class="output"></div>
+        </section>
+    </main>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day31.html'">&#8592; 31</button>
+        <button class="nav-btn" onclick="location.href='day32.html'">32</button>
+        <button class="nav-btn" onclick="location.href='day33.html'">33 &#8594;</button>
+    </div>
+    <script src="../JavaScript/navigation.js"></script>
+    <script src="../JavaScript/day32.js"></script>
+    <script>
+    // Quiz logic for localStorage
+    document.addEventListener('DOMContentLoaded', function () {
+        const quizForm = document.getElementById('localStorage-quiz');
+        const quizBtn = document.getElementById('quiz-submit');
+        const quizResult = document.getElementById('quiz-result');
+        if (quizBtn) {
+            quizBtn.addEventListener('click', function () {
+                let score = 0;
+                const answers = {
+                    q1: 'b', // Strings
+                    q2: 'b', // clear()
+                    q3: 'b'  // No
+                };
+                for (let q in answers) {
+                    const selected = quizForm[q].value;
+                    if (selected === answers[q]) score++;
+                }
+                quizResult.textContent = `You scored ${score}/3.`;
+                if (score === 3) {
+                    quizResult.textContent += ' Excellent!';
+                } else if (score === 2) {
+                    quizResult.textContent += ' Good job!';
+                } else {
+                    quizResult.textContent += ' Review the explanations above and try again.';
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html>
