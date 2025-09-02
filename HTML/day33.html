@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Day 33 – Error Handling & Debugging (Made Simple!)</title>
+	<link rel="stylesheet" href="../CSS/day33.css" />
+	<link rel="stylesheet" href="../CSS/button.css" />
+	<link rel="icon" type="image/svg+xml" href="../images/favicon-33.svg" />
+</head>
+<body>
+	<div class="nav-buttons-top">
+		<button class="nav-btn" onclick="location.href='day32.html'">&#8592; 32</button>
+		<button class="nav-btn" onclick="location.href='day33.html'">33</button>
+		<button class="nav-btn" onclick="location.href='day34.html'">34 &#8594;</button>
+	</div>
+	<main class="container">
+		<h1>Learning to Fix Mistakes in JavaScript</h1>
+		<p class="intro">Everyone (even pros!) writes code that breaks. The secret superpower is knowing how to <strong>find</strong> and <strong>fix</strong> those mistakes. Today you'll learn what an error is, how to catch it, and how to debug like a young detective. 🕵️‍♀️</p>
+
+		<section class="section">
+			<h2>1. What Is An Error?</h2>
+			<p>An <strong>error</strong> happens when JavaScript doesn't understand your code or when something goes wrong while it runs. Think of it like giving a robot instructions it can't follow.</p>
+			<ul class="list">
+				<li><code>SyntaxError</code>: You typed something wrong (like missing a parenthesis).</li>
+				<li><code>ReferenceError</code>: You used a variable that doesn't exist yet.</li>
+				<li><code>TypeError</code>: You tried to do something with the wrong kind of value.</li>
+			</ul>
+			<pre class="code-block"><code>// ReferenceError example
+console.log(score); // score was never defined
+</code></pre>
+		</section>
+
+		<section class="section">
+			<h2>2. Catching Errors with <code>try ... catch</code></h2>
+			<p>The <code>try</code> block is where you put code that might break. If it breaks, the <code>catch</code> block runs instead of crashing everything.</p>
+			<pre class="code-block"><code>try {
+  JSON.parse('{ broken json');
+  console.log('This line will NOT run');
+} catch (error) {
+  console.log('Oops! There was a problem.');
+  console.log(error.name);   // Error type
+  console.log(error.message); // What happened
+}</code></pre>
+			<button id="btn-run-error" class="action-btn">Run a Broken Example</button>
+			<div id="error-output" class="output" aria-live="polite"></div>
+		</section>
+
+		<section class="section">
+			<h2>3. Creating Your Own Errors</h2>
+			<p>You can <em>throw</em> an error on purpose when something is wrong (like a missing username). This helps stop bad data.</p>
+			<pre class="code-block"><code>function checkAge(age) {
+  if (age < 0) {
+	throw new Error('Age cannot be negative');
+  }
+  return 'Age is fine!';
+}
+
+try {
+  checkAge(-5);
+} catch (err) {
+  console.log(err.message); // Age cannot be negative
+}</code></pre>
+			<div class="inline-demo">
+				<input type="number" id="age-input" placeholder="Enter age" />
+				<button id="btn-check-age" class="action-btn">Check Age</button>
+			</div>
+			<div id="age-output" class="output" aria-live="polite"></div>
+		</section>
+
+		<section class="section">
+			<h2>4. Debugging: Finding the Bug</h2>
+			<p><strong>Debugging</strong> means hunting the problem. Here are simple steps:</p>
+			<ol class="list ordered">
+				<li>Read the error message (it tells you the file + line number).</li>
+				<li>Go to that line in your code.</li>
+				<li>Add <code>console.log()</code> to inspect values.</li>
+				<li>Fix the mistake. Test again.</li>
+				<li>Remove extra logs when done.</li>
+			</ol>
+			<p>Open your browser DevTools (usually <strong>F12</strong> or <strong>Ctrl + Shift + I</strong>) then click the <em>Console</em> tab to see messages.</p>
+			<pre class="code-block"><code>// Debugging with console.log
+function add(a, b) {
+  console.log('a =', a, 'b =', b); // helps you see values
+  return a + b;
+}
+add(2, 5);</code></pre>
+		</section>
+
+		<section class="section">
+			<h2>5. Mini Lab: Fix the Bug</h2>
+			<p>There's a bug below. What is wrong?</p>
+			<pre class="code-block"><code>function greet(name) {
+  if(name = '') { // BUG HERE
+	return 'Hello stranger';
+  }
+  return 'Hello ' + name;
+}</code></pre>
+			<form id="bug-quiz" class="quiz-form">
+				<label class="quiz-q">What is the bug?</label>
+				<div class="options">
+					<label><input type="radio" name="bug" value="a" /> Missing return statement</label>
+					<label><input type="radio" name="bug" value="b" /> Using <code>=</code> instead of <code>===</code> in the <code>if</code></label>
+					<label><input type="radio" name="bug" value="c" /> The function name is wrong</label>
+				</div>
+				<button type="button" id="btn-bug-submit" class="action-btn small">Check Answer</button>
+				<div id="bug-result" class="output" aria-live="polite"></div>
+			</form>
+		</section>
+
+		<section class="section quiz-section">
+			<h2>6. Quick Quiz</h2>
+			<form id="error-quiz" class="quiz-form">
+				<div class="quiz-item">
+					<p>1. Which block runs only if code in <code>try</code> fails?</p>
+					<label><input type="radio" name="q1" value="a" /> finally</label>
+					<label><input type="radio" name="q1" value="b" /> catch</label>
+					<label><input type="radio" name="q1" value="c" /> repeat</label>
+				</div>
+				<div class="quiz-item">
+					<p>2. What does <code>console.log()</code> help you do?</p>
+					<label><input type="radio" name="q2" value="a" /> Break the code</label>
+					<label><input type="radio" name="q2" value="b" /> See values while code runs</label>
+					<label><input type="radio" name="q2" value="c" /> Save data forever</label>
+				</div>
+				<div class="quiz-item">
+					<p>3. What type of error happens if you use a variable that was never created?</p>
+					<label><input type="radio" name="q3" value="a" /> TypeError</label>
+					<label><input type="radio" name="q3" value="b" /> ReferenceError</label>
+					<label><input type="radio" name="q3" value="c" /> SyntaxColorError</label>
+				</div>
+				<button type="button" id="quiz-submit" class="action-btn">Submit Quiz</button>
+				<div id="quiz-result" class="output" aria-live="polite"></div>
+			</form>
+		</section>
+
+		<section class="section recap">
+			<h2>7. Recap</h2>
+			<p>You learned: what errors are, how <code>try/catch</code> keeps apps alive, how to throw your own errors, and how to debug with logs. Keep practicing and you'll get faster at solving problems!</p>
+		</section>
+	</main>
+	<div class="nav-buttons-bottom">
+		<button class="nav-btn" onclick="location.href='day32.html'">&#8592; 32</button>
+		<button class="nav-btn" onclick="location.href='day33.html'">33</button>
+		<button class="nav-btn" onclick="location.href='day34.html'">34 &#8594;</button>
+	</div>
+	<script src="../JavaScript/navigation.js"></script>
+	<script src="../JavaScript/day33.js"></script>
+</body>
+</html>
