@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Day 34 – Weather App (Using a Public API)</title>
+	<link rel="stylesheet" href="../CSS/day34.css" />
+	<link rel="stylesheet" href="../CSS/button.css" />
+	<link rel="icon" type="image/svg+xml" href="../images/favicon-34.svg" />
+</head>
+<body>
+	<div class="nav-buttons-top">
+		<button class="nav-btn" onclick="location.href='day33.html'">&#8592; 33</button>
+		<button class="nav-btn" onclick="location.href='day34.html'">34</button>
+		<button class="nav-btn" onclick="location.href='day35.html'">35 &#8594;</button>
+	</div>
+	<main class="container">
+		<h1 class="app-title">Weather Explorer <span class="small">(Open-Meteo API)</span></h1>
+		<p class="tagline">Type a city, or use your location. We'll fetch live weather using a free, no‑key API.</p>
+
+		<section class="search-section">
+			<div class="search-bar">
+				<input id="city-input" type="text" placeholder="Enter city name (e.g., London)" aria-label="City name" />
+				<button id="search-btn" class="action-btn" aria-label="Search weather">Search</button>
+				<button id="geo-btn" class="secondary-btn" aria-label="Use my location">My Location</button>
+			</div>
+			<div id="suggestions" class="suggestions" role="listbox" aria-label="City suggestions"></div>
+			<div class="recent" id="recent-wrapper" hidden>
+				<h3>Recent Searches</h3>
+				<div id="recent-list" class="recent-list" aria-label="Recent cities"></div>
+				<button id="clear-recent" class="mini-btn">Clear Recent</button>
+			</div>
+		</section>
+
+		<section class="status-section">
+			<div id="status" class="status" aria-live="polite"></div>
+		</section>
+
+		<section id="current-weather" class="panel current" hidden>
+			<h2>Current Weather</h2>
+			<div class="current-grid">
+				<div class="big-temp"><span id="temp">--</span><span class="unit">°C</span></div>
+				<div class="icon-wrap" id="icon-wrap" aria-hidden="true">☁️</div>
+				<ul class="meta" aria-label="Current weather details">
+					<li><strong>Feels:</strong> <span id="feels">--</span>°C</li>
+					<li><strong>Humidity:</strong> <span id="humidity">--</span>%</li>
+					<li><strong>Wind:</strong> <span id="wind">--</span> m/s</li>
+					<li><strong>Condition:</strong> <span id="condition">--</span></li>
+				</ul>
+			</div>
+			<p class="timestamp" id="updated"></p>
+		</section>
+
+		<section id="forecast" class="panel forecast" hidden>
+			<h2>Next 48h Snapshot</h2>
+			<div id="forecast-cards" class="forecast-cards" aria-label="Hourly forecast"></div>
+		</section>
+
+		<section class="about-api">
+			<h2>How It Works</h2>
+			<ol>
+				<li>We send your city name to the <strong>Open‑Meteo Geocoding API</strong> to get coordinates.</li>
+				<li>Then we call the <strong>Forecast API</strong> with latitude & longitude.</li>
+				<li>We display current conditions + a short hourly outlook.</li>
+				<li>Your last searches are saved in <code>localStorage</code> so you can re-use them quickly.</li>
+			</ol>
+			<pre class="code-block"><code>// Example fetch (simplified)
+fetch('https://geocoding-api.open-meteo.com/v1/search?name=Paris&count=1')
+	.then(r => r.json())
+	.then(data => {
+		const { latitude, longitude } = data.results[0];
+		return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m`);
+	})
+	.then(r => r.json())
+	.then(weather => console.log(weather.current));</code></pre>
+		</section>
+
+		<section class="tips">
+			<h2>Debug & Error Handling Tips</h2>
+			<ul>
+				<li>If nothing shows, open DevTools Console (F12) to see any network errors.</li>
+				<li>Network slow? We show a loading message in the status area.</li>
+				<li>City not found? We tell you and keep the previous results visible.</li>
+				<li>Turn on Airplane Mode to simulate a failure and see graceful handling.</li>
+			</ul>
+		</section>
+	</main>
+	<div class="nav-buttons-bottom">
+		<button class="nav-btn" onclick="location.href='day33.html'">&#8592; 33</button>
+		<button class="nav-btn" onclick="location.href='day34.html'">34</button>
+		<button class="nav-btn" onclick="location.href='day35.html'">35 &#8594;</button>
+	</div>
+	<script src="../JavaScript/navigation.js"></script>
+	<script src="../JavaScript/day34.js"></script>
+</body>
+</html>
