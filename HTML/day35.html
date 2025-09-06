@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 35 – Frontend Roadmap</title>
+  <link rel="stylesheet" href="../CSS/day35.css" />
+  <link rel="stylesheet" href="../CSS/button.css" />
+  <link rel="icon" type="image/svg+xml" href="../images/favicon-35.svg" />
+</head>
+<body>
+  <div class="nav-buttons-top">
+    <button class="nav-btn" onclick="location.href='day34.html'">&#8592; 34</button>
+    <button class="nav-btn" onclick="location.href='day35.html'">35</button>
+    <button class="nav-btn" onclick="location.href='day36.html'">36 &#8594;</button>
+  </div>
+  <main class="container">
+    <h1>Day 35 – Advanced To-Do List App</h1>
+    <p class="intro">A modern, feature-rich to-do list. Add, edit, complete, filter, and persist your tasks!</p>
+    <section class="todo-app">
+      <div class="todo-input-wrap">
+        <input id="todo-input" type="text" placeholder="Add a new task..." maxlength="80" autocomplete="off" />
+        <button id="add-btn" class="action-btn">Add</button>
+      </div>
+      <div class="todo-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+      </div>
+      <ul id="todo-list" class="todo-list"></ul>
+      <div class="todo-actions">
+        <button id="clear-completed" class="mini-btn">Clear Completed</button>
+        <button id="clear-all" class="mini-btn">Clear All</button>
+      </div>
+      <div id="todo-status" class="todo-status"></div>
+    </section>
+  </main>
+  <div class="nav-buttons-bottom">
+    <button class="nav-btn" onclick="location.href='day34.html'">&#8592; 34</button>
+    <button class="nav-btn" onclick="location.href='day35.html'">35</button>
+    <button class="nav-btn" onclick="location.href='day36.html'">36 &#8594;</button>
+  </div>
+  <script src="../JavaScript/navigation.js"></script>
+  <script src="../JavaScript/day35.js"></script>
+</body>
+</html>
