@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 36 - Git Version Control</title>
+    <link rel="stylesheet" href="../CSS/day36.css">
+    <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-36.svg">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day35.html'">&#8592; 35</button>
+        <button class="nav-btn" onclick="location.href='day36.html'">36</button>
+        <button class="nav-btn" onclick="location.href='day37.html'">37 &#8594;</button>
+    </div>
+    
+    <main class="container">
+        <h1>Git Version Control Mastery</h1>
+        <p class="intro">Learn Git from basics to advanced workflows with interactive examples and best practices!</p>
+        
+        <section class="lesson-section">
+            <h2>1. What is Git?</h2>
+            <div class="explanation">
+                <p><strong>Git</strong> is a distributed version control system that tracks changes in files and coordinates work among multiple people:</p>
+                <ul>
+                    <li><strong>Version Control:</strong> Track file changes over time</li>
+                    <li><strong>Distributed:</strong> Every clone is a full backup</li>
+                    <li><strong>Branching:</strong> Work on features independently</li>
+                    <li><strong>Collaboration:</strong> Multiple developers can work together</li>
+                </ul>
+            </div>
+            <div class="git-visual" id="git-concept-visual">
+                <div class="visual-container">
+                    <div class="working-dir">Working Directory</div>
+                    <div class="staging-area">Staging Area</div>
+                    <div class="repository">Repository</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>2. Basic Git Commands</h2>
+            <div class="explanation">
+                <p>Essential commands every developer should know:</p>
+            </div>
+            
+            <div class="command-section">
+                <h3>Repository Setup</h3>
+                <pre class="code-block"><code>git init                    # Initialize new repository
+git clone &lt;url&gt;             # Clone existing repository
+git remote add origin &lt;url&gt; # Add remote repository</code></pre>
+            </div>
+
+            <div class="command-section">
+                <h3>Basic Workflow</h3>
+                <pre class="code-block"><code>git status                  # Check repository status
+git add &lt;file&gt;              # Stage file for commit
+git add .                   # Stage all changes
+git commit -m "message"     # Commit staged changes
+git push                    # Push to remote repository
+git pull                    # Pull from remote repository</code></pre>
+            </div>
+
+            <div class="command-section">
+                <h3>Viewing History</h3>
+                <pre class="code-block"><code>git log                     # View commit history
+git log --oneline          # Compact log view
+git show &lt;commit&gt;          # Show commit details
+git diff                   # Show unstaged changes</code></pre>
+            </div>
+
+            <button class="demo-btn" onclick="demoBasicWorkflow()">Simulate Basic Workflow</button>
+            <div id="basic-workflow-output" class="output"></div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>3. Branching and Merging</h2>
+            <div class="explanation">
+                <p><strong>Branches</strong> allow you to work on features independently:</p>
+                <ul>
+                    <li>Create isolated development environments</li>
+                    <li>Work on multiple features simultaneously</li>
+                    <li>Merge changes when ready</li>
+                </ul>
+            </div>
+
+            <div class="command-section">
+                <h3>Branch Management</h3>
+                <pre class="code-block"><code>git branch                  # List branches
+git branch &lt;name&gt;          # Create new branch
+git checkout &lt;branch&gt;      # Switch to branch
+git checkout -b &lt;branch&gt;   # Create and switch to branch
+git merge &lt;branch&gt;         # Merge branch into current
+git branch -d &lt;branch&gt;     # Delete branch</code></pre>
+            </div>
+
+            <div class="branch-visual" id="branch-visual">
+                <div class="branch-diagram">
+                    <div class="main-branch">main</div>
+                    <div class="feature-branch">feature/login</div>
+                    <div class="merge-point">merge</div>
+                </div>
+            </div>
+
+            <button class="demo-btn" onclick="demoBranching()">Simulate Branching</button>
+            <div id="branching-output" class="output"></div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>4. Collaboration Workflow</h2>
+            <div class="explanation">
+                <p>Common workflows for team collaboration:</p>
+            </div>
+
+            <div class="workflow-section">
+                <h3>Feature Branch Workflow</h3>
+                <ol>
+                    <li>Create feature branch from main</li>
+                    <li>Work on feature and commit changes</li>
+                    <li>Push branch to remote repository</li>
+                    <li>Create Pull Request (PR) / Merge Request</li>
+                    <li>Code review and merge to main</li>
+                </ol>
+                
+                <pre class="code-block"><code># Feature branch workflow
+git checkout main
+git pull origin main
+git checkout -b feature/new-feature
+# ... make changes ...
+git add .
+git commit -m "Add new feature"
+git push origin feature/new-feature
+# Create PR on GitHub/GitLab</code></pre>
+            </div>
+
+            <button class="demo-btn" onclick="demoCollaboration()">Simulate Collaboration</button>
+            <div id="collaboration-output" class="output"></div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>5. Git Best Practices</h2>
+            <div class="best-practices">
+                <div class="practice-item">
+                    <h4>Commit Messages</h4>
+                    <p>Write clear, descriptive commit messages:</p>
+                    <pre class="code-block small"><code># Good
+git commit -m "Add user authentication feature"
+git commit -m "Fix login button styling issue"
+
+# Bad  
+git commit -m "stuff"
+git commit -m "changes"</code></pre>
+                </div>
+
+                <div class="practice-item">
+                    <h4>Commit Frequency</h4>
+                    <ul>
+                        <li>Commit often, but keep commits atomic</li>
+                        <li>Each commit should represent one logical change</li>
+                        <li>Don't commit broken code to main branch</li>
+                    </ul>
+                </div>
+
+                <div class="practice-item">
+                    <h4>Branch Naming</h4>
+                    <pre class="code-block small"><code># Feature branches
+feature/user-login
+feature/payment-integration
+
+# Bug fixes
+bugfix/login-error
+hotfix/security-patch
+
+# Experimental
+experiment/new-ui-design</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>6. Advanced Git Commands</h2>
+            <div class="command-section">
+                <h3>Undoing Changes</h3>
+                <pre class="code-block"><code>git reset HEAD &lt;file&gt;       # Unstage file
+git checkout -- &lt;file&gt;     # Discard changes in working directory
+git reset --soft HEAD~1    # Undo last commit (keep changes staged)
+git reset --hard HEAD~1    # Undo last commit (discard changes)
+git revert &lt;commit&gt;        # Create new commit that undoes changes</code></pre>
+            </div>
+
+            <div class="command-section">
+                <h3>Stashing</h3>
+                <pre class="code-block"><code>git stash                   # Stash current changes
+git stash pop              # Apply and remove latest stash
+git stash list             # List all stashes
+git stash apply stash@{0}  # Apply specific stash</code></pre>
+            </div>
+
+            <button class="demo-btn" onclick="demoAdvanced()">Try Advanced Commands</button>
+            <div id="advanced-output" class="output"></div>
+        </section>
+
+        <section class="quiz-section">
+            <h2>Git Knowledge Quiz</h2>
+            <form id="quiz-form">
+                <div class="quiz-question">
+                    <p>1. Which command initializes a new Git repository?</p>
+                    <label><input type="radio" name="q1" value="git start"> git start</label>
+                    <label><input type="radio" name="q1" value="git init"> git init</label>
+                    <label><input type="radio" name="q1" value="git create"> git create</label>
+                    <label><input type="radio" name="q1" value="git new"> git new</label>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>2. What does 'git add .' do?</p>
+                    <label><input type="radio" name="q2" value="stages all changes"> Stages all changes in current directory</label>
+                    <label><input type="radio" name="q2" value="commits changes"> Commits all changes</label>
+                    <label><input type="radio" name="q2" value="pushes to remote"> Pushes to remote repository</label>
+                    <label><input type="radio" name="q2" value="creates branch"> Creates a new branch</label>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>3. Which command creates and switches to a new branch?</p>
+                    <label><input type="radio" name="q3" value="git branch -n"> git branch -n</label>
+                    <label><input type="radio" name="q3" value="git checkout -b"> git checkout -b</label>
+                    <label><input type="radio" name="q3" value="git switch -c"> git switch -c</label>
+                    <label><input type="radio" name="q3" value="both b and c"> Both git checkout -b and git switch -c</label>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>4. What's the purpose of a Pull Request (PR)?</p>
+                    <label><input type="radio" name="q4" value="pull from remote"> Pull changes from remote repository</label>
+                    <label><input type="radio" name="q4" value="request code review"> Request code review before merging</label>
+                    <label><input type="radio" name="q4" value="create new branch"> Create a new branch</label>
+                    <label><input type="radio" name="q4" value="delete old commits"> Delete old commits</label>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>5. Which command shows the commit history?</p>
+                    <label><input type="radio" name="q5" value="git history"> git history</label>
+                    <label><input type="radio" name="q5" value="git log"> git log</label>
+                    <label><input type="radio" name="q5" value="git show"> git show</label>
+                    <label><input type="radio" name="q5" value="git commits"> git commits</label>
+                </div>
+                
+                <button type="button" id="submit-quiz" class="action-btn">Submit Quiz</button>
+            </form>
+            <div id="quiz-result" class="quiz-result"></div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>7. Git Cheat Sheet</h2>
+            <div class="cheat-sheet">
+                <div class="cheat-category">
+                    <h4>Setup & Config</h4>
+                    <code>git config --global user.name "Your Name"</code>
+                    <code>git config --global user.email "email@example.com"</code>
+                </div>
+                
+                <div class="cheat-category">
+                    <h4>Daily Commands</h4>
+                    <code>git status</code>
+                    <code>git add &lt;file&gt;</code>
+                    <code>git commit -m "message"</code>
+                    <code>git push</code>
+                    <code>git pull</code>
+                </div>
+                
+                <div class="cheat-category">
+                    <h4>Branching</h4>
+                    <code>git branch</code>
+                    <code>git checkout &lt;branch&gt;</code>
+                    <code>git merge &lt;branch&gt;</code>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day35.html'">&#8592; 35</button>
+        <button class="nav-btn" onclick="location.href='day36.html'">36</button>
+        <button class="nav-btn" onclick="location.href='day37.html'">37 &#8594;</button>
+    </div>
+
+    <script src="../JavaScript/navigation.js"></script>
+    <script src="../JavaScript/day36.js"></script>
+</body>
+</html>
