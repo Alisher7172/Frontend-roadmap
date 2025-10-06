@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 38: Deploy Website with GitHub Pages</title>
+    <link rel="icon" href="../images/favicon-38.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="stylesheet" href="../CSS/day38.css">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day37.html'">&#8592; 37</button>
+        <button class="nav-btn" onclick="location.href='day38.html'">38</button>
+        <button class="nav-btn" onclick="location.href='day39.html'">39 &#8594;</button>
+    </div>
+
+    <div class="container">
+        <header class="hero">
+            <div class="hero-content">
+                <h1>Day 38: Deploy Website with GitHub Pages</h1>
+                <p>Learn to host your websites for free using GitHub Pages</p>
+                <div class="github-pages-logo">
+                    <svg viewBox="0 0 100 100" class="pages-icon">
+                        <circle cx="50" cy="50" r="45" fill="#4078c0"/>
+                        <path d="M30 30h40v10H30z M30 45h40v10H30z M30 60h25v10H30z" fill="white"/>
+                        <circle cx="65" cy="65" r="8" fill="#28a745"/>
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+        <nav class="topic-nav">
+            <button class="nav-btn active" data-section="introduction">Introduction</button>
+            <button class="nav-btn" data-section="setup">Setup Process</button>
+            <button class="nav-btn" data-section="deployment">Deployment</button>
+            <button class="nav-btn" data-section="custom-domain">Custom Domain</button>
+            <button class="nav-btn" data-section="troubleshooting">Troubleshooting</button>
+        </nav>
+
+        <main class="content">
+            <!-- Introduction Section -->
+            <section id="introduction" class="section active">
+                <h2>What is GitHub Pages?</h2>
+                
+                <div class="intro-grid">
+                    <div class="intro-card">
+                        <div class="card-icon">🌐</div>
+                        <h3>Free Web Hosting</h3>
+                        <p>Host static websites directly from your GitHub repository at no cost.</p>
+                    </div>
+                    
+                    <div class="intro-card">
+                        <div class="card-icon">⚡</div>
+                        <h3>Easy Deployment</h3>
+                        <p>Deploy with just a few clicks or automatic builds from your repository.</p>
+                    </div>
+                    
+                    <div class="intro-card">
+                        <div class="card-icon">🔗</div>
+                        <h3>Custom Domains</h3>
+                        <p>Use your own domain name or get a free github.io subdomain.</p>
+                    </div>
+                    
+                    <div class="intro-card">
+                        <div class="card-icon">🔒</div>
+                        <h3>HTTPS Support</h3>
+                        <p>Automatic SSL certificates for secure connections.</p>
+                    </div>
+                </div>
+
+                <div class="comparison-section">
+                    <h3>GitHub Pages vs Other Hosting Options</h3>
+                    <div class="comparison-table">
+                        <div class="comparison-header">
+                            <div class="feature-col">Feature</div>
+                            <div class="github-col">GitHub Pages</div>
+                            <div class="other-col">Traditional Hosting</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="feature-col">Cost</div>
+                            <div class="github-col">✅ Free</div>
+                            <div class="other-col">💰 $5-50/month</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="feature-col">Setup Time</div>
+                            <div class="github-col">✅ 5 minutes</div>
+                            <div class="other-col">⏱️ 30-60 minutes</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="feature-col">Deployment</div>
+                            <div class="github-col">✅ Automatic</div>
+                            <div class="other-col">🔧 Manual</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="feature-col">Version Control</div>
+                            <div class="github-col">✅ Built-in</div>
+                            <div class="other-col">❌ Separate</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="feature-col">Database Support</div>
+                            <div class="github-col">❌ Static only</div>
+                            <div class="other-col">✅ Full support</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="requirements-section">
+                    <h3>Requirements & Limitations</h3>
+                    <div class="requirements-grid">
+                        <div class="req-card positive">
+                            <h4>✅ What Works</h4>
+                            <ul>
+                                <li>HTML, CSS, JavaScript</li>
+                                <li>Static site generators (Jekyll, Hugo)</li>
+                                <li>Single Page Applications (React, Vue)</li>
+                                <li>Portfolio websites</li>
+                                <li>Documentation sites</li>
+                                <li>Landing pages</li>
+                            </ul>
+                        </div>
+                        <div class="req-card negative">
+                            <h4>❌ Limitations</h4>
+                            <ul>
+                                <li>No server-side code (PHP, Python, etc.)</li>
+                                <li>No databases</li>
+                                <li>1GB repository size limit</li>
+                                <li>100GB/month bandwidth limit</li>
+                                <li>No file uploads</li>
+                                <li>Public repositories only (free plan)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Setup Process Section -->
+            <section id="setup" class="section">
+                <h2>Setup Process</h2>
+                
+                <div class="setup-methods">
+                    <h3>Choose Your Setup Method</h3>
+                    <div class="method-selector">
+                        <button class="method-btn active" data-method="simple">Simple Method</button>
+                        <button class="method-btn" data-method="advanced">Advanced Method</button>
+                    </div>
+                </div>
+
+                <div class="method-content" id="simple-method">
+                    <h3>Simple Method: Repository Settings</h3>
+                    <div class="step-by-step">
+                        <div class="step" data-step="1">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Create a Repository</h4>
+                                <p>Create a new repository on GitHub with your project files.</p>
+                                <div class="code-example">
+                                    <pre><code>Repository name: my-awesome-website
+Description: My portfolio website
+✅ Public repository
+✅ Add README.md</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="2">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Upload Your Website Files</h4>
+                                <p>Add your HTML, CSS, and JavaScript files to the repository.</p>
+                                <div class="file-structure">
+                                    <div class="folder">
+                                        <div class="folder-icon">📁</div>
+                                        <span>my-awesome-website/</span>
+                                        <div class="file-list">
+                                            <div class="file">📄 index.html</div>
+                                            <div class="file">📄 style.css</div>
+                                            <div class="file">📄 script.js</div>
+                                            <div class="file">📄 README.md</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="3">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Enable GitHub Pages</h4>
+                                <p>Go to repository Settings → Pages → Select source branch.</p>
+                                <div class="settings-visual">
+                                    <div class="settings-panel">
+                                        <div class="settings-header">Pages Settings</div>
+                                        <div class="setting-item">
+                                            <label>Source:</label>
+                                            <select class="source-select">
+                                                <option>Deploy from a branch</option>
+                                            </select>
+                                        </div>
+                                        <div class="setting-item">
+                                            <label>Branch:</label>
+                                            <select class="branch-select">
+                                                <option>main</option>
+                                                <option>gh-pages</option>
+                                            </select>
+                                        </div>
+                                        <button class="save-btn">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="4">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Access Your Website</h4>
+                                <p>Your site will be available at: <code>https://username.github.io/repository-name</code></p>
+                                <div class="url-example">
+                                    <div class="url-display">
+                                        <span class="url-icon">🌐</span>
+                                        <span class="url-text">https://johnsmith.github.io/my-awesome-website</span>
+                                        <button class="copy-btn" onclick="copyToClipboard('https://johnsmith.github.io/my-awesome-website')">Copy</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="method-content hidden" id="advanced-method">
+                    <h3>Advanced Method: GitHub Actions</h3>
+                    <div class="advanced-setup">
+                        <div class="workflow-explanation">
+                            <h4>Automated Deployment with GitHub Actions</h4>
+                            <p>Use GitHub Actions to automatically build and deploy your site when you push changes.</p>
+                        </div>
+
+                        <div class="workflow-example">
+                            <h4>Sample Workflow File (.github/workflows/deploy.yml)</h4>
+                            <div class="code-block">
+                                <pre><code>name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+        
+    - name: Install dependencies
+      run: npm install
+      
+    - name: Build
+      run: npm run build
+      
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="benefits-list">
+                            <h4>Benefits of GitHub Actions:</h4>
+                            <ul>
+                                <li>✅ Automatic builds on every commit</li>
+                                <li>✅ Support for build tools (Webpack, Vite, etc.)</li>
+                                <li>✅ Custom deployment scripts</li>
+                                <li>✅ Environment variables support</li>
+                                <li>✅ Multiple deployment targets</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>Interactive Setup Simulator</h3>
+                    <div class="simulator">
+                        <div class="simulator-screen">
+                            <div class="github-interface">
+                                <div class="interface-header">
+                                    <span class="repo-name">my-portfolio</span>
+                                    <div class="tabs">
+                                        <span class="tab">Code</span>
+                                        <span class="tab active">Settings</span>
+                                    </div>
+                                </div>
+                                <div class="interface-content">
+                                    <div class="pages-section">
+                                        <h4>Pages</h4>
+                                        <div class="pages-form">
+                                            <label>Source</label>
+                                            <select id="sourceSelect">
+                                                <option value="">Select source</option>
+                                                <option value="branch">Deploy from a branch</option>
+                                                <option value="actions">GitHub Actions</option>
+                                            </select>
+                                            
+                                            <div class="branch-selection hidden" id="branchSelection">
+                                                <label>Branch</label>
+                                                <select id="branchSelect">
+                                                    <option value="main">main</option>
+                                                    <option value="gh-pages">gh-pages</option>
+                                                </select>
+                                                <label>Folder</label>
+                                                <select>
+                                                    <option>/ (root)</option>
+                                                    <option>/docs</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <button class="deploy-btn" id="deployBtn" disabled>Save</button>
+                                        </div>
+                                        <div class="deployment-status hidden" id="deploymentStatus">
+                                            <div class="status-message">
+                                                <span class="status-icon">⏳</span>
+                                                <span>Your site is being deployed...</span>
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div class="progress-fill"></div>
+                                            </div>
+                                        </div>
+                                        <div class="success-message hidden" id="successMessage">
+                                            <div class="success-content">
+                                                <span class="success-icon">✅</span>
+                                                <span>Your site is published at:</span>
+                                                <a href="#" class="site-url">https://username.github.io/my-portfolio</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Deployment Section -->
+            <section id="deployment" class="section">
+                <h2>Deployment Options</h2>
+                
+                <div class="deployment-types">
+                    <div class="deployment-card">
+                        <div class="deployment-icon">🌿</div>
+                        <h3>Branch Deployment</h3>
+                        <p>Deploy directly from a specific branch (main, gh-pages)</p>
+                        <div class="deployment-steps">
+                            <div class="mini-step">1. Push to branch</div>
+                            <div class="mini-step">2. GitHub builds</div>
+                            <div class="mini-step">3. Site updates</div>
+                        </div>
+                        <div class="deployment-time">⏱️ ~1-2 minutes</div>
+                    </div>
+                    
+                    <div class="deployment-card">
+                        <div class="deployment-icon">⚙️</div>
+                        <h3>GitHub Actions</h3>
+                        <p>Custom build process with full control over deployment</p>
+                        <div class="deployment-steps">
+                            <div class="mini-step">1. Trigger workflow</div>
+                            <div class="mini-step">2. Custom build</div>
+                            <div class="mini-step">3. Deploy artifacts</div>
+                        </div>
+                        <div class="deployment-time">⏱️ ~2-5 minutes</div>
+                    </div>
+                    
+                    <div class="deployment-card">
+                        <div class="deployment-icon">📁</div>
+                        <h3>Docs Folder</h3>
+                        <p>Deploy from /docs folder on main branch</p>
+                        <div class="deployment-steps">
+                            <div class="mini-step">1. Build to /docs</div>
+                            <div class="mini-step">2. Push changes</div>
+                            <div class="mini-step">3. Auto deploy</div>
+                        </div>
+                        <div class="deployment-time">⏱️ ~1 minute</div>
+                    </div>
+                </div>
+
+                <div class="best-practices">
+                    <h3>Deployment Best Practices</h3>
+                    <div class="practices-grid">
+                        <div class="practice-item">
+                            <div class="practice-icon">📝</div>
+                            <h4>Always Have index.html</h4>
+                            <p>GitHub Pages looks for index.html as the main entry point of your website.</p>
+                        </div>
+                        
+                        <div class="practice-item">
+                            <div class="practice-icon">🔗</div>
+                            <h4>Use Relative Paths</h4>
+                            <p>Use relative paths for assets to ensure they work on GitHub Pages subdomain.</p>
+                            <div class="code-snippet">
+                                <code>✅ ./style.css<br>❌ /style.css</code>
+                            </div>
+                        </div>
+                        
+                        <div class="practice-item">
+                            <div class="practice-icon">⏳</div>
+                            <h4>Be Patient</h4>
+                            <p>Changes can take up to 10 minutes to appear on your live site.</p>
+                        </div>
+                        
+                        <div class="practice-item">
+                            <div class="practice-icon">🔍</div>
+                            <h4>Check Build Status</h4>
+                            <p>Monitor the Actions tab for build status and error messages.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deployment-checklist">
+                    <h3>Pre-Deployment Checklist</h3>
+                    <div class="checklist">
+                        <label class="checklist-item">
+                            <input type="checkbox" id="check1">
+                            <span class="checkmark"></span>
+                            Repository is public (or you have GitHub Pro)
+                        </label>
+                        
+                        <label class="checklist-item">
+                            <input type="checkbox" id="check2">
+                            <span class="checkmark"></span>
+                            index.html exists in root or docs folder
+                        </label>
+                        
+                        <label class="checklist-item">
+                            <input type="checkbox" id="check3">
+                            <span class="checkmark"></span>
+                            All assets use relative paths
+                        </label>
+                        
+                        <label class="checklist-item">
+                            <input type="checkbox" id="check4">
+                            <span class="checkmark"></span>
+                            No server-side code dependencies
+                        </label>
+                        
+                        <label class="checklist-item">
+                            <input type="checkbox" id="check5">
+                            <span class="checkmark"></span>
+                            Files are under 100MB each
+                        </label>
+                        
+                        <label class="checklist-item">
+                            <input type="checkbox" id="check6">
+                            <span class="checkmark"></span>
+                            Repository size under 1GB
+                        </label>
+                    </div>
+                    
+                    <div class="checklist-result" id="checklistResult">
+                        <div class="result-content">
+                            <span class="result-icon">⏳</span>
+                            <span class="result-text">Complete the checklist to see if you're ready to deploy!</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Custom Domain Section -->
+            <section id="custom-domain" class="section">
+                <h2>Custom Domain Setup</h2>
+                
+                <div class="domain-explanation">
+                    <h3>Why Use a Custom Domain?</h3>
+                    <div class="domain-benefits">
+                        <div class="benefit-item">
+                            <span class="benefit-icon">✨</span>
+                            <span>Professional appearance</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🔍</span>
+                            <span>Better SEO</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">📈</span>
+                            <span>Brand recognition</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🔒</span>
+                            <span>Free SSL certificate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="domain-setup-steps">
+                    <h3>Setup Steps</h3>
+                    
+                    <div class="domain-step">
+                        <div class="step-header">
+                            <div class="step-number">1</div>
+                            <h4>Purchase a Domain</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Buy a domain from a registrar like:</p>
+                            <div class="registrar-list">
+                                <div class="registrar">
+                                    <span class="registrar-name">Namecheap</span>
+                                    <span class="price">~$10/year</span>
+                                </div>
+                                <div class="registrar">
+                                    <span class="registrar-name">GoDaddy</span>
+                                    <span class="price">~$12/year</span>
+                                </div>
+                                <div class="registrar">
+                                    <span class="registrar-name">Google Domains</span>
+                                    <span class="price">~$12/year</span>
+                                </div>
+                                <div class="registrar">
+                                    <span class="registrar-name">Cloudflare</span>
+                                    <span class="price">~$9/year</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="domain-step">
+                        <div class="step-header">
+                            <div class="step-number">2</div>
+                            <h4>Configure DNS Records</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Add these DNS records at your domain registrar:</p>
+                            <div class="dns-table">
+                                <div class="dns-header">
+                                    <div class="dns-col">Type</div>
+                                    <div class="dns-col">Name</div>
+                                    <div class="dns-col">Value</div>
+                                </div>
+                                <div class="dns-row">
+                                    <div class="dns-col">A</div>
+                                    <div class="dns-col">@</div>
+                                    <div class="dns-col">185.199.108.153</div>
+                                </div>
+                                <div class="dns-row">
+                                    <div class="dns-col">A</div>
+                                    <div class="dns-col">@</div>
+                                    <div class="dns-col">185.199.109.153</div>
+                                </div>
+                                <div class="dns-row">
+                                    <div class="dns-col">A</div>
+                                    <div class="dns-col">@</div>
+                                    <div class="dns-col">185.199.110.153</div>
+                                </div>
+                                <div class="dns-row">
+                                    <div class="dns-col">A</div>
+                                    <div class="dns-col">@</div>
+                                    <div class="dns-col">185.199.111.153</div>
+                                </div>
+                                <div class="dns-row">
+                                    <div class="dns-col">CNAME</div>
+                                    <div class="dns-col">www</div>
+                                    <div class="dns-col">username.github.io</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="domain-step">
+                        <div class="step-header">
+                            <div class="step-number">3</div>
+                            <h4>Add Domain to GitHub</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>In your repository settings, add your custom domain:</p>
+                            <div class="github-domain-settings">
+                                <div class="settings-section">
+                                    <label>Custom domain</label>
+                                    <input type="text" placeholder="example.com" class="domain-input">
+                                    <button class="save-domain-btn">Save</button>
+                                </div>
+                                <div class="domain-options">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                        Enforce HTTPS
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="domain-step">
+                        <div class="step-header">
+                            <div class="step-number">4</div>
+                            <h4>Wait for Propagation</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>DNS changes can take 24-48 hours to fully propagate worldwide.</p>
+                            <div class="propagation-checker">
+                                <h5>Check DNS Propagation</h5>
+                                <div class="checker-input">
+                                    <input type="text" placeholder="Enter your domain" id="domainCheck">
+                                    <button onclick="checkDomain()">Check</button>
+                                </div>
+                                <div class="checker-results" id="checkerResults"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="domain-troubleshooting">
+                    <h3>Common Domain Issues</h3>
+                    <div class="troubleshooting-grid">
+                        <div class="trouble-item">
+                            <h4>🚫 Domain not working</h4>
+                            <ul>
+                                <li>Check DNS records are correct</li>
+                                <li>Wait for propagation (up to 48h)</li>
+                                <li>Verify CNAME file in repository</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="trouble-item">
+                            <h4>🔒 SSL Certificate issues</h4>
+                            <ul>
+                                <li>Enable "Enforce HTTPS" in settings</li>
+                                <li>Wait for certificate generation</li>
+                                <li>Check domain verification</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="trouble-item">
+                            <h4>🔄 Subdomain not redirecting</h4>
+                            <ul>
+                                <li>Add CNAME record for www</li>
+                                <li>Point to username.github.io</li>
+                                <li>Test both www and non-www</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Troubleshooting Section -->
+            <section id="troubleshooting" class="section">
+                <h2>Troubleshooting</h2>
+                
+                <div class="troubleshooting-categories">
+                    <div class="trouble-category">
+                        <div class="category-header">
+                            <h3>🚨 Common Deployment Issues</h3>
+                        </div>
+                        <div class="issue-list">
+                            <div class="issue-item">
+                                <div class="issue-problem">
+                                    <strong>404 Error - Page not found</strong>
+                                </div>
+                                <div class="issue-solutions">
+                                    <div class="solution">✅ Ensure index.html exists in root directory</div>
+                                    <div class="solution">✅ Check file and folder names (case-sensitive)</div>
+                                    <div class="solution">✅ Verify repository is public</div>
+                                    <div class="solution">✅ Wait 10 minutes for changes to propagate</div>
+                                </div>
+                            </div>
+                            
+                            <div class="issue-item">
+                                <div class="issue-problem">
+                                    <strong>CSS/JS files not loading</strong>
+                                </div>
+                                <div class="issue-solutions">
+                                    <div class="solution">✅ Use relative paths (./style.css not /style.css)</div>
+                                    <div class="solution">✅ Check file names match exactly</div>
+                                    <div class="solution">✅ Verify files are committed to repository</div>
+                                    <div class="solution">✅ Clear browser cache</div>
+                                </div>
+                            </div>
+                            
+                            <div class="issue-item">
+                                <div class="issue-problem">
+                                    <strong>Site not updating after push</strong>
+                                </div>
+                                <div class="issue-solutions">
+                                    <div class="solution">✅ Check Actions tab for build status</div>
+                                    <div class="solution">✅ Wait up to 10 minutes for deployment</div>
+                                    <div class="solution">✅ Force refresh browser (Ctrl+F5)</div>
+                                    <div class="solution">✅ Verify changes pushed to correct branch</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trouble-category">
+                        <div class="category-header">
+                            <h3>🔧 Build Failures</h3>
+                        </div>
+                        <div class="issue-list">
+                            <div class="issue-item">
+                                <div class="issue-problem">
+                                    <strong>Jekyll build error</strong>
+                                </div>
+                                <div class="issue-solutions">
+                                    <div class="solution">✅ Add .nojekyll file to disable Jekyll</div>
+                                    <div class="solution">✅ Check for unsupported characters in filenames</div>
+                                    <div class="solution">✅ Review build logs in Actions tab</div>
+                                </div>
+                            </div>
+                            
+                            <div class="issue-item">
+                                <div class="issue-problem">
+                                    <strong>Large file warnings</strong>
+                                </div>
+                                <div class="issue-solutions">
+                                    <div class="solution">✅ Files over 100MB will fail</div>
+                                    <div class="solution">✅ Use Git LFS for large assets</div>
+                                    <div class="solution">✅ Optimize images and videos</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trouble-category">
+                        <div class="category-header">
+                            <h3>🌐 Domain Issues</h3>
+                        </div>
+                        <div class="issue-list">
+                            <div class="issue-item">
+                                <div class="issue-problem">
+                                    <strong>Custom domain not working</strong>
+                                </div>
+                                <div class="issue-solutions">
+                                    <div class="solution">✅ Verify DNS A records point to GitHub IPs</div>
+                                    <div class="solution">✅ Check CNAME file exists in repository</div>
+                                    <div class="solution">✅ Wait 24-48 hours for DNS propagation</div>
+                                    <div class="solution">✅ Test DNS with online tools</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="diagnostic-tools">
+                    <h3>Diagnostic Tools</h3>
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-icon">🔍</div>
+                            <h4>Site Status Checker</h4>
+                            <div class="tool-input">
+                                <input type="url" placeholder="Enter your GitHub Pages URL" id="statusCheck">
+                                <button onclick="checkSiteStatus()">Check Status</button>
+                            </div>
+                            <div class="tool-result" id="statusResult"></div>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-icon">📊</div>
+                            <h4>Build Log Analyzer</h4>
+                            <p>Check the Actions tab in your repository for detailed build logs and error messages.</p>
+                            <button onclick="openBuildLogs()">View Sample Build Log</button>
+                            <div class="build-log-sample hidden" id="buildLogSample">
+                                <pre><code>Run peaceiris/actions-gh-pages@v3
+  with:
+    github_token: ***
+    publish_dir: ./dist
+/usr/bin/git config user.name github-actions[bot]
+/usr/bin/git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+/usr/bin/git remote rm origin
+/usr/bin/git remote add origin ***github.com/username/repo.git
+/usr/bin/git add --all
+/usr/bin/git commit -m "Deploy to GitHub Pages"
+[gh-pages 1234567] Deploy to GitHub Pages
+ 3 files changed, 150 insertions(+)
+/usr/bin/git push origin gh-pages
+To github.com:username/repo.git
+   abcdef1..1234567  gh-pages -> gh-pages</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-icon">🛠️</div>
+                            <h4>Quick Fix Generator</h4>
+                            <p>Select your issue to get specific fix instructions:</p>
+                            <select id="issueSelect" onchange="generateFix()">
+                                <option value="">Select an issue...</option>
+                                <option value="404">404 Error</option>
+                                <option value="css">CSS not loading</option>
+                                <option value="domain">Custom domain</option>
+                                <option value="ssl">SSL certificate</option>
+                            </select>
+                            <div class="fix-instructions" id="fixInstructions"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-resources">
+                    <h3>Additional Help Resources</h3>
+                    <div class="resource-grid">
+                        <a href="https://docs.github.com/en/pages" target="_blank" class="resource-card">
+                            <div class="resource-icon">📚</div>
+                            <div class="resource-content">
+                                <h4>Official Documentation</h4>
+                                <p>Complete GitHub Pages documentation</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://github.community/c/github-pages" target="_blank" class="resource-card">
+                            <div class="resource-icon">💬</div>
+                            <div class="resource-content">
+                                <h4>Community Forum</h4>
+                                <p>Get help from other developers</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.githubstatus.com/" target="_blank" class="resource-card">
+                            <div class="resource-icon">📊</div>
+                            <div class="resource-content">
+                                <h4>GitHub Status</h4>
+                                <p>Check if GitHub services are down</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="learning-footer">
+            <div class="progress-section">
+                <h3>Your Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="progress-text">Master GitHub Pages deployment!</p>
+            </div>
+            
+            <div class="next-steps">
+                <h3>What's Next?</h3>
+                <div class="next-step-cards">
+                    <div class="next-card">
+                        <h4>🚀 Deploy Your First Site</h4>
+                        <p>Practice by deploying a simple HTML page</p>
+                    </div>
+                    <div class="next-card">
+                        <h4>🎨 Create a Portfolio</h4>
+                        <p>Build and deploy your developer portfolio</p>
+                    </div>
+                    <div class="next-card">
+                        <h4>🌟 Add Custom Domain</h4>
+                        <p>Make your site professional with your own domain</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Navigation Buttons Bottom -->
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day37.html'">&#8592; 37</button>
+        <button class="nav-btn" onclick="location.href='day38.html'">38</button>
+        <button class="nav-btn" onclick="location.href='day39.html'">39 &#8594;</button>
+    </div>
+
+    <script src="../JavaScript/navigation.js"></script>
+    <script src="../JavaScript/day38.js"></script>
+</body>
+</html>
