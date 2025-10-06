@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 37: GitHub, Repositories & Branching</title>
+    <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-37.svg">
+    <link rel="stylesheet" href="../CSS/day37.css">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day36.html'">&#8592; 36</button>
+        <button class="nav-btn" onclick="location.href='day37.html'">37</button>
+        <button class="nav-btn" onclick="location.href='day38.html'">38 &#8594;</button>
+    </div>
+    <div class="container">
+        <header class="hero">
+            <div class="hero-content">
+                <h1>Day 37: GitHub, Repositories & Branching</h1>
+                <p>Master version control with Git and GitHub workflows</p>
+                <div class="git-logo">
+                    <svg viewBox="0 0 100 100" class="git-icon">
+                        <circle cx="50" cy="50" r="45" fill="#f34f29"/>
+                        <path d="M25 50l15-15h20l15 15-15 15H40z" fill="white"/>
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+        <nav class="topic-nav">
+            <button class="nav-btn active" data-section="repositories">Repositories</button>
+            <button class="nav-btn" data-section="branching">Branching</button>
+            <button class="nav-btn" data-section="workflow">Workflow</button>
+            <button class="nav-btn" data-section="simulator">Git Simulator</button>
+        </nav>
+
+        <main class="content">
+            <!-- Repositories Section -->
+            <section id="repositories" class="section active">
+                <h2>Git Repositories</h2>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h3>What is a Repository?</h3>
+                        <p>A repository (repo) is a storage space where your project lives. It contains all files, folders, and the complete history of changes.</p>
+                        <div class="repo-visual">
+                            <div class="folder">
+                                <div class="folder-icon">📁</div>
+                                <span>my-project</span>
+                                <div class="git-indicator">.git</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <h3>Local vs Remote</h3>
+                        <div class="repo-comparison">
+                            <div class="local-repo">
+                                <h4>Local Repository</h4>
+                                <ul>
+                                    <li>On your computer</li>
+                                    <li>Work offline</li>
+                                    <li>Personal workspace</li>
+                                </ul>
+                            </div>
+                            <div class="sync-arrow">⇄</div>
+                            <div class="remote-repo">
+                                <h4>Remote Repository</h4>
+                                <ul>
+                                    <li>On GitHub/GitLab</li>
+                                    <li>Shared with team</li>
+                                    <li>Backup & collaboration</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <h3>Common Git Commands</h3>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <code>git init</code>
+                                <span>Initialize a repository</span>
+                            </div>
+                            <div class="command-item">
+                                <code>git clone &lt;url&gt;</code>
+                                <span>Copy a remote repository</span>
+                            </div>
+                            <div class="command-item">
+                                <code>git add .</code>
+                                <span>Stage all changes</span>
+                            </div>
+                            <div class="command-item">
+                                <code>git commit -m "message"</code>
+                                <span>Save changes with message</span>
+                            </div>
+                            <div class="command-item">
+                                <code>git push</code>
+                                <span>Upload to remote repository</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>Repository Status Tracker</h3>
+                    <div class="status-tracker">
+                        <div class="file-changes">
+                            <h4>File Changes</h4>
+                            <div class="file-list">
+                                <div class="file-item modified" data-status="modified">
+                                    <span class="file-icon">📄</span>
+                                    <span class="file-name">index.html</span>
+                                    <span class="file-status">Modified</span>
+                                </div>
+                                <div class="file-item new" data-status="new">
+                                    <span class="file-icon">📄</span>
+                                    <span class="file-name">script.js</span>
+                                    <span class="file-status">New</span>
+                                </div>
+                                <div class="file-item deleted" data-status="deleted">
+                                    <span class="file-icon">📄</span>
+                                    <span class="file-name">old-file.txt</span>
+                                    <span class="file-status">Deleted</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="git-actions">
+                            <button class="git-btn" id="addBtn">git add .</button>
+                            <button class="git-btn" id="commitBtn" disabled>git commit</button>
+                            <button class="git-btn" id="pushBtn" disabled>git push</button>
+                            <div class="action-status" id="actionStatus">Ready to stage files</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Branching Section -->
+            <section id="branching" class="section">
+                <h2>Git Branching</h2>
+                <div class="branch-explanation">
+                    <h3>What are Branches?</h3>
+                    <p>Branches allow you to work on different features simultaneously without affecting the main codebase.</p>
+                </div>
+
+                <div class="branch-visualizer">
+                    <h3>Branch Visualization</h3>
+                    <div class="branch-diagram" id="branchDiagram">
+                        <div class="branch main-branch">
+                            <div class="branch-name">main</div>
+                            <div class="commit-line">
+                                <div class="commit active" data-commit="c1">C1</div>
+                                <div class="commit active" data-commit="c2">C2</div>
+                                <div class="commit active" data-commit="c3">C3</div>
+                                <div class="commit active" data-commit="c6">C6</div>
+                            </div>
+                        </div>
+                        <div class="branch feature-branch">
+                            <div class="branch-name">feature/login</div>
+                            <div class="commit-line">
+                                <div class="commit-spacer"></div>
+                                <div class="commit-spacer"></div>
+                                <div class="commit" data-commit="c4">C4</div>
+                                <div class="commit" data-commit="c5">C5</div>
+                            </div>
+                        </div>
+                        <div class="merge-line" id="mergeLine"></div>
+                    </div>
+                    <div class="branch-controls">
+                        <button class="branch-btn" id="createBranchBtn">Create Branch</button>
+                        <button class="branch-btn" id="switchBranchBtn">Switch Branch</button>
+                        <button class="branch-btn" id="mergeBranchBtn">Merge Branch</button>
+                        <button class="branch-btn" id="resetBranchBtn">Reset</button>
+                    </div>
+                </div>
+
+                <div class="branch-commands">
+                    <h3>Branch Commands</h3>
+                    <div class="command-grid">
+                        <div class="command-card">
+                            <h4>Create & Switch</h4>
+                            <code>git checkout -b feature/new-feature</code>
+                            <p>Creates and switches to a new branch</p>
+                        </div>
+                        <div class="command-card">
+                            <h4>List Branches</h4>
+                            <code>git branch</code>
+                            <p>Shows all local branches</p>
+                        </div>
+                        <div class="command-card">
+                            <h4>Switch Branch</h4>
+                            <code>git checkout main</code>
+                            <p>Switches to the main branch</p>
+                        </div>
+                        <div class="command-card">
+                            <h4>Merge Branch</h4>
+                            <code>git merge feature/new-feature</code>
+                            <p>Merges feature branch into current branch</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Workflow Section -->
+            <section id="workflow" class="section">
+                <h2>Git Workflow</h2>
+                <div class="workflow-container">
+                    <h3>Feature Branch Workflow</h3>
+                    <div class="workflow-steps">
+                        <div class="workflow-step" data-step="1">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Create Feature Branch</h4>
+                                <code>git checkout -b feature/user-auth</code>
+                                <p>Start working on a new feature</p>
+                            </div>
+                        </div>
+                        <div class="workflow-step" data-step="2">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Make Changes</h4>
+                                <code>git add . && git commit -m "Add login form"</code>
+                                <p>Develop and commit your changes</p>
+                            </div>
+                        </div>
+                        <div class="workflow-step" data-step="3">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Push to Remote</h4>
+                                <code>git push origin feature/user-auth</code>
+                                <p>Share your branch with the team</p>
+                            </div>
+                        </div>
+                        <div class="workflow-step" data-step="4">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Create Pull Request</h4>
+                                <p>Request to merge your changes</p>
+                                <div class="pr-visual">PR</div>
+                            </div>
+                        </div>
+                        <div class="workflow-step" data-step="5">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>Code Review & Merge</h4>
+                                <p>Team reviews and merges changes</p>
+                                <div class="merge-visual">✓</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="animate-workflow-btn" id="animateWorkflowBtn">Animate Workflow</button>
+                </div>
+
+                <div class="github-features">
+                    <h3>GitHub Features</h3>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🔀</div>
+                            <h4>Pull Requests</h4>
+                            <p>Propose and review code changes</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🐛</div>
+                            <h4>Issues</h4>
+                            <p>Track bugs and feature requests</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h4>Actions</h4>
+                            <p>Automate workflows and CI/CD</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📊</div>
+                            <h4>Projects</h4>
+                            <p>Organize and track work progress</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Git Simulator Section -->
+            <section id="simulator" class="section">
+                <h2>Git Command Simulator</h2>
+                <div class="simulator-container">
+                    <div class="terminal-container">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">Git Terminal</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-output" id="terminalOutput">
+                                <div class="terminal-line">
+                                    <span class="prompt">user@computer:~/project$</span>
+                                    <span class="command">git status</span>
+                                </div>
+                                <div class="output-line">On branch main</div>
+                                <div class="output-line">Your branch is up to date with 'origin/main'.</div>
+                                <div class="output-line">nothing to commit, working tree clean</div>
+                            </div>
+                            <div class="terminal-input">
+                                <span class="prompt">user@computer:~/project$</span>
+                                <input type="text" id="commandInput" placeholder="Enter git command...">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="command-suggestions">
+                        <h4>Try these commands:</h4>
+                        <div class="suggestion-buttons">
+                            <button class="suggestion-btn" data-command="git init">git init</button>
+                            <button class="suggestion-btn" data-command="git add README.md">git add README.md</button>
+                            <button class="suggestion-btn" data-command="git commit -m 'Initial commit'">git commit -m "Initial commit"</button>
+                            <button class="suggestion-btn" data-command="git branch feature/navbar">git branch feature/navbar</button>
+                            <button class="suggestion-btn" data-command="git checkout feature/navbar">git checkout feature/navbar</button>
+                            <button class="suggestion-btn" data-command="git merge feature/navbar">git merge feature/navbar</button>
+                            <button class="suggestion-btn" data-command="git log --oneline">git log --oneline</button>
+                            <button class="suggestion-btn" data-command="git status">git status</button>
+                        </div>
+                    </div>
+
+                    <div class="repo-state">
+                        <h4>Repository State</h4>
+                        <div class="state-info">
+                            <div class="current-branch">
+                                <strong>Current Branch:</strong> <span id="currentBranch">main</span>
+                            </div>
+                            <div class="branch-list">
+                                <strong>Branches:</strong>
+                                <ul id="branchList">
+                                    <li class="active-branch">main</li>
+                                </ul>
+                            </div>
+                            <div class="commit-count">
+                                <strong>Commits:</strong> <span id="commitCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day36.html'">&#8592; 36</button>
+        <button class="nav-btn" onclick="location.href='day37.html'">37</button>
+        <button class="nav-btn" onclick="location.href='day38.html'">38 &#8594;</button>
+    </div>
+        <footer class="learning-footer">
+            <div class="progress-section">
+                <h3>Your Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="progress-text">Complete all sections to master Git & GitHub!</p>
+            </div>
+            
+            <div class="resources-section">
+                <h3>Additional Resources</h3>
+                <div class="resource-links">
+                    <a href="https://git-scm.com/docs" target="_blank" class="resource-link">
+                        📚 Git Documentation
+                    </a>
+                    <a href="https://github.com/skills" target="_blank" class="resource-link">
+                        🎓 GitHub Skills
+                    </a>
+                    <a href="https://learngitbranching.js.org/" target="_blank" class="resource-link">
+                        🌳 Interactive Git Tutorial
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day36.html'">&#8592; 36</button>
+        <button class="nav-btn" onclick="location.href='day37.html'">37</button>
+        <button class="nav-btn" onclick="location.href='day38.html'">38 &#8594;</button>
+    </div>
+
+    <script src="../JavaScript/navigation.js"></script>
+    <script src="../JavaScript/day37.js"></script>
+</body>
+</html>
