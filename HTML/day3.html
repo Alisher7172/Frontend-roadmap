@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 3</title>
+    <title>Day 3: JavaScript - Adding Interactivity</title>
     <link rel="icon" type="image/svg+xml" href="../images/favicon-3.svg">
     <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="stylesheet" href="../CSS/day3.css">
 </head>
 <body>
     <div class="nav-buttons-top">
@@ -13,11 +14,147 @@
         <button class="nav-btn nav-btn-active" disabled>3</button>
         <button class="nav-btn" onclick="location.href='day4.html'">4 &#8594;</button>
     </div>
+
+    <main class="container">
+        <header class="hero">
+            <h1>Day 3: JavaScript - Adding Interactivity</h1>
+            <p>Learn to make your websites interactive with JavaScript</p>
+        </header>
+
+        <!-- Section 1: Click Handlers -->
+        <section class="section">
+            <h2>1. Handling User Clicks</h2>
+            <div class="demo-area">
+                <div class="click-demos">
+                    <button id="simpleBtn" class="demo-btn">Click Me!</button>
+                    <button id="counterBtn" class="demo-btn">Click Counter: <span id="clickCount">0</span></button>
+                    <button id="colorBtn" class="demo-btn">Change My Color</button>
+                    <button id="toggleBtn" class="demo-btn">Toggle Text</button>
+                </div>
+                <div id="clickOutput" class="output-area">
+                    <p>Click messages will appear here...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Form Handling -->
+        <section class="section">
+            <h2>2. Form Submissions & Validation</h2>
+            <div class="demo-area">
+                <form id="userForm" class="demo-form">
+                    <div class="form-group">
+                        <label for="userName">Name:</label>
+                        <input type="text" id="userName" name="userName" required>
+                        <span class="error-msg" id="nameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">Email:</label>
+                        <input type="email" id="userEmail" name="userEmail" required>
+                        <span class="error-msg" id="emailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="userAge">Age:</label>
+                        <input type="number" id="userAge" name="userAge" min="1" max="120">
+                        <span class="error-msg" id="ageError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="userMessage">Message:</label>
+                        <textarea id="userMessage" name="userMessage" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="demo-btn submit-btn">Submit Form</button>
+                    <button type="button" id="clearForm" class="demo-btn clear-btn">Clear Form</button>
+                </form>
+                <div id="formOutput" class="output-area">
+                    <h4>Form Submissions:</h4>
+                    <div id="submissionsList"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Dynamic Content -->
+        <section class="section">
+            <h2>3. Creating Dynamic Content</h2>
+            <div class="demo-area">
+                <div class="dynamic-controls">
+                    <button id="addItem" class="demo-btn">Add Item</button>
+                    <button id="removeItem" class="demo-btn">Remove Last Item</button>
+                    <button id="clearAll" class="demo-btn">Clear All</button>
+                    <input type="text" id="itemInput" placeholder="Enter item name...">
+                    <button id="addCustomItem" class="demo-btn">Add Custom Item</button>
+                </div>
+                <div class="dynamic-content">
+                    <h4>Dynamic List:</h4>
+                    <ul id="dynamicList"></ul>
+                </div>
+                <div class="stats">
+                    <p>Total items: <span id="itemCount">0</span></p>
+                    <p>Last added: <span id="lastAdded">None</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Interactive Elements -->
+        <section class="section">
+            <h2>4. More Interactive Elements</h2>
+            <div class="demo-area">
+                <div class="interactive-demos">
+                    <div class="demo-box">
+                        <h4>Image Gallery</h4>
+                        <div class="gallery">
+                            <img id="galleryImage" src="../images/favicon-1.svg" alt="Gallery Image">
+                            <div class="gallery-controls">
+                                <button id="prevImage" class="demo-btn">← Previous</button>
+                                <span id="imageCounter">1 / 5</span>
+                                <button id="nextImage" class="demo-btn">Next →</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-box">
+                        <h4>Theme Switcher</h4>
+                        <div class="theme-controls">
+                            <button id="lightTheme" class="demo-btn theme-btn">Light Theme</button>
+                            <button id="darkTheme" class="demo-btn theme-btn">Dark Theme</button>
+                            <button id="blueTheme" class="demo-btn theme-btn">Blue Theme</button>
+                        </div>
+                    </div>
+                    <div class="demo-box">
+                        <h4>Live Clock</h4>
+                        <div id="liveClock" class="clock">--:--:--</div>
+                        <button id="toggleClock" class="demo-btn">Start/Stop Clock</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Event Examples -->
+        <section class="section">
+            <h2>5. Event Handling Examples</h2>
+            <div class="demo-area">
+                <div class="event-demos">
+                    <div class="event-box" id="hoverBox">
+                        <p>Hover over me!</p>
+                        <p id="hoverCount">Hover count: 0</p>
+                    </div>
+                    <div class="event-box" id="keypressBox" tabindex="0">
+                        <p>Click me and press keys!</p>
+                        <p id="lastKey">Last key: None</p>
+                    </div>
+                    <div class="event-box" id="mouseBox">
+                        <p>Move your mouse here!</p>
+                        <p id="mouseCoords">Mouse: (0, 0)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <div class="nav-buttons-bottom">
         <button class="nav-btn" onclick="location.href='day2.html'">&#8592; 2</button>
         <button class="nav-btn nav-btn-active" disabled>3</button>
         <button class="nav-btn" onclick="location.href='day4.html'">4 &#8594;</button>
     </div>
+
     <script src="../JavaScript/navigation.js"></script>
+    <script src="../JavaScript/day3.js"></script>
 </body>
 </html>
