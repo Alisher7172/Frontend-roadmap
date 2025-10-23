@@ -1,0 +1,325 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/* 2. CLASS SELECTORS */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+    margin: 30px 0;
+    padding: 25px;
+    border-left: 5px solid #667eea;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* 3. ID SELECTORS */
+#main-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* 4. TYPOGRAPHY */
+h1, h2, h3 {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+h2 {
+    color: #667eea;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 10px;
+}
+
+h3 {
+    color: #764ba2;
+    font-size: 1.4rem;
+}
+
+p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* 5. TEXT STYLING */
+.highlight {
+    background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.italic-text {
+    font-style: italic;
+    color: #666;
+}
+
+.bold-text {
+    font-weight: bold;
+    color: #333;
+}
+
+.underline-text {
+    text-decoration: underline;
+    color: #667eea;
+}
+
+/* 6. COLORS AND BACKGROUNDS */
+.color-demo {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.color-box {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.color-box:hover {
+    transform: scale(1.1);
+}
+
+.red { background-color: #ff6b6b; }
+.blue { background-color: #4ecdc4; }
+.green { background-color: #45b7d1; }
+.purple { background-color: #96ceb4; }
+.orange { background-color: #ffeaa7; color: #333; text-shadow: none; }
+
+/* 7. BOX MODEL DEMONSTRATION */
+.box-model-demo {
+    background-color: #e17055;
+    color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border: 5px solid #74b9ff;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* 8. LAYOUT - FLEXBOX */
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.flex-item {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+    transition: transform 0.3s ease;
+}
+
+.flex-item:hover {
+    transform: translateY(-10px);
+}
+
+/* 9. BUTTONS AND INTERACTIVE ELEMENTS */
+
+.demo-button {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.demo-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.demo-button:active {
+    transform: translateY(0);
+}
+
+/* Navigation buttons styled by button.css - no interference needed */
+
+/* 10. LISTS */
+.styled-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.styled-list li {
+    background: #f8f9fa;
+    margin: 10px 0;
+    padding: 15px;
+    border-left: 4px solid #667eea;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.styled-list li:hover {
+    background: #e9ecef;
+}
+
+.styled-list li::before {
+    content: "✓ ";
+    color: #28a745;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* 11. CARDS */
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* 12. RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+    
+    #main-title {
+        font-size: 2rem;
+    }
+    
+    .flex-container {
+        flex-direction: column;
+    }
+    
+    .color-demo {
+        justify-content: center;
+    }
+}
+
+/* 13. ANIMATIONS */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-in {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* 14. PSEUDO-CLASSES */
+.demo-link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.demo-link:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+.demo-link:visited {
+    color: #95a5a6;
+}
+
+/* 15. PSEUDO-ELEMENTS */
+.quote {
+    position: relative;
+    font-style: italic;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.quote::before {
+    content: "\201C";
+    font-size: 4rem;
+    color: #667eea;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+}
+
+.quote::after {
+    content: "\201D";
+    font-size: 4rem;
+    color: #667eea;
+    position: absolute;
+    bottom: -40px;
+    right: 10px;
+}

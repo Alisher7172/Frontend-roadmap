@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Day 39 — Hosting on Netlify</title>
+    <link rel="stylesheet" href="../CSS/day39.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Day 39 — Hosting on Netlify</h1>
+
+      <p class="lead">A short, practical guide to hosting static sites (and modern frontends) on Netlify.</p>
+
+      <section>
+        <h2>What is Netlify?</h2>
+        <p>
+          Netlify is a platform that makes it easy to deploy static sites and JAMstack apps. It provides
+          continuous deployment from Git, one-click drag &amp; drop deploys, custom domains, HTTPS, environment
+          variables, redirects, and deploy previews out of the box.
+        </p>
+      </section>
+
+      <section>
+        <h2>Why use Netlify?</h2>
+        <ul>
+          <li>Fast CDN-backed hosting with automatic HTTPS.</li>
+          <li>Easy Git integration (GitHub, GitLab, Bitbucket).</li>
+          <li>Deploy previews for PRs and instant rollbacks.</li>
+          <li>Simple configuration with <code>netlify.toml</code> or a <code>_redirects</code> file.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Quick start (3 ways)</h2>
+        <h3>1) Drag &amp; Drop (fastest)</h3>
+        <p>Build your static site (folder with an index.html) and drop the folder into the Netlify dashboard's "Sites" → "Add new site" → "Deploy manually" area.</p>
+
+        <h3>2) Connect your Git repository (recommended)</h3>
+        <ol>
+          <li>Push your site to GitHub/GitLab/Bitbucket.</li>
+          <li>In Netlify dashboard, choose "New site from Git" and authorize the provider.</li>
+          <li>Select repo, set build command (e.g., <code>npm run build</code>) and publish directory (e.g., <code>dist</code> or <code>build</code>).</li>
+          <li>Netlify will build and deploy on every push.</li>
+        </ol>
+
+        <h3>3) CLI / API</h3>
+        <p>You can also use the Netlify CLI to deploy from your machine or CI: <code>npm i -g netlify-cli</code> then <code>netlify deploy</code>.</p>
+      </section>
+
+      <section>
+        <h2>Common configs</h2>
+        <h3>netlify.toml (example)</h3>
+        <pre><code>[build]
+  publish = "dist"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://example.com/api/:splat"
+  status = 200
+        </code></pre>
+
+        <h3>_redirects (simple redirects example)</h3>
+        <pre><code>/old-path  /new-path  301
+/blog/*    /index.html  200
+        </code></pre>
+
+        <h3>Environment variables</h3>
+        <p>Set them in the Netlify UI or via the CLI for API keys, build-time flags, and secrets.</p>
+      </section>
+
+      <section>
+        <h2>Tips &amp; common issues</h2>
+        <ul>
+          <li>If your site uses a build step, ensure the build command and publish directory are correct.</li>
+          <li>Use <code>netlify.toml</code> to keep site-specific settings in the repo.</li>
+          <li>For single-page apps (React/Vue), configure redirects to serve index.html for client-side routes.</li>
+          <li>Check deploy logs in the Netlify dashboard when builds fail — they show the exact command output.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Example: deploy from GitHub (commands)</h2>
+        <pre><code>git init
+git add .
+git commit -m "Initial site"
+git remote add origin git@github.com:youruser/yourrepo.git
+git push -u origin main
+-- then connect the repo in Netlify --
+        </code></pre>
+      </section>
+
+      <footer class="footer">
+        <p>Want me to add a demo deploy (GitHub + netlify.toml) into this repo? Tell me and I'll add a tiny example and CI-ready config.</p>
+      </footer>
+    </main>
+  </body>
+</html>

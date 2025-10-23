@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 29 - Advanced ES6+ JavaScript</title>
+    <link rel="stylesheet" href="../CSS/day29.css">
+    <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-29.svg">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day28.html'">&#8592; 28</button>
+        <button class="nav-btn" onclick="location.href='day29.html'">29</button>
+        <button class="nav-btn" onclick="location.href='day30.html'">30 &#8594;</button>
+    </div>
+    
+    <main class="container">
+        <h1>Advanced ES6+ JavaScript Features</h1>
+        <p class="intro">Master modern JavaScript with interactive examples and hands-on practice!</p>
+        
+        <section class="lesson-section">
+            <h2>1. let & const vs var</h2>
+            <div class="explanation">
+                <p><strong>Block-scoped declarations</strong> that solve many issues with <code>var</code>:</p>
+                <ul>
+                    <li><code>let</code> - for variables that can be reassigned</li>
+                    <li><code>const</code> - for constants (cannot be reassigned)</li>
+                    <li>Both are block-scoped (unlike <code>var</code> which is function-scoped)</li>
+                </ul>
+            </div>
+            <pre class="code-block"><code id="code-let-const">// Will be populated by JavaScript</code></pre>
+            <button class="demo-btn" onclick="demoLetConst()">Try let/const Demo</button>
+            <div id="let-const-output" class="output"></div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>2. Arrow Functions</h2>
+            <div class="explanation">
+                <p><strong>Shorter syntax</strong> for functions with automatic <code>this</code> binding:</p>
+                <ul>
+                    <li>Concise syntax: <code>(a, b) => a + b</code></li>
+                    <li>Inherit <code>this</code> from enclosing scope</li>
+                    <li>Perfect for callbacks and array methods</li>
+                </ul>
+            </div>
+            <pre class="code-block"><code id="code-arrow">// Will be populated by JavaScript</code></pre>
+            <button class="demo-btn" onclick="demoArrowFunctions()">Try Arrow Functions</button>
+            <div id="arrow-output" class="output"></div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>3. Destructuring Assignment</h2>
+            <div class="explanation">
+                <p><strong>Extract values</strong> from arrays and objects into variables:</p>
+                <ul>
+                    <li>Array destructuring: <code>[a, b] = [1, 2]</code></li>
+                    <li>Object destructuring: <code>{name, age} = user</code></li>
+                    <li>Default values and renaming supported</li>
+                </ul>
+            </div>
+            <pre class="code-block"><code id="code-destructuring">// Will be populated by JavaScript</code></pre>
+            <button class="demo-btn" onclick="demoDestructuring()">Try Destructuring</button>
+            <div id="destructuring-output" class="output"></div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>4. Spread & Rest Operators</h2>
+            <div class="explanation">
+                <p><strong>Three dots</strong> with different meanings based on context:</p>
+                <ul>
+                    <li><strong>Spread:</strong> Expand arrays/objects <code>[...arr]</code></li>
+                    <li><strong>Rest:</strong> Collect parameters <code>(...args)</code></li>
+                    <li>Copy arrays, merge objects, function parameters</li>
+                </ul>
+            </div>
+            <pre class="code-block"><code id="code-spread">// Will be populated by JavaScript</code></pre>
+            <button class="demo-btn" onclick="demoSpreadRest()">Try Spread/Rest</button>
+            <div id="spread-output" class="output"></div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>5. Template Literals</h2>
+            <div class="explanation">
+                <p><strong>Enhanced strings</strong> with backticks for interpolation and multiline:</p>
+                <ul>
+                    <li>Variable interpolation: <code>`Hello ${name}!`</code></li>
+                    <li>Multiline strings without escape characters</li>
+                    <li>Embedded expressions and function calls</li>
+                </ul>
+            </div>
+            <pre class="code-block"><code id="code-template">// Will be populated by JavaScript</code></pre>
+            <button class="demo-btn" onclick="demoTemplates()">Try Templates</button>
+            <div id="template-output" class="output"></div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>6. Classes</h2>
+            <div class="explanation">
+                <p><strong>Object-oriented programming</strong> with cleaner syntax:</p>
+                <ul>
+                    <li>Constructor methods and class inheritance</li>
+                    <li>Static methods and private fields</li>
+                    <li>Extends keyword for inheritance</li>
+                </ul>
+            </div>
+            <pre class="code-block"><code id="code-classes">// Will be populated by JavaScript</code></pre>
+            <button class="demo-btn" onclick="demoClasses()">Try Classes</button>
+            <div id="classes-output" class="output"></div>
+        </section>
+
+        <section class="quiz-section">
+            <h2>ES6+ Knowledge Quiz</h2>
+            <form id="quiz-form">
+                <div class="quiz-question">
+                    <p>1. Which keyword creates a block-scoped constant?</p>
+                    <label><input type="radio" name="q1" value="var"> var</label>
+                    <label><input type="radio" name="q1" value="let"> let</label>
+                    <label><input type="radio" name="q1" value="const"> const</label>
+                    <label><input type="radio" name="q1" value="function"> function</label>
+                </div>
+                <div class="quiz-question">
+                    <p>2. What does <code>const [a, b] = [1, 2]</code> do?</p>
+                    <label><input type="radio" name="q2" value="creates array"> Creates an array</label>
+                    <label><input type="radio" name="q2" value="destructures"> Destructures array into variables</label>
+                    <label><input type="radio" name="q2" value="compares"> Compares two arrays</label>
+                    <label><input type="radio" name="q2" value="error"> Causes an error</label>
+                </div>
+                <div class="quiz-question">
+                    <p>3. Arrow functions inherit <code>this</code> from:</p>
+                    <label><input type="radio" name="q3" value="global"> Global scope</label>
+                    <label><input type="radio" name="q3" value="parent"> Parent scope</label>
+                    <label><input type="radio" name="q3" value="function"> Function scope</label>
+                    <label><input type="radio" name="q3" value="nowhere"> Nowhere</label>
+                </div>
+                <div class="quiz-question">
+                    <p>4. What does <code>...args</code> in function parameters do?</p>
+                    <label><input type="radio" name="q4" value="spread"> Spreads an array</label>
+                    <label><input type="radio" name="q4" value="rest"> Collects arguments into array</label>
+                    <label><input type="radio" name="q4" value="nothing"> Nothing special</label>
+                    <label><input type="radio" name="q4" value="error"> Causes syntax error</label>
+                </div>
+                <div class="quiz-question">
+                    <p>5. Template literals use which character?</p>
+                    <label><input type="radio" name="q5" value="single"> ' (single quote)</label>
+                    <label><input type="radio" name="q5" value="double"> " (double quote)</label>
+                    <label><input type="radio" name="q5" value="backtick"> ` (backtick)</label>
+                    <label><input type="radio" name="q5" value="slash"> / (forward slash)</label>
+                </div>
+                <button type="button" id="submit-quiz" class="action-btn">Submit Quiz</button>
+            </form>
+            <div id="quiz-result" class="quiz-result"></div>
+        </section>
+    </main>
+
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day28.html'">&#8592; 28</button>
+        <button class="nav-btn" onclick="location.href='day29.html'">29</button>
+        <button class="nav-btn" onclick="location.href='day30.html'">30 &#8594;</button>
+    </div>
+
+    <script src="../JavaScript/navigation.js"></script>
+    <script src="../JavaScript/day29.js"></script>
+</body>
+</html>

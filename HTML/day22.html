@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 22 | JS Variables, Data Types & Operators</title>
+  <link rel="icon" type="image/svg+xml" href="../images/favicon-22.svg">
+  <link rel="stylesheet" href="../CSS/button.css">
+  <link rel="stylesheet" href="../CSS/day22.css">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day21.html'">&#8592; 21</button>
+        <button class="nav-btn" onclick="location.href='day22.html'">22</button>
+        <button class="nav-btn" onclick="location.href='day23.html'">23 &#8594;</button>
+    </div>
+  <header class="header">
+    <h1>JavaScript: Variables, Data Types & Operators</h1>
+    <nav>
+      <a href="#variables">Variables</a>
+      <a href="#datatypes">Data Types</a>
+      <a href="#operators">Operators</a>
+      <a href="#quiz">Quiz</a>
+    </nav>
+  </header>
+  <main>
+    <section id="variables" class="section">
+      <h2>Variables</h2>
+      <p>Variables are containers for storing data values. In JavaScript, you can declare variables using <code>var</code>, <code>let</code>, or <code>const</code>.</p>
+      <pre><code class="code-block">
+        let name = "Alice"
+        const PI = 3.14;
+        var age = 25;</code></pre>
+    </section>
+    <section id="datatypes" class="section">
+      <h2>Data Types</h2>
+      <p>JavaScript supports different data types:</p>
+      <ul>
+        <li><b>String</b> - <code>let city = "London";</code></li>
+        <li><b>Number</b> - <code>let score = 99.5;</code></li>
+        <li><b>Boolean</b> - <code>let isActive = true;</code></li>
+        <li><b>Null</b> - <code>let data = null;</code></li>
+        <li><b>Undefined</b> - <code>let x;</code></li>
+        <li><b>Object</b> - <code>let person = { name: "Bob", age: 30 };</code></li>
+        <li><b>Array</b> - <code>let colors = ["red", "green", "blue"];</code></li>
+      </ul>
+    </section>
+    <section id="operators" class="section">
+      <h2>Operators</h2>
+      <p>Operators are used to perform operations on variables and values. Some common operators:</p>
+      <ul>
+        <li><b>Arithmetic</b>: <code>+, -, *, /, %</code></li>
+        <li><b>Assignment</b>: <code>=, +=, -=, *=, /=</code></li>
+        <li><b>Comparison</b>: <code>==, ===, !=, !==, &gt;, &lt;, &gt;=, &lt;=</code></li>
+        <li><b>Logical</b>: <code>&amp;&amp;, ||, !</code></li>
+      </ul>
+      <pre><code class="code-block">let a = 10;
+let b = 3;
+let sum = a + b; // 13
+let isEqual = a === b; // false
+let isBig = a &gt; b &amp;&amp; b &lt; 5; // true</code></pre>
+    </section>
+    <section id="quiz" class="section quiz-section">
+      <h2>Quick Quiz</h2>
+      <div id="quiz-area"></div>
+      <button class="btn" id="startQuiz">Start Quiz</button>
+      <div id="quiz-result"></div>
+    </section>
+  </main>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day21.html'">&#8592; 21</button>
+        <button class="nav-btn" onclick="location.href='day22.html'">22</button>
+        <button class="nav-btn" onclick="location.href='day23.html'">23 &#8594;</button>
+    </div>
+  <footer class="footer">
+    <p>&copy; 2025 JavaScript Learning Roadmap</p>
+  </footer>
+  <script src="../JavaScript/day22.js"></script>
+  <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>

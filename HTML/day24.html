@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 24 | JS Functions & Scope</title>
+  <link rel="icon" type="image/svg+xml" href="../images/favicon-24.svg">
+  <link rel="stylesheet" href="../CSS/button.css">
+  <link rel="stylesheet" href="../CSS/day24.css">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day23.html'">&#8592; 23</button>
+        <button class="nav-btn nav-btn-active" disabled>24</button>
+        <button class="nav-btn" onclick="location.href='day25.html'">25 &#8594;</button>
+    </div>
+  <header class="header">
+    <h1>JavaScript: Functions & Scope</h1>
+    <nav>
+      <a href="#functions">Functions</a>
+      <a href="#scope">Scope</a>
+      <a href="#examples">Examples</a>
+      <a href="#quiz">Quiz</a>
+    </nav>
+  </header>
+  <main>
+    <section id="functions" class="section">
+      <h2>Functions</h2>
+      <p>Functions are reusable blocks of code that perform a specific task. They help organize code, avoid repetition, and make programs easier to read and maintain. Functions are a core building block in JavaScript and allow you to break your program into smaller, manageable pieces.</p>
+      <ul>
+        <li><b>Function Declaration:</b> <code>function greet() { ... }</code></li>
+        <li><b>Function Expression:</b> <code>const add = function(a, b) { ... };</code></li>
+        <li><b>Arrow Function:</b> <code>const square = x =&gt; x * x;</code></li>
+        <li><b>Parameters & Arguments:</b> Functions can take inputs (parameters) and return outputs.</li>
+      </ul>
+      <pre><code class="code-block">function greet(name) {
+  return `Hello, ${name}!`;
+}
+const result = greet("Alice"); // "Hello, Alice!"</code></pre>
+      <pre><code class="code-block">const multiply = (a, b) =&gt; a * b;
+let product = multiply(3, 4); // 12</code></pre>
+    </section>
+    <section id="scope" class="section">
+      <h2>Scope</h2>
+      <p>Scope determines where variables and functions are accessible in your code. JavaScript has function scope and block scope:</p>
+      <ul>
+        <li><b>Global Scope:</b> Variables declared outside any function are accessible everywhere.</li>
+        <li><b>Function Scope:</b> Variables declared inside a function are only accessible within that function.</li>
+        <li><b>Block Scope:</b> Variables declared with <code>let</code> or <code>const</code> inside a block (<code>{ }</code>) are only accessible within that block.</li>
+      </ul>
+      <pre><code class="code-block">let x = 10; // global
+function show() {
+  let y = 5; // function scope
+  if (y &gt; 2) {
+    let z = 20; // block scope
+    console.log(z); // 20
+  }
+  // console.log(z); // Error: z is not defined
+}
+show();</code></pre>
+    </section>
+    <section id="examples" class="section">
+      <h2>Try It Yourself</h2>
+      <div class="tryit-block">
+        <label for="nameInput">Enter your name:</label>
+        <input type="text" id="nameInput" value="">
+        <button class="btn" id="greetBtn">Greet Me</button>
+        <div id="greetResult"></div>
+      </div>
+      <div class="tryit-block">
+        <label for="numA">A:</label>
+        <input type="number" id="numA" value="2">
+        <label for="numB">B:</label>
+        <input type="number" id="numB" value="3">
+        <button class="btn" id="multiplyBtn">Multiply</button>
+        <div id="multiplyResult"></div>
+      </div>
+    </section>
+    <section id="quiz" class="section quiz-section">
+      <h2>Quick Quiz</h2>
+      <div id="quiz-area"></div>
+      <button class="btn" id="startQuiz">Start Quiz</button>
+      <div id="quiz-result"></div>
+    </section>
+  </main>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day2.html'">&#8592; 2</button>
+        <button class="nav-btn nav-btn-active" disabled>24</button>
+        <button class="nav-btn" onclick="location.href='day25.html'">25 &#8594;</button>
+    </div>
+  <footer class="footer">
+    <p>&copy; 2025 JavaScript Learning Roadmap</p>
+  </footer>
+  <script src="../JavaScript/day24.js"></script>
+  <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>

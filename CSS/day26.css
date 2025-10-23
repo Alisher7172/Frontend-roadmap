@@ -1,0 +1,341 @@
+/* Day 26: DOM Manipulation - Unique Style */
+:root {
+  --bg: #f7f6fd;
+  --card: #fff;
+  --accent: #00b894;
+  --accent2: #6c5ce7;
+  --text: #22223b;
+  --radius: 1.3rem;
+  --shadow: 0 8px 32px rgba(108,92,231,0.10);
+  --highlight: #ffeaa7;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.2rem;
+}
+.header {
+  background: linear-gradient(90deg, var(--accent2) 60%, var(--accent) 100%);
+  color: #fff;
+  padding: 2.5rem 0 1.2rem 0;
+  box-shadow: var(--shadow);
+}
+.header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+.header nav {
+  margin-top: 1.2rem;
+}
+.header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1.5rem;
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+.header nav a:hover {
+  color: var(--accent);
+}
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: 2.2rem 0;
+  padding: 2.2rem 2.5rem;
+}
+.card h2 {
+  color: var(--accent2);
+  margin-top: 0;
+}
+.code-block {
+  background: #23243a;
+  color: #f8f8f2;
+  padding: 1.1rem 1.3rem;
+  border-radius: 0.7rem;
+  font-size: 1.07rem;
+  font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', 'Menlo', monospace;
+  margin: 1.1rem 0 1.3rem 0;
+  overflow-x: auto;
+  border: 1.5px solid #393a5a;
+  box-shadow: none;
+  word-break: normal;
+  white-space: pre;
+  line-height: 1.6;
+  transition: border 0.2s;
+}
+.code-block::-webkit-scrollbar {
+  height: 7px;
+  background: #23243a;
+  border-radius: 0.7rem;
+}
+.code-block::-webkit-scrollbar-thumb {
+  background: #393a5a;
+  border-radius: 0.7rem;
+}
+@media (max-width: 700px) {
+  .code-block {
+    font-size: 0.97rem;
+    padding: 0.7rem 0.4rem;
+  }
+}
+.practice-block {
+  background: #f4f9ff;
+  border-radius: 0.7rem;
+  padding: 1.2rem 1rem;
+  margin: 1.2rem 0;
+  box-shadow: 0 2px 8px rgba(108,92,231,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: flex-start;
+}
+.practice-block label {
+  font-weight: 600;
+  color: var(--accent2);
+}
+.practice-block input[type="text"],
+.practice-block input[type="color"] {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1.2px solid #e0e0e0;
+  font-size: 1rem;
+  font-family: inherit;
+  width: 180px;
+  background: #fff;
+  color: #22223b;
+}
+.practice-block .btn {
+  margin-top: 0.2rem;
+}
+.item-list {
+  margin: 0.5rem 0 0 0;
+  padding: 0 0 0 1.2rem;
+}
+.item-list li {
+  margin-bottom: 0.3rem;
+  background: #e0e7ff;
+  border-radius: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  color: #22223b;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.toggle-box {
+  background: #e0e7ff;
+  border-radius: 0.7rem;
+  padding: 1rem 1.5rem;
+  color: #6c5ce7;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+.toggle-box.highlight {
+  background: var(--highlight);
+  color: #00b894;
+}
+.btn {
+  background: var(--accent2);
+  color: #fff;
+  border: none;
+  font-size: 1.1rem;
+  border-radius: 2rem;
+  padding: 0.7rem 2.2rem;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.2s, color 0.2s;
+  margin-top: 0.5rem;
+}
+.btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+.footer {
+  background: var(--accent2);
+  color: #fff;
+  text-align: center;
+  padding: 1.2rem 0 0.7rem 0;
+  margin-top: 2.5rem;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+@media (max-width: 700px) {
+  .container {
+    padding: 0 0.3rem;
+  }
+  .card {
+    padding: 1.2rem 0.7rem;
+  }
+  .header nav a {
+    margin: 0 0.5rem;
+    font-size: 1rem;
+  }
+}
+/* Day 26: Distinct Modern Style */
+:root {
+  --bg: #181c2f;
+  --card: #23294a;
+  --accent: #ff7675;
+  --accent2: #74b9ff;
+  --text: #f5f6fa;
+  --radius: 1.2rem;
+  --shadow: 0 6px 32px rgba(116,185,255,0.10);
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.2rem;
+}
+.header {
+  background: linear-gradient(90deg, var(--accent2) 60%, var(--accent) 100%);
+  color: #fff;
+  padding: 2.5rem 0 1.2rem 0;
+  box-shadow: var(--shadow);
+}
+.header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+.header nav {
+  margin-top: 1.2rem;
+}
+.header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1.5rem;
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+.header nav a:hover {
+  color: var(--accent);
+}
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: 2.2rem 0;
+  padding: 2.2rem 2.5rem;
+}
+.card h2 {
+  color: var(--accent2);
+  margin-top: 0;
+}
+.code-block {
+  background: #11131e;
+  color: #ffeaa7;
+  padding: 1.1rem 1.4rem;
+  border-radius: 0.7rem;
+  font-size: 1.08rem;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+  margin: 1.2rem 0;
+  overflow-x: auto;
+  border: 1.5px solid #ff767555;
+}
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.2rem;
+  background: #23294a;
+  color: #fff;
+}
+.compare-table th, .compare-table td {
+  border: 1px solid #353b5c;
+  padding: 0.7rem 1rem;
+  text-align: left;
+}
+.compare-table th {
+  background: var(--accent2);
+  color: #23294a;
+}
+.practice-block {
+  background: #1e2237;
+  border-radius: 0.7rem;
+  padding: 1.2rem 1rem;
+  margin: 1.2rem 0;
+  box-shadow: 0 2px 8px rgba(116,185,255,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: flex-start;
+}
+.practice-block label {
+  font-weight: 600;
+  color: var(--accent2);
+}
+.practice-block input[type="text"] {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1.2px solid #353b5c;
+  font-size: 1rem;
+  font-family: inherit;
+  width: 220px;
+  background: #23294a;
+  color: #fff;
+}
+.practice-block .btn {
+  margin-top: 0.2rem;
+}
+#sumResult, #keysResult {
+  margin-top: 0.5rem;
+  font-size: 1.08rem;
+  color: var(--accent);
+  min-height: 1.2em;
+}
+.btn {
+  background: var(--accent2);
+  color: #23294a;
+  border: none;
+  font-size: 1.1rem;
+  border-radius: 2rem;
+  padding: 0.7rem 2.2rem;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.2s, color 0.2s;
+  margin-top: 0.5rem;
+}
+.btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+.footer {
+  background: var(--accent2);
+  color: #23294a;
+  text-align: center;
+  padding: 1.2rem 0 0.7rem 0;
+  margin-top: 2.5rem;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+@media (max-width: 700px) {
+  .container {
+    padding: 0 0.3rem;
+  }
+  .card {
+    padding: 1.2rem 0.7rem;
+  }
+  .header nav a {
+    margin: 0 0.5rem;
+    font-size: 1rem;
+  }
+}

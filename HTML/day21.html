@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 21 | Responsive Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-21.svg">
+    <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="stylesheet" href="../CSS/day21.css">
+</head>
+<body>
+    <h1 id="description">Create your own portfolio or clone this one</h1>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day20.html'">&#8592; 20</button>
+        <button class="nav-btn" onclick="location.href='day21.html'">21</button>
+        <button class="nav-btn" onclick="location.href='day22.html'">22 &#8594;</button>
+    </div>
+    <header class="portfolio-header">
+        <div class="container">
+            <h1 class="portfolio-title">My Portfolio</h1>
+            <nav class="portfolio-nav">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="profile-img">
+                    <div>
+                        <h2>Hello, I'm Will Smith</h2>
+                        <p>I'm a passionate front-end developer who loves building beautiful and functional web experiences. I enjoy working with modern technologies and always strive to learn more.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- Projects will be injected by JS -->
+                </div>
+            </div>
+        </section>
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <h2>Skills</h2>
+                <ul class="skills-list">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                    <li>React</li>
+                    <li>TypeScript</li>
+                    <li>Git</li>
+                    <li>Figma</li>
+                </ul>
+            </div>
+        </section>
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Contact</h2>
+                <form id="contactForm">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <textarea id="message" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+                <div id="formMessage"></div>
+            </div>
+        </section>
+    </main>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day20.html'">&#8592; 20</button>
+        <button class="nav-btn" onclick="location.href='day21.html'">21</button>
+        <button class="nav-btn" onclick="location.href='day22.html'">22  &#8594;</button>
+    </div>
+    <footer class="portfolio-footer">
+        <div class="container">
+            <p>&copy; 2025 Will Smith. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="../JavaScript/day21.js"></script>
+    <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>

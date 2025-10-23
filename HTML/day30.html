@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JavaScript: Promises & Async/Await</title>
+    <link rel="stylesheet" href="../CSS/day30.css">
+    <link rel="icon" href="../images/favicon-30.svg">
+    <link rel="stylesheet" href="../CSS/button.css">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day29.html'">&#8592; 29</button>
+        <button class="nav-btn" onclick="location.href='day30.html'">30</button>
+        <button class="nav-btn" onclick="location.href='day31.html'">31 &#8594;</button>
+    </div>
+    <header>
+        <h1>Async JavaScript: Promises & Async/Await</h1>
+        <p>Learn how to handle asynchronous operations in modern JavaScript with interactive demos.</p>
+    </header>
+    <main>
+        <section class="feature" id="promises-demo">
+            <h2>Promises Example</h2>
+            <p><b>What is a Promise?</b><br>
+            A <b>Promise</b> in JavaScript is an object representing the eventual completion (or failure) of an asynchronous operation and its resulting value. Promises allow you to write asynchronous code that is easier to read and maintain, avoiding deeply nested callbacks (callback hell).<br>
+            <b>States:</b> pending, fulfilled, rejected.<br>
+            <b>Usage:</b> You create a Promise with <code>new Promise()</code>, and handle results with <code>.then()</code> and <code>.catch()</code>.<br>
+            <b>Example:</b> <code>fetch('url').then(res =&gt; res.json()).catch(err =&gt; ...)</code>
+            </p>
+            <p>Click the button to simulate a delayed API call using Promises.</p>
+            <button id="promise-btn">Run Promise Demo</button>
+            <div id="promise-result" class="result"></div>
+        </section>
+        <section class="feature" id="async-await-demo">
+            <h2>Async/Await Example</h2>
+            <p><b>What is async/await?</b><br>
+            <b>async/await</b> is modern JavaScript syntax for working with Promises. <code>async</code> functions always return a Promise, and <code>await</code> pauses the function execution until the Promise resolves or rejects.<br>
+            This makes asynchronous code look and behave more like synchronous code, improving readability and error handling.<br>
+            <b>Usage:</b> Use <code>async function</code> and <code>await</code> inside it.<br>
+            <b>Example:</b> <code>const data = await fetch('url');</code>
+            </p>
+            <p>Click the button to simulate a delayed API call using async/await.</p>
+            <button id="async-btn">Run Async/Await Demo</button>
+            <div id="async-result" class="result"></div>
+        </section>
+        <section class="feature" id="quiz">
+            <h2>Quick Quiz: Async JS</h2>
+            <form id="quiz-form">
+                <div class="quiz-question">
+                    <h4>Q1: What does a Promise represent?</h4>
+                    <label><input type="radio" name="q0" value="A future value"> A future value</label><br>
+                    <label><input type="radio" name="q0" value="A function"> A function</label><br>
+                    <label><input type="radio" name="q0" value="A variable"> A variable</label><br>
+                    <label><input type="radio" name="q0" value="A loop"> A loop</label>
+                </div>
+                <div class="quiz-question">
+                    <h4>Q2: Which keyword is used to wait for a Promise to resolve?</h4>
+                    <label><input type="radio" name="q1" value="await"> await</label><br>
+                    <label><input type="radio" name="q1" value="async"> async</label><br>
+                    <label><input type="radio" name="q1" value="then"> then</label><br>
+                    <label><input type="radio" name="q1" value="setTimeout"> setTimeout</label>
+                </div>
+                <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+            </form>
+            <div id="quiz-result"></div>
+        </section>
+    </main>
+    <div class="nav-buttons-bottom">
+        <button class="nav-btn" onclick="location.href='day29.html'">&#8592; 29</button>
+        <button class="nav-btn" onclick="location.href='day30.html'">30</button>
+        <button class="nav-btn" onclick="location.href='day31.html'">31 &#8594;</button>
+    </div>
+    <footer>
+        <p>Created by Alisher &mdash; Frontend Roadmap</p>
+    </footer>
+    <script src="../JavaScript/day30.js"></script>
+    <script src="../JavaScript/navigation.js"></script>
+    <script>
+    function submitQuiz() {
+        const answers = ["A future value", "await"];
+        let score = 0;
+        for (let i = 0; i < answers.length; i++) {
+            const radios = document.getElementsByName('q' + i);
+            let selected = '';
+            for (const radio of radios) {
+                if (radio.checked) selected = radio.value;
+            }
+            if (selected === answers[i]) score++;
+        }
+        const result = document.getElementById('quiz-result');
+        result.textContent = 'You scored ' + score + ' out of ' + answers.length + '!';
+        result.style.color = (score === answers.length) ? '#22c55e' : '#2563eb';
+    }
+    </script>
+</body>
+</html>
