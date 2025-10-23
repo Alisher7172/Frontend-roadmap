@@ -3,25 +3,603 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 1</title>
+    <title>Day 1: What is HTML and Basic Structure of Webpage</title>
     <link rel="icon" type="image/svg+xml" href="../images/favicon-1.svg">
     <link rel="stylesheet" href="../CSS/button.css">
-    <link rel="stylesheet" href="../CSS/animations.css">
 </head>
-<body>    
-<div class="nav-buttons-top">
-    <button class="nav-btn" onclick="location.href='day50.html'">&#8592;50</button>
-    <button class="nav-btn" onclick="location.href='day1.html'">1</button>
-    <button class="nav-btn" onclick="location.href='day3.html'">3 &#8594;</button>
-</div>
-    <h1 id="name"></h1>
-    <div style="height: 60vh;"></div>
-    <div class="nav-buttons-bottom">
-        <button class="nav-btn" onclick="location.href='day2.html'">&#8592; 2</button>
+<body>
+    <!-- Navigation -->
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day50.html'">&#8592; 50</button>
         <button class="nav-btn" onclick="location.href='day1.html'">1</button>
-        <button class="nav-btn" onclick="location.href='day3.html'">3 &#8594;</button>
+        <button class="nav-btn" onclick="location.href='day2.html'">2 &#8594;</button>
     </div>
-    <script src="../JavaScript/animations.js"></script>
+
+    <!-- Main Header -->
+    <header>
+        <h1>Day 1: What is HTML and Basic Structure of Webpage</h1>
+        <p><em>Learn the fundamentals of HTML - the foundation of all websites</em></p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Section 1: What is HTML? -->
+        <section>
+            <h2>What is HTML?</h2>
+            <p><strong>HTML</strong> stands for <strong>HyperText Markup Language</strong>. It is the standard markup language used to create web pages.</p>
+            
+            <h3>Breaking down HTML:</h3>
+            <ul>
+                <li><strong>HyperText:</strong> Text that contains links to other texts or media</li>
+                <li><strong>Markup:</strong> A system of annotating text to indicate structure and formatting</li>
+                <li><strong>Language:</strong> A set of rules and syntax for creating documents</li>
+            </ul>
+
+            <h3>Key Points about HTML:</h3>
+            <ol>
+                <li>HTML is <em>not</em> a programming language - it's a markup language</li>
+                <li>HTML uses <strong>tags</strong> to structure content</li>
+                <li>HTML tells the browser how to display content</li>
+                <li>HTML is the backbone of every website</li>
+                <li>HTML works together with CSS (styling) and JavaScript (functionality)</li>
+            </ol>
+        </section>
+
+        <!-- Section 2: HTML Elements and Tags -->
+        <section>
+            <h2>HTML Elements and Tags</h2>
+            <p>HTML uses <strong>elements</strong> to structure content. Elements are created using <strong>tags</strong>.</p>
+            
+            <h3>Anatomy of an HTML Element:</h3>
+            <pre>
+&lt;tagname&gt;Content goes here&lt;/tagname&gt;
+            </pre>
+            
+            <h3>Parts of an HTML Element:</h3>
+            <ul>
+                <li><strong>Opening Tag:</strong> &lt;tagname&gt;</li>
+                <li><strong>Content:</strong> The text or other elements inside</li>
+                <li><strong>Closing Tag:</strong> &lt;/tagname&gt;</li>
+            </ul>
+
+            <h3>Examples of Common HTML Tags:</h3>
+            <table border="1">
+                <tr>
+                    <th>Tag</th>
+                    <th>Purpose</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>&lt;h1&gt;</td>
+                    <td>Main heading</td>
+                    <td>&lt;h1&gt;Page Title&lt;/h1&gt;</td>
+                </tr>
+                <tr>
+                    <td>&lt;p&gt;</td>
+                    <td>Paragraph</td>
+                    <td>&lt;p&gt;This is a paragraph.&lt;/p&gt;</td>
+                </tr>
+                <tr>
+                    <td>&lt;a&gt;</td>
+                    <td>Link</td>
+                    <td>&lt;a href="page.html"&gt;Click here&lt;/a&gt;</td>
+                </tr>
+                <tr>
+                    <td>&lt;img&gt;</td>
+                    <td>Image</td>
+                    <td>&lt;img src="photo.jpg" alt="Description"&gt;</td>
+                </tr>
+                <tr>
+                    <td>&lt;div&gt;</td>
+                    <td>Container</td>
+                    <td>&lt;div&gt;Content group&lt;/div&gt;</td>
+                </tr>
+            </table>
+
+            <h3>Self-Closing Tags:</h3>
+            <p>Some tags don't need closing tags because they don't contain content:</p>
+            <ul>
+                <li>&lt;br&gt; - Line break</li>
+                <li>&lt;hr&gt; - Horizontal rule</li>
+                <li>&lt;img&gt; - Image</li>
+                <li>&lt;input&gt; - Form input</li>
+                <li>&lt;meta&gt; - Metadata</li>
+            </ul>
+        </section>
+
+        <!-- Section 3: Basic HTML Document Structure -->
+        <section>
+            <h2>Basic HTML Document Structure</h2>
+            <p>Every HTML document follows a standard structure. Here's the basic template:</p>
+            
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+    &lt;p&gt;This is my first webpage!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+
+            <h3>Explaining Each Part:</h3>
+            <dl>
+                <dt><strong>&lt;!DOCTYPE html&gt;</strong></dt>
+                <dd>Declares this as an HTML5 document. Must be the first line.</dd>
+                
+                <dt><strong>&lt;html&gt;</strong></dt>
+                <dd>The root element that contains all other elements. The <code>lang="en"</code> attribute specifies the language.</dd>
+                
+                <dt><strong>&lt;head&gt;</strong></dt>
+                <dd>Contains metadata about the document. This content is not displayed on the page.</dd>
+                
+                <dt><strong>&lt;meta charset="UTF-8"&gt;</strong></dt>
+                <dd>Specifies the character encoding for the document.</dd>
+                
+                <dt><strong>&lt;meta name="viewport"&gt;</strong></dt>
+                <dd>Makes the page responsive on different screen sizes.</dd>
+                
+                <dt><strong>&lt;title&gt;</strong></dt>
+                <dd>Sets the title shown in the browser tab.</dd>
+                
+                <dt><strong>&lt;body&gt;</strong></dt>
+                <dd>Contains all the visible content of the webpage.</dd>
+            </dl>
+        </section>
+
+        <!-- Section 4: Head Section Elements -->
+        <section>
+            <h2>The &lt;head&gt; Section</h2>
+            <p>The head section contains important information about your webpage that isn't displayed to users.</p>
+            
+            <h3>Common &lt;head&gt; Elements:</h3>
+            <table border="1">
+                <tr>
+                    <th>Element</th>
+                    <th>Purpose</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>&lt;title&gt;</td>
+                    <td>Page title in browser tab</td>
+                    <td>&lt;title&gt;My Website&lt;/title&gt;</td>
+                </tr>
+                <tr>
+                    <td>&lt;meta&gt;</td>
+                    <td>Metadata about the page</td>
+                    <td>&lt;meta name="description" content="About my site"&gt;</td>
+                </tr>
+                <tr>
+                    <td>&lt;link&gt;</td>
+                    <td>Links to external resources</td>
+                    <td>&lt;link rel="stylesheet" href="style.css"&gt;</td>
+                </tr>
+                <tr>
+                    <td>&lt;script&gt;</td>
+                    <td>JavaScript code or links</td>
+                    <td>&lt;script src="script.js"&gt;&lt;/script&gt;</td>
+                </tr>
+                <tr>
+                    <td>&lt;style&gt;</td>
+                    <td>Internal CSS styles</td>
+                    <td>&lt;style&gt;body { margin: 0; }&lt;/style&gt;</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Section 5: Body Section Elements -->
+        <section>
+            <h2>The &lt;body&gt; Section</h2>
+            <p>The body contains all the visible content of your webpage.</p>
+            
+            <h3>Semantic HTML Elements:</h3>
+            <p>HTML5 introduced semantic elements that give meaning to different parts of your page:</p>
+            
+            <table border="1">
+                <tr>
+                    <th>Element</th>
+                    <th>Purpose</th>
+                    <th>Usage</th>
+                </tr>
+                <tr>
+                    <td>&lt;header&gt;</td>
+                    <td>Page or section header</td>
+                    <td>Top of page, contains title, logo, navigation</td>
+                </tr>
+                <tr>
+                    <td>&lt;nav&gt;</td>
+                    <td>Navigation links</td>
+                    <td>Menu, breadcrumbs, pagination</td>
+                </tr>
+                <tr>
+                    <td>&lt;main&gt;</td>
+                    <td>Main content area</td>
+                    <td>Primary content of the page</td>
+                </tr>
+                <tr>
+                    <td>&lt;section&gt;</td>
+                    <td>Section of content</td>
+                    <td>Grouping related content</td>
+                </tr>
+                <tr>
+                    <td>&lt;article&gt;</td>
+                    <td>Independent content</td>
+                    <td>Blog posts, news articles</td>
+                </tr>
+                <tr>
+                    <td>&lt;aside&gt;</td>
+                    <td>Side content</td>
+                    <td>Sidebars, related links</td>
+                </tr>
+                <tr>
+                    <td>&lt;footer&gt;</td>
+                    <td>Page or section footer</td>
+                    <td>Copyright, contact info, links</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Section 6: Text Elements -->
+        <section>
+            <h2>Text Elements</h2>
+            
+            <h3>Headings:</h3>
+            <p>HTML provides 6 levels of headings:</p>
+            <h1>This is an H1 heading (largest)</h1>
+            <h2>This is an H2 heading</h2>
+            <h3>This is an H3 heading</h3>
+            <h4>This is an H4 heading</h4>
+            <h5>This is an H5 heading</h5>
+            <h6>This is an H6 heading (smallest)</h6>
+            
+            <h3>Text Formatting:</h3>
+            <ul>
+                <li><strong>Bold text</strong> - using &lt;strong&gt; or &lt;b&gt;</li>
+                <li><em>Italic text</em> - using &lt;em&gt; or &lt;i&gt;</li>
+                <li><u>Underlined text</u> - using &lt;u&gt;</li>
+                <li><mark>Highlighted text</mark> - using &lt;mark&gt;</li>
+                <li><small>Small text</small> - using &lt;small&gt;</li>
+                <li><del>Deleted text</del> - using &lt;del&gt;</li>
+                <li><ins>Inserted text</ins> - using &lt;ins&gt;</li>
+                <li>Text with <sub>subscript</sub> - using &lt;sub&gt;</li>
+                <li>Text with <sup>superscript</sup> - using &lt;sup&gt;</li>
+            </ul>
+        </section>
+
+        <!-- Section 7: Lists -->
+        <section>
+            <h2>Lists</h2>
+            
+            <h3>Unordered List (Bullets):</h3>
+            <ul>
+                <li>First item</li>
+                <li>Second item</li>
+                <li>Third item
+                    <ul>
+                        <li>Nested item 1</li>
+                        <li>Nested item 2</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>Ordered List (Numbers):</h3>
+            <ol>
+                <li>First step</li>
+                <li>Second step</li>
+                <li>Third step</li>
+            </ol>
+            
+            <h3>Description List:</h3>
+            <dl>
+                <dt>HTML</dt>
+                <dd>HyperText Markup Language</dd>
+                <dt>CSS</dt>
+                <dd>Cascading Style Sheets</dd>
+                <dt>JavaScript</dt>
+                <dd>Programming language for web interactions</dd>
+            </dl>
+        </section>
+
+        <!-- Section 8: Links and Images -->
+        <section>
+            <h2>Links and Images</h2>
+            
+            <h3>Links:</h3>
+            <ul>
+                <li><a href="https://www.example.com">External link to another website</a></li>
+                <li><a href="day2.html">Internal link to another page</a></li>
+                <li><a href="#top">Link to top of this page</a></li>
+                <li><a href="mailto:someone@example.com">Email link</a></li>
+                <li><a href="tel:+1234567890">Phone number link</a></li>
+            </ul>
+            
+            <h3>Images:</h3>
+            <p>Images use the &lt;img&gt; tag with src and alt attributes:</p>
+            <p><em>Note: In a real webpage, you would see actual images here. The alt text describes the image for accessibility.</em></p>
+            
+            <h3>Image Attributes:</h3>
+            <ul>
+                <li><strong>src:</strong> Path to the image file</li>
+                <li><strong>alt:</strong> Alternative text for accessibility</li>
+                <li><strong>width:</strong> Image width</li>
+                <li><strong>height:</strong> Image height</li>
+                <li><strong>title:</strong> Tooltip text on hover</li>
+            </ul>
+        </section>
+
+        <!-- Section 9: Tables -->
+        <section>
+            <h2>Tables</h2>
+            <p>Tables are used to display structured data in rows and columns:</p>
+            
+            <table border="1">
+                <caption>Sample Student Grades</caption>
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Subject</th>
+                        <th>Grade</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Math</td>
+                        <td>85</td>
+                        <td>Pass</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>Science</td>
+                        <td>92</td>
+                        <td>Pass</td>
+                    </tr>
+                    <tr>
+                        <td>Bob Johnson</td>
+                        <td>History</td>
+                        <td>78</td>
+                        <td>Pass</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Table Elements:</h3>
+            <ul>
+                <li><strong>&lt;table&gt;</strong> - The table container</li>
+                <li><strong>&lt;caption&gt;</strong> - Table title</li>
+                <li><strong>&lt;thead&gt;</strong> - Table header section</li>
+                <li><strong>&lt;tbody&gt;</strong> - Table body section</li>
+                <li><strong>&lt;tfoot&gt;</strong> - Table footer section</li>
+                <li><strong>&lt;tr&gt;</strong> - Table row</li>
+                <li><strong>&lt;th&gt;</strong> - Table header cell</li>
+                <li><strong>&lt;td&gt;</strong> - Table data cell</li>
+            </ul>
+        </section>
+
+        <!-- Section 10: Forms -->
+        <section>
+            <h2>Forms</h2>
+            <p>Forms allow users to input data. Here's a basic example:</p>
+            
+            <form>
+                <fieldset>
+                    <legend>Contact Information</legend>
+                    
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <br><br>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <br><br>
+                    
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" min="1" max="120">
+                    <br><br>
+                    
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" rows="4" cols="50"></textarea>
+                    <br><br>
+                    
+                    <input type="radio" id="beginner" name="level" value="beginner">
+                    <label for="beginner">Beginner</label>
+                    
+                    <input type="radio" id="intermediate" name="level" value="intermediate">
+                    <label for="intermediate">Intermediate</label>
+                    
+                    <input type="radio" id="advanced" name="level" value="advanced">
+                    <label for="advanced">Advanced</label>
+                    <br><br>
+                    
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter">Subscribe to newsletter</label>
+                    <br><br>
+                    
+                    <label for="country">Country:</label>
+                    <select id="country" name="country">
+                        <option value="">Select a country</option>
+                        <option value="us">United States</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="ca">Canada</option>
+                        <option value="au">Australia</option>
+                    </select>
+                    <br><br>
+                    
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
+                </fieldset>
+            </form>
+        </section>
+
+        <!-- Section 11: Attributes -->
+        <section>
+            <h2>HTML Attributes</h2>
+            <p>Attributes provide additional information about HTML elements.</p>
+            
+            <h3>Common Attributes:</h3>
+            <table border="1">
+                <tr>
+                    <th>Attribute</th>
+                    <th>Purpose</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>id</td>
+                    <td>Unique identifier</td>
+                    <td>&lt;div id="header"&gt;</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>CSS class name</td>
+                    <td>&lt;p class="highlight"&gt;</td>
+                </tr>
+                <tr>
+                    <td>style</td>
+                    <td>Inline CSS</td>
+                    <td>&lt;p style="color: red;"&gt;</td>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td>Tooltip text</td>
+                    <td>&lt;img title="Description"&gt;</td>
+                </tr>
+                <tr>
+                    <td>lang</td>
+                    <td>Language</td>
+                    <td>&lt;html lang="en"&gt;</td>
+                </tr>
+                <tr>
+                    <td>href</td>
+                    <td>Link destination</td>
+                    <td>&lt;a href="page.html"&gt;</td>
+                </tr>
+                <tr>
+                    <td>src</td>
+                    <td>Source file</td>
+                    <td>&lt;img src="photo.jpg"&gt;</td>
+                </tr>
+                <tr>
+                    <td>alt</td>
+                    <td>Alternative text</td>
+                    <td>&lt;img alt="Description"&gt;</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Section 12: Best Practices -->
+        <section>
+            <h2>HTML Best Practices</h2>
+            
+            <h3>1. Use Semantic HTML</h3>
+            <ul>
+                <li>Use appropriate tags for content (h1 for main heading, p for paragraphs)</li>
+                <li>Use semantic elements (header, nav, main, section, article, footer)</li>
+                <li>Choose tags based on meaning, not appearance</li>
+            </ul>
+            
+            <h3>2. Write Clean Code</h3>
+            <ul>
+                <li>Use proper indentation</li>
+                <li>Always close tags that need closing</li>
+                <li>Use lowercase for tag names</li>
+                <li>Quote attribute values</li>
+            </ul>
+            
+            <h3>3. Accessibility</h3>
+            <ul>
+                <li>Always include alt text for images</li>
+                <li>Use proper heading hierarchy (h1, h2, h3, etc.)</li>
+                <li>Associate labels with form inputs</li>
+                <li>Use meaningful link text</li>
+            </ul>
+            
+            <h3>4. SEO (Search Engine Optimization)</h3>
+            <ul>
+                <li>Use descriptive page titles</li>
+                <li>Include meta descriptions</li>
+                <li>Use proper heading structure</li>
+                <li>Write meaningful content</li>
+            </ul>
+        </section>
+
+        <!-- Section 13: Practice Exercise -->
+        <section>
+            <h2>Practice Exercise</h2>
+            <p><strong>Create your first webpage!</strong></p>
+            
+            <h3>Challenge:</h3>
+            <p>Create an HTML file with the following elements:</p>
+            <ol>
+                <li>Proper HTML5 document structure</li>
+                <li>A meaningful title</li>
+                <li>A main heading with your name</li>
+                <li>A paragraph about yourself</li>
+                <li>A list of your hobbies (unordered)</li>
+                <li>A list of your goals (ordered)</li>
+                <li>A simple table with your favorite books/movies</li>
+                <li>At least one link to your favorite website</li>
+            </ol>
+            
+            <h3>Bonus:</h3>
+            <ul>
+                <li>Add a contact form</li>
+                <li>Use semantic HTML elements</li>
+                <li>Include proper alt text and labels</li>
+            </ul>
+        </section>
+
+        <!-- Section 14: What's Next -->
+        <section>
+            <h2>What's Next?</h2>
+            <p>Congratulations! You've learned the fundamentals of HTML. Here's what to expect:</p>
+            
+            <h3>Day 2: CSS - Styling Your Webpage</h3>
+            <ul>
+                <li>Learn how to make your HTML look beautiful</li>
+                <li>Colors, fonts, layouts, and more</li>
+                <li>Transform your plain HTML into attractive webpages</li>
+            </ul>
+            
+            <h3>Day 3: JavaScript - Adding Interactivity</h3>
+            <ul>
+                <li>Make your websites interactive</li>
+                <li>Handle user clicks, form submissions</li>
+                <li>Create dynamic content</li>
+            </ul>
+            
+            <h3>Keep Practicing!</h3>
+            <p>The best way to learn HTML is by writing it. Try creating different types of pages and experimenting with various elements.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <hr>
+        <h3>Summary</h3>
+        <p>Today you learned:</p>
+        <ul>
+            <li>What HTML is and why it's important</li>
+            <li>Basic structure of an HTML document</li>
+            <li>Common HTML elements and their uses</li>
+            <li>How to create headings, paragraphs, lists, tables, and forms</li>
+            <li>HTML attributes and best practices</li>
+        </ul>
+        
+        <p><strong>Remember:</strong> HTML is the foundation of web development. Master these basics, and you'll be ready to build amazing websites!</p>
+        
+        <!-- Bottom Navigation -->
+        <div class="nav-buttons-bottom">
+            <button class="nav-btn" onclick="location.href='day50.html'">&#8592; 50</button>
+            <button class="nav-btn" onclick="location.href='day1.html'">1</button>
+            <button class="nav-btn" onclick="location.href='day2.html'">2 &#8594;</button>
+        </div>
+    </footer>
     <script src="../JavaScript/navigation.js"></script>
 </body>
 </html>

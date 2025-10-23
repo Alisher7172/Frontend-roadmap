@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 2</title>
+    <title>Day 2 - CSS Styling</title>
     <link rel="icon" type="image/svg+xml" href="../images/favicon-2.svg">
     <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="stylesheet" href="../CSS/day2.css">
 </head>
 <body>
     <div class="nav-buttons-top">
@@ -13,11 +14,114 @@
         <button class="nav-btn" onclick="location.href='day2.html'">2</button>
         <button class="nav-btn" onclick="location.href='day3.html'">3 &#8594;</button>
     </div>
-    <div style="height: 60vh;"></div>
+
+    <div class="container animate-in">
+        <header class="header">
+            <h1 id="main-title">Day 2: CSS Styling</h1>
+            <p id="subtitle">Learning the fundamentals of Cascading Style Sheets</p>
+        </header>
+
+        <section class="section">
+            <h2>What is CSS?</h2>
+            <p>CSS (Cascading Style Sheets) is a <span class="highlight">styling language</span> used to describe the presentation of HTML documents. It controls the <span class="italic-text">visual appearance</span> of web pages, including colors, fonts, layouts, and animations.</p>
+            <p>CSS allows you to separate <span class="bold-text">content from presentation</span>, making your websites more maintainable and flexible.</p>
+        </section>
+
+        <section class="section">
+            <h2>CSS Selectors</h2>
+            <p>CSS selectors are patterns used to select and style HTML elements:</p>
+            <ul class="styled-list">
+                <li><strong>Element selectors:</strong> p, h1, div</li>
+                <li><strong>Class selectors:</strong> .className</li>
+                <li><strong>ID selectors:</strong> #idName</li>
+                <li><strong>Universal selector:</strong> *</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Colors & Backgrounds</h2>
+            <p>CSS provides various ways to define colors and backgrounds:</p>
+            <div class="color-demo">
+                <div class="color-box red">Red</div>
+                <div class="color-box blue">Teal</div>
+                <div class="color-box green">Blue</div>
+                <div class="color-box purple">Green</div>
+                <div class="color-box orange">Orange</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Box Model</h2>
+            <p>The CSS box model describes how elements are structured:</p>
+            <div class="box-model-demo">
+                This box demonstrates: Content + Padding + Border + Margin
+            </div>
+            <p>Every HTML element is essentially a <span class="underline-text">rectangular box</span> with content, padding, border, and margin.</p>
+        </section>
+
+        <section class="section">
+            <h2>Typography</h2>
+            <p>CSS gives you complete control over text styling:</p>
+            <ul class="styled-list">
+                <li>Font family, size, and weight</li>
+                <li>Text color and decoration</li>
+                <li>Line height and letter spacing</li>
+                <li>Text alignment and transformation</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Layout with Flexbox</h2>
+            <p>Flexbox provides a flexible way to arrange elements:</p>
+            <div class="flex-container">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+        </section>
+
+        <div class="card">
+            <h3>Interactive Elements</h3>
+            <p>CSS can make elements interactive with hover effects and transitions:</p>
+            <button class="demo-button">Hover Me!</button>
+            <button class="demo-button">Click Me!</button>
+            <p>Try hovering over buttons, cards, and sections to see the effects!</p>
+        </div>
+
+        <section class="section">
+            <h2>CSS Best Practices</h2>
+            <ul class="styled-list">
+                <li>Use meaningful class and ID names</li>
+                <li>Keep CSS organized and commented</li>
+                <li>Use external stylesheets for better maintainability</li>
+                <li>Consider responsive design from the start</li>
+                <li>Optimize for performance</li>
+            </ul>
+        </section>
+
+        <div class="quote">
+            CSS is not just about making things look pretty. It's about creating intuitive, accessible, and engaging user experiences.
+        </div>
+
+        <section class="section">
+            <h2>Next Steps</h2>
+            <p>Continue your CSS journey by exploring:</p>
+            <ul class="styled-list">
+                <li>CSS Grid for advanced layouts</li>
+                <li>CSS animations and transitions</li>
+                <li>Responsive design techniques</li>
+                <li>CSS preprocessors like Sass</li>
+                <li>Modern CSS features and frameworks</li>
+            </ul>
+            <p>Practice with <a href="#" class="demo-link">online CSS tools</a> and <a href="#" class="demo-link">coding challenges</a>!</p>
+        </section>
+    </div>
+
     <div class="nav-buttons-bottom">
         <button class="nav-btn" onclick="location.href='day1.html'">&#8592; 1</button>
         <button class="nav-btn" onclick="location.href='day2.html'">2</button>
         <button class="nav-btn" onclick="location.href='day3.html'">3 &#8594;</button>
     </div>
     <script src="../JavaScript/navigation.js"></script>
+</body>
 </html>
