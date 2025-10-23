@@ -1,0 +1,155 @@
+/* Colorful, bold styles for Day 40 — Quiz App */
+:root{
+  --max-width:980px;
+  --bg:linear-gradient(180deg,#fffefe 0%, #f7fbff 100%);
+  --card-bg: #ffffff;
+  --accent-a: #ff5c8a; /* pink */
+  --accent-b: #7c5cff; /* purple */
+  --accent-c: #00d4a3; /* mint */
+  --accent-d: #ffd166; /* yellow */
+  --text: #0b1320;
+  --muted: #6b7280;
+}
+body{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 20px;
+}
+.container{
+  max-width: var(--max-width);
+  margin: 20px auto;
+  background: var(--card-bg);
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(16,24,40,0.08);
+  border: 1px solid rgba(124,92,255,0.06);
+}
+.hero{
+  background: linear-gradient(90deg, rgba(255,92,138,0.08), rgba(124,92,255,0.06));
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+.hero h1{
+  color: linear-gradient(90deg,var(--accent-a),var(--accent-b));
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+}
+.lead{ color: var(--muted); margin:0 }
+
+.quiz{ margin-top:18px }
+.question{ font-weight:800; font-size:1.15rem; margin-bottom:14px }
+.options{ display:flex; flex-direction:column; gap:12px }
+
+/* hide the native radio but keep accessible */
+.options input[type="radio"]{ position: absolute; opacity: 0; pointer-events: none }
+
+.options label{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 16px;
+  border-radius:12px;
+  cursor:pointer;
+  background: linear-gradient(135deg,#ffffff 0%, #fbfbff 100%);
+  border: 2px solid rgba(16,24,40,0.04);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+}
+.options label:hover{ transform: translateY(-4px); box-shadow: 0 16px 40px rgba(15,23,42,0.08) }
+
+/* colored bullet */
+.options label .bullet{
+  width:38px; height:38px; flex:0 0 38px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; color:#fff; font-weight:700;
+}
+.options label .text{ flex:1 }
+
+/* default bullet gradient */
+.options label .bullet{ background: linear-gradient(135deg,var(--accent-a), var(--accent-b)); }
+
+/* style when selected using sibling selector */
+.options label input:checked + span.bullet{ box-shadow: 0 6px 18px rgba(0,0,0,0.12); transform: scale(1.04) }
+.options label input:checked + span.bullet + span.text{ font-weight:800; color:var(--text) }
+
+/* show a small check bubble when an option is selected (checkbox effect) */
+.options label .bullet{ position: relative }
+.options label .bullet::after{
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  background: #ffffff;
+  color: #000;
+  border-radius: 50%;
+  padding: 2px 4px;
+  font-size: 0.7rem;
+  display: none;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.08);
+}
+.options label input:checked + span.bullet::after{
+  content: '✓';
+  display: block;
+}
+
+/* different colored bullets (to vary options visually) */
+.options label:nth-child(1) .bullet{ background: linear-gradient(135deg,var(--accent-a), #ff8fb3) }
+.options label:nth-child(2) .bullet{ background: linear-gradient(135deg,var(--accent-b), #9b7cff) }
+.options label:nth-child(3) .bullet{ background: linear-gradient(135deg,var(--accent-c), #5ee6bf) }
+.options label:nth-child(4) .bullet{ background: linear-gradient(135deg,var(--accent-d), #ffd88f); color: #000; }
+
+.controls{ margin-top:18px; display:flex; gap:12px; justify-content:flex-end }
+
+/* Primary quiz button: bold, pill, elevated */
+.btn-primary{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background: linear-gradient(90deg,var(--accent-b),var(--accent-a));
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 1rem;
+  box-shadow: 0 12px 30px rgba(124,92,255,0.18);
+  transition: transform .14s ease, box-shadow .14s ease, opacity .14s ease;
+}
+.btn-primary:hover{ transform: translateY(-4px); box-shadow: 0 20px 40px rgba(124,92,255,0.22) }
+.btn-primary:active{ transform: translateY(-1px) scale(.998); box-shadow: 0 10px 26px rgba(124,92,255,0.16) }
+.btn-primary:focus-visible{ outline: none; box-shadow: 0 0 0 6px rgba(124,92,255,0.12) }
+.btn-primary[disabled], .btn-primary:disabled{ opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none }
+
+/* Secondary button: outlined pill with subtle fill on hover */
+.btn-secondary{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background: transparent;
+  color: var(--accent-b);
+  border: 2px solid rgba(124,92,255,0.12);
+  padding: 12px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 0.98rem;
+  transition: background .12s ease, transform .12s ease, border-color .12s ease;
+}
+.btn-secondary:hover{ background: rgba(124,92,255,0.06); transform: translateY(-2px); border-color: rgba(124,92,255,0.18) }
+.btn-secondary:active{ transform: translateY(0) }
+.btn-secondary:focus-visible{ outline: none; box-shadow: 0 0 0 5px rgba(124,92,255,0.06) }
+.btn-secondary[disabled], .btn-secondary:disabled{ opacity: 0.6; cursor: not-allowed }
+
+.result{ margin-top:18px; padding:14px; background: linear-gradient(90deg,#f0fff6,#f0fff9); border-radius:12px; border:1px solid rgba(0,212,163,0.08) }
+
+pre{ background:#0f1724; color:#e6eef8; padding:12px; border-radius:10px; overflow:auto }
+
+@media (max-width:720px){
+  .container{ padding:18px }
+  .hero h1{ font-size:1.4rem }
+  .options label{ padding:12px }
+}
+

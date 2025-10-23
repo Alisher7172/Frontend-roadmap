@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 40: Quiz App</title>
+    <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="stylesheet" href="../CSS/day40.css">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon-40.svg">
+</head>
+<body>
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day39.html'">&#8592; 39</button>
+        <button class="nav-btn" onclick="location.href='day40.html'">40</button>
+        <button class="nav-btn" onclick="location.href='day41.html'">41 &#8594;</button>
+    </div>
+
+    <div class="container">
+        <header class="hero">
+            <div class="hero-content">
+                <h1>Day 40: Build a Quiz App</h1>
+                <p class="lead">Create a small interactive quiz: questions, choices, navigation and scoring.</p>
+            </div>
+        </header>
+
+        <main class="content">
+            <section class="overview">
+                <h2>Overview</h2>
+                <p>A quiz app is a great exercise to practice DOM manipulation, state management, and event handling. Below is a tiny working demo you can play with and reuse.</p>
+            </section>
+
+            <section class="demo">
+                <h2>Live Demo</h2>
+                <div id="quiz" class="quiz">
+                    <!-- Quiz UI is rendered by JavaScript -->
+                </div>
+            </section>
+
+            <section class="features">
+                <h2>Features</h2>
+                <ul>
+                    <li>Multiple choice questions</li>
+                    <li>Next / Previous navigation</li>
+                    <li>Score and result screen</li>
+                    <li>Keyboard-friendly and responsive</li>
+                </ul>
+            </section>
+
+            <section class="code-sample">
+                <h2>How it works (summary)</h2>
+                <ol>
+                    <li>Questions are stored as objects in an array.</li>
+                    <li>UI is rendered dynamically from the current question state.</li>
+                    <li>User answers are stored and scored when the quiz finishes.</li>
+                </ol>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Want this quiz extended (timers, categories, persistent scores)? I can add those next.</p>
+        </footer>
+    </div>
+
+    <div class="nav-buttons-top">
+        <button class="nav-btn" onclick="location.href='day39.html'">&#8592; 39</button>
+        <button class="nav-btn" onclick="location.href='day40.html'">40</button>
+        <button class="nav-btn" onclick="location.href='day41.html'">41 &#8594;</button>
+    </div>
+
+    <script src="../JavaScript/day40.js"></script>
+    <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>
