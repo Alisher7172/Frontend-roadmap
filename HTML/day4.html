@@ -6,6 +6,7 @@
     <title>Day 4</title>
     <link rel="icon" type="image/svg+xml" href="../images/favicon-4.svg">
     <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="stylesheet" href="../CSS/day4.css">
 </head>
 <body>
     <div class="nav-buttons-top">
@@ -13,6 +14,87 @@
         <button class="nav-btn" onclick="location.href='day4.html'">4</button>
         <button class="nav-btn" onclick="location.href='day5.html'">5 &#8594;</button>
     </div>
+    <main class="container">
+        <h1>Day 4 — CSS Basics</h1>
+
+        <section>
+            <h2>Starting CSS</h2>
+            <p>CSS (Cascading Style Sheets) controls how HTML elements look — colors, layout, spacing, fonts and more.</p>
+        </section>
+
+        <section>
+            <h2>CSS Syntax</h2>
+            <p>Rules consist of a selector and a declaration block:</p>
+            <pre class="code"><code>selector {
+    property: value;
+    property: value;
+}</code></pre>
+            <p>Example:</p>
+            <pre class="code"><code>p {
+    color: #333;
+    line-height: 1.5;
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Selectors</h2>
+            <ul>
+                <li><strong>Element</strong> — targets elements by name: <code>div</code>, <code>p</code></li>
+                <li><strong>Class</strong> — reusable groups: <code>.card</code></li>
+                <li><strong>ID</strong> — single unique element: <code>#main</code></li>
+                <li><strong>Descendant</strong> — target within another: <code>.nav a</code></li>
+            </ul>
+            <p>Example: <code>&lt;div class="box"&gt;&lt;/div&gt;</code> and CSS <code>.box { ... }</code></p>
+        </section>
+
+        <section>
+            <h2>Box model</h2>
+            <p>Every element is a rectangle: content + padding + border + margin.</p>
+            <div class="demo-row">
+                <div class="box example-box">Content
+                    <div class="box-inner">Inner padding</div>
+                </div>
+                <div class="box model-legend">
+                    <p><strong>margin</strong> — space outside border</p>
+                    <p><strong>border</strong> — edge line</p>
+                    <p><strong>padding</strong> — space around content</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Colors & Typography</h2>
+            <p>Colors can be written as hex, rgb, or named values. Control fonts with <code>font-family</code>, size and weight.</p>
+            <p class="example-text">This is an example sentence demonstrating font-size, color and weight.</p>
+        </section>
+
+        <section>
+            <h2>Ways to apply CSS</h2>
+            <ol>
+                <li>External stylesheet — <code>&lt;link rel="stylesheet" href="styles.css"&gt;</code> (best practice)</li>
+                <li>Internal &lt;style&gt; block inside &lt;head&gt;</li>
+                <li>Inline using the <code>style="..."</code> attribute (least preferred)</li>
+            </ol>
+            <p>Inline example: <span style="color:#d9534f;font-weight:700;">red text via inline style</span></p>
+        </section>
+
+        <section>
+            <h2>Quick exercise</h2>
+            <p>Try the following:</p>
+            <ol>
+                <li>Change the background of the demo box below by editing <code>CSS/day4.css</code>.</li>
+                <li>Add a class to the paragraph and set its <code>font-size</code> to <code>18px</code>.</li>
+            </ol>
+            <div class="exercise">
+                <div class="box exercise-box">Demo box — open <code>CSS/day4.css</code> and change <code>--accent</code> to another color.</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Next: practice writing selectors and small layouts.</p>
+        </footer>
+    </main>
+
     <div class="nav-buttons-bottom">
         <button class="nav-btn" onclick="location.href='day3.html'">&#8592; 3</button>
         <button class="nav-btn" onclick="location.href='day4.html'">4</button>
