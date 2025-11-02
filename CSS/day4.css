@@ -1,0 +1,38 @@
+/* Styles for Day 4: CSS basics demo */
+:root{
+    --bg: #f7f8fb;
+    --accent: #4a90e2;
+    --muted: #666;
+}
+
+*{box-sizing:border-box}
+body{
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:var(--bg);
+    color:#222;
+    margin:0;
+    line-height:1.5;
+}
+.container{
+    max-width:900px;
+    margin:36px auto;
+    padding:24px;
+    background:#fff;
+    border-radius:8px;
+    box-shadow:0 6px 18px rgba(20,30,50,0.06);
+}
+h1{margin-top:0}
+.code{background:#0b1220;color:#e6eef8;padding:12px;border-radius:6px;overflow:auto}
+.code code{display:block;white-space:pre}
+.demo-row{display:flex;gap:20px;align-items:flex-start}
+.box{padding:16px;border:2px solid rgba(0,0,0,0.06);border-radius:6px;background:linear-gradient(180deg,#fff,#fbfdff)}
+.example-box{width:220px;background:linear-gradient(180deg,rgba(74,144,226,0.08),#fff);border-color:var(--accent);}
+.box-inner{margin-top:10px;padding:8px;background:#fff;border:1px dashed rgba(0,0,0,0.06)}
+.model-legend{flex:1}
+.example-text{font-size:16px;color:var(--muted)}
+.exercise .exercise-box{background:var(--accent);color:#fff;text-align:center}
+
+/* Responsive tweaks */
+@media (max-width:640px){
+    .demo-row{flex-direction:column}
+}
