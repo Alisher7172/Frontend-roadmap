@@ -1,0 +1,41 @@
+/* Day 5 — Demonstrate cascade, specificity, inheritance, and !important */
+:root{
+    --bg: #fbfcff;
+    --muted: #666;
+    --accent: #4a90e2;
+}
+*{box-sizing:border-box}
+body{
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    background:var(--bg);
+    margin:0;
+    color:#222;
+}
+.container{
+    max-width:900px;
+    margin:36px auto;
+    padding:24px;
+    background:#fff;
+    border-radius:8px;
+    box-shadow:0 6px 18px rgba(20,30,50,0.06);
+}
+.demo-row{display:flex;gap:16px;align-items:center;margin-top:12px}
+.box{padding:14px;border-radius:6px;border:1px solid rgba(0,0,0,0.06);width:200px;text-align:center}
+
+/* Element selector (lowest specificity) */
+.demo-row .box{ color: #1a1a1a; background:linear-gradient(180deg,#fff,#f6f9ff)}
+
+/* Class selector (higher specificity than element) */
+.demo-b{ color: #2b6cb0; background:#eef6ff }
+
+/* ID selector (higher specificity than class) */
+#special{ color: #138000; background:#e8fff0 }
+
+/* Example of !important (uncomment to test) */
+/* .demo-row .box { color: purple !important; } */
+
+.note{color:var(--muted);font-size:14px;margin-top:8px}
+
+@media (max-width:640px){
+    .demo-row{flex-direction:column}
+}

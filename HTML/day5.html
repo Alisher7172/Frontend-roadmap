@@ -6,6 +6,7 @@
     <title>Day 5</title>
     <link rel="icon" type="image/svg+xml" href="../images/favicon-5.svg">
     <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="stylesheet" href="../CSS/day5.css">
 </head>
 <body>
     <div class="nav-buttons-top">
@@ -13,6 +14,62 @@
         <button class="nav-btn" onclick="location.href='day5.html'">5</button>
         <button class="nav-btn" onclick="location.href='day6.html'">6 &#8594;</button>
     </div>
+    <main class="container">
+        <h1>Day 5 — How CSS Styling Actually Works</h1>
+
+        <section>
+            <h2>The cascade & sources</h2>
+            <p>Styles come from multiple sources: browser defaults (user-agent), user styles, and author styles (your CSS). The cascade decides which rules apply when there are conflicts — later rules can override earlier ones depending on specificity and importance.</p>
+        </section>
+
+        <section>
+            <h2>Specificity (short version)</h2>
+            <p>When multiple rules target the same element the one with higher specificity wins. Specificity roughly ranks like this (higher wins):</p>
+            <ol>
+                <li>Inline styles (style="...")</li>
+                <li>ID selectors (<code>#id</code>)</li>
+                <li>Class, attribute and pseudo-class selectors (<code>.class</code>, <code>[attr]</code>, <code>:hover</code>)</li>
+                <li>Element and pseudo-element selectors (<code>div</code>, <code>::before</code>)</li>
+            </ol>
+            <p>Note: <code>!important</code> raises priority above normal rules — use sparingly.</p>
+        </section>
+
+        <section>
+            <h2>Inheritance</h2>
+            <p>Some properties (like <code>color</code>, <code>font-family</code>) inherit from parent elements; others (like <code>padding</code>, <code>margin</code>) do not.</p>
+        </section>
+
+        <section>
+            <h2>Live example: which rule wins?</h2>
+            <p>Below are three boxes styled by different rules (element, class, id, inline and !important). Open the CSS file to change values and see which rule takes effect.</p>
+
+            <div class="demo-row">
+                <div class="box demo-a">Element selector (p)</div>
+                <div class="box demo-b">Class selector (.demo-b)</div>
+                <div class="box demo-c" id="special" style="color: tomato;">ID selector (#special) + inline style</div>
+            </div>
+
+            <p class="note">Tip: try editing <code>CSS/day5.css</code> to add <code>!important</code> to a rule and observe the change.</p>
+        </section>
+
+        <section>
+            <h2>Computed style</h2>
+            <p>The browser computes a final style for each element after applying cascade, specificity, inheritance, and layout. Use DevTools &gt; Elements &gt; Styles to inspect the computed values.</p>
+        </section>
+
+        <section>
+            <h2>Quick exercise</h2>
+            <ol>
+                <li>Open <code>CSS/day5.css</code> and change the color for <code>#special</code>. Observe the result.</li>
+                <li>Add <code>!important</code> to the element rule and see how it affects the demo box.</li>
+            </ol>
+        </section>
+
+        <footer>
+            <p>Next: practice using DevTools to inspect computed styles and try small overrides.</p>
+        </footer>
+    </main>
+
     <div class="nav-buttons-bottom">
         <button class="nav-btn" onclick="location.href='day4.html'">&#8592; 4</button>
         <button class="nav-btn" onclick="location.href='day5.html'">5</button>
