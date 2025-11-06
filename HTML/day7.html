@@ -6,6 +6,7 @@
     <title>Day 7</title>
     <link rel="icon" type="image/svg+xml" href="../images/favicon-7.svg">
     <link rel="stylesheet" href="../CSS/button.css">
+    <link rel="stylesheet" href="../CSS/day7.css">
 </head>
 <body>
     <div class="nav-buttons-top">
@@ -13,6 +14,87 @@
         <button class="nav-btn" onclick="location.href='day7.html'">7</button>
         <button class="nav-btn" onclick="location.href='day8.html'">&#8594; 8</button>
     </div>
+    <main class="container">
+        <h1>Day 7 — Basic Sass (SCSS) Workshop</h1>
+
+        <section>
+            <h2>What is Sass?</h2>
+            <p>Sass (Syntactically Awesome Stylesheets) extends CSS with variables, nesting, mixins, functions and more. You write <code>.scss</code> files and compile them to plain CSS for the browser.</p>
+        </section>
+
+        <section>
+            <h2>Why use it?</h2>
+            <ul>
+                <li>Variables for colors and spacing</li>
+                <li>Nesting to keep related rules together</li>
+                <li>Mixins to reuse blocks of styles</li>
+                <li>Partials &amp; imports for modular styles</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>SCSS Example</h2>
+            <p>Open <code>CSS/day7.scss</code> to see the source. Here is a shortened snippet:</p>
+            <pre class="code"><code>$accent: #5b8def;
+
+@mixin button($bg){
+  background: $bg;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.card{
+  border-radius:8px;
+  padding:16px;
+  h3{margin-top:0}
+  .btn{ @include button($accent); }
+}
+</code></pre>
+            <p>That SCSS compiles to regular CSS (see the provided <code>CSS/day7.css</code>), which the browser understands.</p>
+        </section>
+
+        <section>
+            <h2>Live demo</h2>
+            <p>The demo below uses the compiled CSS. To experiment, edit <code>CSS/day7.scss</code>, recompile with your SASS tool, and reload the page. For convenience this repo includes a precompiled <code>day7.css</code>.</p>
+
+            <div class="demo-row">
+                <div class="card">
+                    <h3>Card title</h3>
+                    <p>This card demonstrates variables, nesting and a mixin-driven button.</p>
+                    <button class="btn btn-primary">Primary</button>
+                </div>
+
+                <div class="card alt">
+                    <h3>Another card</h3>
+                    <p>Change <code>$accent</code> in the SCSS and recompile to update both cards and buttons.</p>
+                    <button class="btn btn-secondary">Secondary</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>How to compile</h2>
+            <p>Using the official Dart Sass on your machine:</p>
+            <pre class="code"><code>sass CSS/day7.scss CSS/day7.css
+# or for watch mode
+sass --watch CSS/day7.scss:CSS/day7.css</code></pre>
+            <p>If you don't want to install anything now, edit the SCSS for learning and use the provided compiled <code>day7.css</code> to preview changes.</p>
+        </section>
+
+        <section>
+            <h2>Quick exercises</h2>
+            <ol>
+                <li>Change <code>$accent</code> in <code>CSS/day7.scss</code>, run the compiler, and reload the page.</li>
+                <li>Create a new mixin for a bordered box and use it on the second card.</li>
+            </ol>
+        </section>
+
+        <footer>
+            <p>Next: explore partials and a simple build script.</p>
+        </footer>
+    </main>
+
     <div class="nav-buttons-bottom">
         <button class="nav-btn" onclick="location.href='day6.html'">&#8592; 6</button>
         <button class="nav-btn" onclick="location.href='day7.html'">7</button>

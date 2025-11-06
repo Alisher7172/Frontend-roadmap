@@ -1,0 +1,43 @@
+// Day 7 — Sass (SCSS) examples
+$accent: #5b8def;
+$accent-2: #ff7a59;
+$radius: 8px;
+$pad: 16px;
+
+@mixin button($bg, $color: #fff){
+  background: $bg;
+  color: $color;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+%panel-base{
+  border-radius: $radius;
+  padding: $pad;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(20,30,50,0.06);
+}
+
+.card{
+  @extend %panel-base;
+  width: 220px;
+  h3{ margin-top: 0; }
+  p{ color: #555; font-size: 14px }
+  .btn{
+    @include button($accent);
+  }
+}
+
+.card.alt{
+  @extend %panel-base;
+  background: linear-gradient(180deg,#fff,#f9fbff);
+  .btn{ @include button($accent-2); }
+}
+
+/* Example of nesting and parent selector */
+.demo-row{
+  display:flex;gap:16px;align-items:flex-start;
+  .card{ flex: 0 0 auto }
+}

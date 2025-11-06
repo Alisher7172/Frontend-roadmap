@@ -1,0 +1,8 @@
+/* Compiled from day7.scss - simple precompiled CSS for demo */
+.card{border-radius:8px;padding:16px;background:#fff;box-shadow:0 6px 18px rgba(20,30,50,0.06);width:220px}
+.card h3{margin-top:0}
+.card p{color:#555;font-size:14px}
+.card .btn{background:#5b8def;color:#fff;padding:8px 12px;border-radius:6px;border:none;cursor:pointer}
+.card.alt{border-radius:8px;padding:16px;background:linear-gradient(180deg,#fff,#f9fbff);box-shadow:0 6px 18px rgba(20,30,50,0.06)}
+.card.alt .btn{background:#ff7a59;color:#fff;padding:8px 12px;border-radius:6px;border:none;cursor:pointer}
+.demo-row{display:flex;gap:16px;align-items:flex-start}
