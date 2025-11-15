@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Day 41 — News App</title>
+  <link rel="icon" type="image/svg+xml" href="../images/favicon-41.svg" />
+  <link rel="stylesheet" href="../CSS/button.css" />
+  <link rel="stylesheet" href="../CSS/day41.css" />
+</head>
+<body>
+    <h1 class="Theader">Create news app || Copy this demo</h1>
+  <div class="nav-buttons-top">
+    <button class="nav-btn" onclick="location.href='day40.html'">&#8592; 40</button>
+    <button class="nav-btn" onclick="location.href='day41.html'">41</button>
+    <button class="nav-btn" onclick="location.href='day42.html'">42 &#8594;</button>
+  </div>
+
+  <main class="container">
+    <header class="hero">
+      <h1>Day 41 — News App</h1>
+      <p class="subtitle">Search Hacker News (no API key) — Top / Latest / Search</p>
+    </header>
+
+    <section class="controls">
+      <div class="search-row">
+        <input id="newsQuery" type="search" placeholder="Search news (e.g. react, css)" />
+        <button id="searchBtn" class="btn">Search</button>
+      </div>
+      <div class="action-row">
+        <button id="topBtn" class="btn btn-secondary">Top Stories</button>
+        <button id="latestBtn" class="btn btn-secondary">Latest</button>
+      </div>
+    </section>
+
+    <section id="newsSection" class="news-section">
+      <div id="status" class="status">Ready.</div>
+      <ul id="newsList" class="news-list" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <div class="nav-buttons-bottom">
+    <button class="nav-btn" onclick="location.href='day40.html'">&#8592; 40</button>
+    <button class="nav-btn" onclick="location.href='day41.html'">41</button>
+    <button class="nav-btn" onclick="location.href='day42.html'">42 &#8594;</button>
+  </div>
+
+  <script src="../JavaScript/navigation.js"></script>
+  <script src="../JavaScript/day41.js"></script>
+</body>
+</html>
