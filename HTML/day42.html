@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Day 42 — JS Libraries & Frameworks</title>
+  <link rel="icon" type="image/svg+xml" href="../images/favicon-42.svg" />
+  <link rel="stylesheet" href="../CSS/button.css" />
+  <link rel="stylesheet" href="../CSS/day42.css" />
+</head>
+<body>
+  <div class="nav-buttons-top">
+    <button class="nav-btn" onclick="location.href='day41.html'">&#8592; 41</button>
+    <button class="nav-btn" onclick="location.href='day42.html'">42</button>
+    <button class="nav-btn" onclick="location.href='day43.html'">43 &#8594;</button>
+  </div>
+
+  <main class="container">
+    <header class="hero">
+      <h1>Day 42 — After Core JS: Libraries & Frameworks</h1>
+      <p class="subtitle">Short guidance on what to learn next and concise resources for each library</p>
+    </header>
+
+    <section class="intro">
+      <p>After finishing vanilla JavaScript, focus on one UI library + one state solution + a CSS system. Start with React (widely used), learn state patterns (Redux or built-in hooks), then explore frameworks (Angular) and styling options (Bootstrap, Tailwind).</p>
+    </section>
+
+    <section class="learning-path">
+      <h2>Suggested order</h2>
+      <ol>
+        <li>React (component model, hooks)</li>
+        <li>State management (Redux or Context + hooks)</li>
+        <li>Styling utilities (Tailwind) or component libraries (Bootstrap)</li>
+        <li>Frameworks (Angular) for large-scale apps</li>
+      </ol>
+    </section>
+
+    <section id="libraries" class="libraries">
+      <article class="library-card" data-key="react">
+        <h3>React</h3>
+        <p class="summary">Component-driven UI, declarative rendering, hooks API.</p>
+        <div class="details hidden">
+          <p>Learn JSX, components, props, state, useEffect, custom hooks, routing (react-router) and basics of building single-page apps.</p>
+          <p>Quick start: Create React App / Vite.</p>
+          <div class="links">
+            <button class="small-btn" data-action="open" data-key="react">Open docs</button>
+            <button class="small-btn" data-action="copy" data-key="react">Copy docs URL</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="library-card" data-key="redux">
+        <h3>Redux</h3>
+        <p class="summary">Predictable state container for JS apps. Use Redux Toolkit for modern patterns.</p>
+        <div class="details hidden">
+          <p>Focus on actions, reducers, store, and async thunks. Prefer Redux Toolkit and react-redux hooks (useSelector/useDispatch).</p>
+          <div class="links">
+            <button class="small-btn" data-action="open" data-key="redux">Open docs</button>
+            <button class="small-btn" data-action="copy" data-key="redux">Copy docs URL</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="library-card" data-key="bootstrap">
+        <h3>Bootstrap</h3>
+        <p class="summary">Component library + CSS utilities for fast layouts and responsive UI.</p>
+        <div class="details hidden">
+          <p>Good for getting UI done quickly. Learn grid, utilities, and components. Works with or without React (react-bootstrap bindings available).</p>
+          <div class="links">
+            <button class="small-btn" data-action="open" data-key="bootstrap">Open docs</button>
+            <button class="small-btn" data-action="copy" data-key="bootstrap">Copy docs URL</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="library-card" data-key="angular">
+        <h3>Angular</h3>
+        <p class="summary">Full-featured framework (TypeScript-first) for large apps.</p>
+        <div class="details hidden">
+          <p>Learn components, modules, dependency injection, RxJS, and CLI workflows. Best for teams that prefer an opinionated framework.</p>
+          <div class="links">
+            <button class="small-btn" data-action="open" data-key="angular">Open docs</button>
+            <button class="small-btn" data-action="copy" data-key="angular">Copy docs URL</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="library-card" data-key="tailwind">
+        <h3>Tailwind CSS</h3>
+        <p class="summary">Utility-first CSS framework for composing designs with classes.</p>
+        <div class="details hidden">
+          <p>Not a JS library, but a fast way to style UIs. Learn utility classes, responsive prefixes, and composing components. Works well with React and other frameworks.</p>
+          <div class="links">
+            <button class="small-btn" data-action="open" data-key="tailwind">Open docs</button>
+            <button class="small-btn" data-action="copy" data-key="tailwind">Copy docs URL</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="notes">
+      <h2>Notes</h2>
+      <ul>
+        <li>Practice by building small projects: todo app, blog UI, dashboard.</li>
+        <li>Prefer project-based learning and read official docs.</li>
+        <li>Use TypeScript when moving to frameworks like Angular or larger React apps.</li>
+      </ul>
+    </section>
+  </main>
+
+  <div class="nav-buttons-bottom">
+    <button class="nav-btn" onclick="location.href='day41.html'">&#8592; 41</button>
+    <button class="nav-btn" onclick="location.href='day42.html'">42</button>
+    <button class="nav-btn" onclick="location.href='day43.html'">43 &#8594;</button>
+  </div>
+
+  <script src="../JavaScript/navigation.js"></script>
+  <script src="../JavaScript/day42.js"></script>
+</body>
+</html>
