@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Day 43 — Intro to ReactJS</title>
+    <link rel="stylesheet" href="../CSS/button.css" />
+    <link rel="stylesheet" href="../CSS/day43.css" />
+</head>
+<body>
+  <div class="nav-buttons-top">
+    <button class="nav-btn" onclick="location.href='day42.html'">&#8592; 42</button>
+    <button class="nav-btn" onclick="location.href='day43.html'">43</button>
+    <button class="nav-btn" onclick="location.href='day44.html'">44 &#8594;</button>
+  </div>
+
+  <main class="container">
+    <header class="hero">
+      <h1>Day 43 — Intro to ReactJS</h1>
+      <p class="subtitle">What to learn first, quickstart commands, core concepts and a small example</p>
+    </header>
+
+    <section class="intro">
+      <p>React is a component-based library for building UIs. Start with components, JSX, props, state, and hooks (useState/useEffect). Below are quick commands, core concepts and a runnable example snippet you can copy.</p>
+    </section>
+
+    <section class="quickstart">
+      <h2>Quickstart</h2>
+      <ul>
+        <li><code>npx create-react-app my-app</code> — official CRA starter</li>
+        <li><code>npm create vite@latest my-app -- --template react</code> — fast Vite starter</li>
+        <li>Run: <code>cd my-app</code> then <code>npm install</code> and <code>npm start</code> (CRA) or <code>npm run dev</code> (Vite)</li>
+      </ul>
+      <div class="actions">
+        <button class="small-btn" data-action="copy" data-key="cra">Copy CRA command</button>
+        <button class="small-btn" data-action="copy" data-key="vite">Copy Vite command</button>
+        <button class="small-btn" data-action="open" data-key="react">Open React docs</button>
+      </div>
+    </section>
+
+    <section class="concepts">
+      <h2>Core concepts</h2>
+      <ul>
+        <li><strong>JSX</strong> — HTML-like syntax in JS</li>
+        <li><strong>Components</strong> — functions that return UI</li>
+        <li><strong>Props</strong> — input to components</li>
+        <li><strong>State</strong> — component-local mutable data (useState)</li>
+        <li><strong>Effects</strong> — side effects & data fetching (useEffect)</li>
+        <li><strong>Routing</strong> — client-side navigation (react-router)</li>
+      </ul>
+    </section>
+
+    <section class="example">
+      <h2>Small example</h2>
+      <p>Copy the snippet and paste in a new create-react-app / Vite project (replace App.jsx contents).</p>
+      <pre id="codeBlock" class="code">
+function Counter() {
+  const [count, setCount] = React.useState(0);
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Count: {count}&lt;/h2&gt;
+      &lt;button onClick={() =&gt; setCount(c =&gt; c + 1)}&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default function App() {
+  return &lt;Counter /&gt;;
+}
+      </pre>
+      <div class="actions">
+        <button class="small-btn" data-action="copy" data-key="example">Copy snippet</button>
+        <button class="small-btn" data-action="open" data-key="try">Open React tutorial</button>
+      </div>
+    </section>
+
+    <section class="resources" id="resources">
+      <h2>Resources</h2>
+      <ul>
+        <li>Official docs: React, Hooks guide, JSX</li>
+        <li>Tutorials: freeCodeCamp, official tutorial, Egghead short lessons</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <div class="nav-buttons-bottom">
+    <button class="nav-btn" onclick="location.href='day42.html'">&#8592; 42</button>
+    <button class="nav-btn" onclick="location.href='day43.html'">43</button>
+    <button class="nav-btn" onclick="location.href='day44.html'">44 &#8594;</button>
+  </div>
+
+  <script src="../JavaScript/navigation.js"></script>
+  <script src="../JavaScript/day43.js"></script>
+</body>
+</html>

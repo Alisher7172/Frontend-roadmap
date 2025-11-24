@@ -1,0 +1,33 @@
+:root{
+  --bg:#071021;
+  --card:#0b1220;
+  --accent:#3b82f6;
+  --muted:#94a3b8;
+  --text:#e6eef8;
+  --success:#10b981;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background:linear-gradient(180deg,#071021 0%,#0f1720 100%);
+  color:var(--text);
+  min-height:100vh;
+}
+
+.container{max-width:980px;margin:28px auto;padding:20px}
+.hero{text-align:center;margin-bottom:16px}
+.hero h1{margin:0 0 6px;font-size:1.9rem;color:var(--accent)}
+.subtitle{margin:0;color:var(--muted)}
+
+.intro{margin:12px 0;color:var(--muted)}
+.quickstart, .concepts, .example, .resources{margin:12px 0;padding:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:10px;border:1px solid rgba(255,255,255,0.04)}
+.quickstart ul, .concepts ul{margin:8px 0 0 18px;color:var(--muted)}
+
+.actions{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.small-btn{font-size:0.9rem;padding:6px 10px;border-radius:8px;border:none;cursor:pointer;background:rgba(255,255,255,0.03);color:var(--text)}
+.small-btn:hover{opacity:0.95}
+
+.code{background:#0b1624;color:var(--text);padding:12px;border-radius:8px;overflow:auto;border:1px solid rgba(255,255,255,0.03);font-family:Consolas,monospace;font-size:0.95rem}
+@media(min-width:800px){ .container{max-width:1100px} }
