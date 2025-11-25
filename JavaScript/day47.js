@@ -1,3 +1,4 @@
+// ...existing code...
 document.addEventListener('DOMContentLoaded', initDay47);
 
 function initDay47() {
@@ -93,4 +94,20 @@ function initDay47() {
     const match = matchRoute(path);
     view.innerHTML = match.render(match.params || {});
   }
+
+  // --- ensure Day navigation buttons open the correct page (Day 48 link working) ---
+  // This keeps nav behavior consistent: if user presses the "48" button on day47 page it will go to day48.html
+  document.querySelectorAll('.nav-buttons-top .nav-btn, .nav-buttons-bottom .nav-btn').forEach(btn => {
+    // only attach handler if not already using an explicit href/onClick
+    btn.addEventListener('click', (e) => {
+      // if element already navigates via inline onclick, let it run — this handler is idempotent
+      const txt = (btn.textContent || '').trim();
+      // match standalone "48" or strings containing "48" (e.g. "48 →")
+      if (/\b48\b/.test(txt)) {
+        // navigate to the Day 48 static page in the same folder
+        location.href = 'day48.html';
+      }
+    });
+  });
 }
+// ...existing code...
