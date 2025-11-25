@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Day 47 — Routing with React Router</title>
+  <link rel="stylesheet" href="../CSS/button.css" />
+  <link rel="stylesheet" href="../CSS/day47.css" />
+</head>
+<body>
+  <div class="nav-buttons-top">
+    <button class="nav-btn" onclick="location.href='day46.html'">&#8592; 46</button>
+    <button class="nav-btn active">47</button>
+    <button class="nav-btn" onclick="location.href='day48.html'">48 &#8594;</button>
+  </div>
+
+  <main class="container">
+    <header class="hero">
+      <h1>Day 47 — Routing with React Router</h1>
+      <p class="subtitle">How routes, links and params work. Quickstart, core concepts and a small interactive demo.</p>
+    </header>
+
+    <section class="quick">
+      <h2>Quickstart</h2>
+      <ul>
+        <li>Install: <code>npm install react-router-dom@6</code></li>
+        <li>Wrap app: <code>&lt;BrowserRouter&gt;...&lt;/BrowserRouter&gt;</code></li>
+        <li>Define routes using <code>&lt;Routes&gt;</code> + <code>&lt;Route path="..." element={...} /&gt;</code></li>
+      </ul>
+      <div class="actions">
+        <button class="small-btn" data-action="copy" data-key="install">Copy install</button>
+        <button class="small-btn" data-action="open" data-key="rrdoc">Open docs</button>
+      </div>
+    </section>
+
+    <section class="concepts">
+      <h2>Core concepts (kid-style)</h2>
+      <ul>
+        <li><strong>Router</strong> — keeps track of the URL and chooses which component to show.</li>
+        <li><strong>Route</strong> — one mapping from URL path → UI.</li>
+        <li><strong>Link</strong> — clickable element that changes URL without full page reload.</li>
+        <li><strong>useParams</strong> — read params from the URL (like an id).</li>
+        <li><strong>useNavigate</strong> — jump to another route programmatically.</li>
+      </ul>
+    </section>
+
+    <section class="example">
+      <h2>Example App (App.jsx)</h2>
+      <pre class="code" id="appCode">
+import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom';
+
+function Home() { return &lt;h2&gt;Home&lt;/h2&gt;; }
+function About() { return &lt;h2&gt;About&lt;/h2&gt;; }
+function User() {
+  const { id } = useParams();
+  return &lt;h2&gt;User {id}&lt;/h2&gt;;
+}
+
+export default function App() {
+  return (
+    &lt;BrowserRouter&gt;
+      &lt;nav&gt;
+        &lt;Link to="/"&gt;Home&lt;/Link&gt;
+        &lt;Link to="/about"&gt;About&lt;/Link&gt;
+        &lt;Link to="/user/1"&gt;User 1&lt;/Link&gt;
+      &lt;/nav&gt;
+      &lt;Routes&gt;
+        &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+        &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
+        &lt;Route path="/user/:id" element={&lt;User /&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/BrowserRouter&gt;
+  );
+}
+      </pre>
+
+      <div class="actions">
+        <button class="small-btn" data-action="copy" data-key="appCode">Copy App.jsx</button>
+        <button class="small-btn" data-action="copy" data-key="userSnippet">Copy user route snippet</button>
+      </div>
+    </section>
+
+    <section class="demo">
+      <h2>Interactive demo (simple hash router)</h2>
+      <p>Click links — this demo shows routing basics and params without React.</p>
+
+      <nav class="demo-nav">
+        <button class="demo-link" data-route="/">Home</button>
+        <button class="demo-link" data-route="/about">About</button>
+        <button class="demo-link" data-route="/users">Users</button>
+        <button class="demo-link" data-route="/user/42">User 42</button>
+      </nav>
+
+      <div id="routeView" class="route-view">Route content will appear here.</div>
+      <div class="demo-note">URL (simulated): <span id="simUrl">/</span></div>
+    </section>
+
+    <section class="tips">
+      <h2>Tips</h2>
+      <ol>
+        <li>Prefer routes for different pages/views — keep components small.</li>
+        <li>Use nested routes for layouts (sidebars, dashboards).</li>
+        <li>Protect routes (auth) with wrapper components.</li>
+      </ol>
+    </section>
+  </main>
+
+  <div class="nav-buttons-bottom">
+    <button class="nav-btn" onclick="location.href='day46.html'">&#8592; 46</button>
+    <button class="nav-btn active">47</button>
+    <button class="nav-btn" onclick="location.href='day48.html'">48 &#8594;</button>
+  </div>
+
+  <script src="../JavaScript/navigation.js"></script>
+  <script src="../JavaScript/day47.js"></script>
+</body>
+</html>
