@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Day 49 | Task Manager</title>
+  <link rel="icon" type="image/svg+xml" href="../images/favicon-49.svg">
+  <link rel="stylesheet" href="../CSS/button.css" />
+  <link rel="stylesheet" href="../CSS/day49.css" />
+</head>
+<body>
+  <h1 id="description">Build a modern Task Manager</h1>
+
+  <div class="nav-buttons-top">
+    <button class="nav-btn" onclick="location.href='day48.html'">&#8592; 48</button>
+    <button class="nav-btn" onclick="location.href='day49.html'">49</button>
+    <button class="nav-btn" onclick="location.href='day50.html'">50 &#8594;</button>
+  </div>
+
+  <main class="container">
+    <section class="task-app">
+      <header class="task-header">
+        <div class="task-inputs">
+          <label class="sr-only" for="taskTitle">Task title</label>
+          <input id="taskTitle" class="input" type="text" placeholder="What do you need to do?" autocomplete="off" />
+
+          <label class="sr-only" for="taskDue">Due date</label>
+          <input id="taskDue" class="input input--date" type="date" />
+
+          <label class="sr-only" for="taskPriority">Priority</label>
+          <select id="taskPriority" class="input input--select">
+            <option value="normal">Priority: Normal</option>
+            <option value="high">Priority: High</option>
+            <option value="low">Priority: Low</option>
+          </select>
+
+          <button id="addTaskBtn" class="nav-btn">Add Task</button>
+        </div>
+
+        <div class="task-toolbar">
+          <div class="filters">
+            <button class="chip is-active" data-filter="all">All</button>
+            <button class="chip" data-filter="active">Active</button>
+            <button class="chip" data-filter="completed">Completed</button>
+          </div>
+          <div class="search-sort">
+            <input id="searchInput" class="input input--search" type="search" placeholder="Search tasks..." />
+            <select id="sortSelect" class="input input--select">
+              <option value="created-desc">Newest</option>
+              <option value="created-asc">Oldest</option>
+              <option value="due-asc">Due date ↑</option>
+              <option value="due-desc">Due date ↓</option>
+              <option value="priority-desc">Priority High → Low</option>
+              <option value="priority-asc">Priority Low → High</option>
+            </select>
+            <button id="clearCompletedBtn" class="nav-btn ghost">Clear completed</button>
+          </div>
+        </div>
+
+        <div class="task-stats" id="taskStats">0 of 0 completed</div>
+      </header>
+
+      <ul id="taskList" class="task-list"><!-- rendered by JS --></ul>
+
+      <footer class="task-footer">
+        <small class="muted">Tip: Double-click a task to edit. Press Enter to save or Esc to cancel.</small>
+      </footer>
+    </section>
+  </main>
+
+  <div class="nav-buttons-bottom">
+    <button class="nav-btn" onclick="location.href='day48.html'">&#8592; 48</button>
+    <button class="nav-btn" onclick="location.href='day49.html'">49</button>
+    <button class="nav-btn" onclick="location.href='day50.html'">50  &#8594;</button>
+  </div>
+
+  <script src="../JavaScript/day49.js"></script>
+  <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>
+
