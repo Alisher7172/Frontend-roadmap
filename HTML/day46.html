@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Day 46 — useEffect & Lifecycle</title>
+  <link rel="stylesheet" href="../CSS/button.css" />
+  <link rel="stylesheet" href="../CSS/day46.css" />
+</head>
+<body>
+  <div class="nav-buttons-top">
+    <button class="nav-btn" onclick="location.href='day45.html'">&#8592; 45</button>
+    <button class="nav-btn active">46</button>
+    <button class="nav-btn" onclick="location.href='day47.html'">47 &#8594;</button>
+  </div>
+
+  <main class="container">
+    <header class="hero">
+      <h1>Day 46 — useEffect & Lifecycle</h1>
+      <p class="subtitle">Simple, friendly explanations of mounting, updating, cleanup and effects + interactive demos</p>
+    </header>
+
+    <section class="explain">
+      <h2>What is a "lifecycle"?</h2>
+      <p>Think of a component like a toy robot:</p>
+      <ul>
+        <li><strong>Mount</strong> — the robot turns on (we set it up).</li>
+        <li><strong>Update</strong> — we press buttons and it changes (props/state change).</li>
+        <li><strong>Unmount</strong> — we turn it off and put it away (clean up).</li>
+      </ul>
+
+      <h3>What is useEffect?</h3>
+      <p>useEffect is like telling the robot to do things when it turns on, when something changes, or just before it turns off. It lets you run code at the right time and clean up after it.</p>
+    </section>
+
+    <section class="demos">
+      <article class="card">
+        <h2>Mount / Unmount demo</h2>
+        <p>Click "Mount" to start the component. Click "Unmount" to stop it and see cleanup messages.</p>
+        <div class="controls">
+          <button id="mountBtn" class="small-btn">Mount</button>
+          <button id="unmountBtn" class="small-btn">Unmount</button>
+        </div>
+        <div id="compArea" class="comp-area">Component is not mounted.</div>
+      </article>
+
+      <article class="card">
+        <h2>Timer effect (interval) — shows cleanup</h2>
+        <p>Starts a timer when mounted. Cleanup stops the timer when unmounted.</p>
+        <div class="controls">
+          <button id="startTimer" class="small-btn">Start Timer</button>
+          <button id="stopTimer" class="small-btn">Stop Timer</button>
+        </div>
+        <div class="demo-status">Seconds: <span id="seconds">0</span></div>
+      </article>
+
+      <article class="card">
+        <h2>Dependency example</h2>
+        <p>Effect runs only when the chosen dependency changes (like reacting to a single toy button).</p>
+        <label>Dependency value:
+          <input id="depInput" value="A" />
+        </label>
+        <div class="controls">
+          <button id="updateDep" class="small-btn">Run effect (simulate update)</button>
+        </div>
+        <div class="dep-log" id="depLog">No effect runs yet.</div>
+      </article>
+
+      <article class="card">
+        <h2>Fetch example (data effect)</h2>
+        <p>Effect to fetch data once when mounted. Shows loading → success → cleanup if unmounted early.</p>
+        <div class="controls">
+          <button id="fetchMount" class="small-btn">Mount Fetcher</button>
+          <button id="fetchUnmount" class="small-btn">Unmount Fetcher</button>
+        </div>
+        <div id="fetchStatus" class="fetch-status">Fetcher not mounted.</div>
+      </article>
+    </section>
+
+    <section class="notes">
+      <h2>Simple rules</h2>
+      <ol>
+        <li>Put setup code (timers, network) inside useEffect so it runs when needed.</li>
+        <li>Return a cleanup function from useEffect to stop timers or cancel things when the component goes away.</li>
+        <li>Use the dependency array: [] runs once at mount, [x] runs when x changes, no array runs after every render.</li>
+      </ol>
+    </section>
+
+    <section class="logcard">
+      <h2>Lifecycle log</h2>
+      <div id="lifecycleLog" class="logbox">No lifecycle events yet.</div>
+    </section>
+  </main>
+
+  <div class="nav-buttons-bottom">
+    <button class="nav-btn" onclick="location.href='day45.html'">&#8592; 45</button>
+    <button class="nav-btn active">46</button>
+    <button class="nav-btn" onclick="location.href='day47.html'">47 &#8594;</button>
+  </div>
+
+  <script src="../JavaScript/navigation.js"></script>
+  <script src="../JavaScript/day46.js"></script>
+</body>
+</html>
