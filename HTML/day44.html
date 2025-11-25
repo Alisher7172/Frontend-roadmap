@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Day 44 — React Components, JSX & Props</title>
+  <link rel="stylesheet" href="../CSS/button.css" />
+  <link rel="stylesheet" href="../CSS/day44.css" />
+</head>
+<body>
+  <div class="nav-buttons-top">
+    <button class="nav-btn" onclick="location.href='day43.html'">&#8592; 43</button>
+    <button class="nav-btn active">44</button>
+    <button class="nav-btn" onclick="location.href='day45.html'">45 &#8594;</button>
+  </div>
+
+  <main class="wrap">
+    <header class="hero">
+      <h1>Day 44 — React Components, JSX & Props</h1>
+      <p class="tag">Components are the building blocks. Learn JSX, props, patterns and practical tips — interactive playground below.</p>
+    </header>
+
+    <section class="grid">
+      <article class="card bright">
+        <h2>What is a Component?</h2>
+        <p>Components are reusable, isolated UI pieces. They can be function components or class components (use functions + hooks for modern React).</p>
+        <ul class="mini">
+          <li>Single Responsibility — one job per component</li>
+          <li>Small & composable — build complex UIs by composing small components</li>
+          <li>Stateless vs stateful — lift state up when needed</li>
+        </ul>
+      </article>
+
+      <article class="card bright">
+        <h2>JSX Primer</h2>
+        <p>JSX looks like HTML but is JavaScript. You can embed expressions with {`{}`}, use conditional rendering and spread props.</p>
+        <pre class="code jsx-code">
+function Hello({ name }) {
+  return &lt;h1&gt;Hello, {name}!&lt;/h1&gt;;
+}
+        </pre>
+        <div class="row">
+          <button class="small-btn" data-action="copy" data-key="jsx">Copy JSX</button>
+          <button class="small-btn" data-action="open" data-key="react">React docs</button>
+        </div>
+      </article>
+
+      <article class="card bright span">
+        <h2>Props — Data in</h2>
+        <p>Props are read-only inputs to components. Use them to pass strings, objects, functions and children.</p>
+        <ul class="mini">
+          <li>&lt;Card title="Hi" /&gt; — primitive props</li>
+          <li>&lt;List items={items} /&gt; — pass arrays/objects</li>
+          <li>&lt;Button onClick={handle} /&gt; — pass callbacks</li>
+          <li>Children: &lt;Modal&gt;content&lt;/Modal&gt; — compose UI</li>
+        </ul>
+        <p class="note">Tip: keep props minimal; prefer controlled components for forms.</p>
+      </article>
+
+      <article class="card playground span">
+        <h2>Props Playground</h2>
+        <div class="play-controls">
+          <label>Title <input id="pTitle" value="Hello React" /></label>
+          <label>Accent <input id="pColor" type="color" value="#ff6ec7" /></label>
+          <label>Start <input id="pStart" type="number" value="0" /></label>
+          <button id="renderBtn" class="small-btn">Render</button>
+        </div>
+
+        <div class="preview" id="preview" aria-live="polite">
+          <!-- rendered simulated component -->
+        </div>
+
+        <h3>Generated JSX</h3>
+        <pre id="generated" class="code"></pre>
+
+        <div class="row">
+          <button class="small-btn" data-action="copy" data-key="generated">Copy JSX</button>
+          <button class="small-btn" data-action="copy" data-key="previewHtml">Copy HTML</button>
+        </div>
+      </article>
+
+      <article class="card resources">
+        <h2>Best Practices & Patterns</h2>
+        <ol>
+          <li>Prefer function components + hooks</li>
+          <li>Keep components small; extract presentational vs container concerns</li>
+          <li>Use keys for lists & avoid index keys where possible</li>
+          <li>Validate with PropTypes or TypeScript for larger apps</li>
+          <li>Memoize expensive children with React.memo, useCallback, useMemo</li>
+        </ol>
+      </article>
+    </section>
+
+    <section class="examples">
+      <h2>Short Examples</h2>
+      <div class="example-grid">
+        <div class="example-card">
+          <h4>Stateless Button</h4>
+          <pre class="code">
+function Button({ children, onClick }) {
+  return &lt;button onClick={onClick}&gt;{children}&lt;/button&gt;;
+}
+          </pre>
+        </div>
+        <div class="example-card">
+          <h4>Controlled Input</h4>
+          <pre class="code">
+function NameInput() {
+  const [name, setName] = React.useState('');
+  return &lt;input value={name} onChange={e =&gt; setName(e.target.value)} /&gt;;
+}
+          </pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="nav-buttons-bottom">
+    <button class="nav-btn" onclick="location.href='day43.html'">&#8592; 43</button>
+    <button class="nav-btn active">44</button>
+    <button class="nav-btn" onclick="location.href='day45.html'">45 &#8594;</button>
+  </div>
+
+  <script src="../JavaScript/navigation.js"></script>
+  <script src="../JavaScript/day44.js"></script>
+</body>
+</html>

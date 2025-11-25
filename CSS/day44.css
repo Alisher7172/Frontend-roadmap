@@ -1,0 +1,90 @@
+/* ...existing code... */
+:root{
+  --bg-1: linear-gradient(180deg,#fff8fb 0%, #f0fcff 100%);
+  --card:#ffffff;
+  --accent1:#ff6ec7;
+  --accent2:#00e0ff;
+  --accent3:#ffd500;
+  --text:#102a43;
+  --muted:#475569;
+  --glass: rgba(255,255,255,0.75);
+  --success:#10b981;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif;
+  background:var(--bg-1);
+  color:var(--text);
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* use the project's nav button styles, only position containers here */
+.nav-buttons-top, .nav-buttons-bottom {
+  display:flex;
+  gap:8px;
+  padding:12px;
+  justify-content:center;
+  background:transparent;
+}
+
+/* main layout */
+.wrap{max-width:1100px;margin:18px auto;padding:18px}
+.hero{text-align:center;margin-bottom:12px}
+.hero h1{margin:0;font-size:1.9rem;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;color:transparent}
+.tag{color:var(--muted);margin:6px 0}
+
+.grid{display:grid;gap:12px;grid-template-columns:repeat(1,1fr)}
+.card{
+  background:var(--card);
+  border-radius:12px;
+  padding:14px;
+  box-shadow: 0 10px 30px rgba(16,24,40,0.06);
+  border:1px solid rgba(16,24,40,0.04);
+}
+.bright{border-left:6px solid var(--accent1)}
+.span{grid-column:1/-1}
+
+.code{
+  background:linear-gradient(180deg, #0f172a 0%, #071022 100%);
+  color:#e6eef8;
+  padding:12px;border-radius:8px;overflow:auto;font-family:Consolas,monospace;font-size:0.9rem;
+  margin:8px 0;
+}
+
+/* small utilities */
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.small-btn{
+  border:none;padding:8px 10px;border-radius:10px;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:white;cursor:pointer;
+}
+
+.play-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.play-controls label{display:flex;gap:6px;align-items:center;color:var(--muted)}
+.play-controls input[type="text"], .play-controls input[type="number"]{
+  padding:6px 8px;border-radius:8px;border:1px solid rgba(16,24,40,0.06);
+}
+.play-controls input[type="color"]{padding:2px;border-radius:6px;border:1px solid rgba(16,24,40,0.06);width:44px;height:34px}
+
+.preview{
+  margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(90deg, rgba(255,110,199,0.06), rgba(0,224,255,0.03));
+  min-height:72px;display:flex;align-items:center;justify-content:center;
+}
+
+.resources ol{margin:6px 0 0 18px;color:var(--muted)}
+.mini{margin:8px 0 0 18px;color:var(--muted)}
+.note{color:var(--muted);font-size:0.95rem;margin-top:8px}
+
+/* examples */
+.examples{margin-top:12px}
+.example-grid{display:grid;gap:12px;grid-template-columns:1fr}
+.example-card{background:linear-gradient(180deg, rgba(0,224,255,0.03), rgba(255,110,199,0.02));padding:10px;border-radius:10px}
+
+@media(min-width:800px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .span{grid-column:auto}
+  .example-grid{grid-template-columns:repeat(2,1fr)}
+  .wrap{max-width:1200px}
+}
+/* ...existing code... */
