@@ -1,0 +1,173 @@
+/* Day 50 | Resume */
+:root {
+  --bg: #f6f7fb;
+  --panel: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #2563eb;
+  --accent: #10b981;
+  --shadow: 0 8px 30px rgba(0,0,0,0.06);
+  --radius: 16px;
+}
+
+* { box-sizing: border-box }
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+  background: var(--bg);
+}
+
+#description {
+  text-align: center;
+  color: #334155;
+  font-size: 40px;
+  margin: 18px 0 6px;
+}
+
+.container {
+  width: min(1080px, 94vw);
+  margin: 0 auto;
+  padding: 18px;
+}
+
+.resume {
+  background: transparent;
+}
+
+.resume-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--panel);
+  padding: 18px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.headline {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.avatar {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.08);
+}
+.name { margin: 0 0 6px 0; font-size: 1.6rem }
+.role { margin: 0; color: var(--muted) }
+.tags { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px }
+.tag {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: .85rem;
+  background: #eef2ff;
+  color: #3b82f6;
+}
+.header-actions { display: flex; gap: 8px }
+
+.resume-grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 16px;
+}
+
+.card {
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+.plain { list-style: none; padding: 0; margin: 0 }
+.plain li { padding: 6px 0; border-bottom: 1px dashed #eef2f7 }
+.plain li:last-child { border-bottom: none }
+
+.chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px }
+.chips li {
+  background: #f0f9ff;
+  color: #0ea5e9;
+  border: 1px solid #bae6fd;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: .9rem;
+}
+
+.edu-item { margin-bottom: 12px }
+.edu-head { display: flex; justify-content: space-between; align-items: center }
+.edu-meta { color: var(--muted) }
+
+.summary p { margin: 0 }
+
+.xp { margin-bottom: 14px }
+.xp-head { display: flex; align-items: center; justify-content: space-between; gap: 10px }
+.xp-right { display: flex; align-items: center; gap: 8px; color: var(--muted) }
+.pill {
+  background: #ecfeff;
+  color: #0891b2;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid #a5f3fc;
+  font-size: .8rem;
+}
+.bullets { margin: 8px 0; padding-left: 18px }
+.bullets li { margin: 6px 0 }
+.stack { display: flex; gap: 8px; flex-wrap: wrap }
+.stack span {
+  background: #f7fee7;
+  color: #65a30d;
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1px solid #d9f99d;
+  font-size: .85rem;
+}
+
+.proj-grid { display: grid; gap: 10px }
+.proj {
+  background: #fbfdff;
+  border: 1px solid #eef2f7;
+  border-radius: 12px;
+  padding: 12px;
+}
+.proj-head { display: flex; align-items: center; justify-content: space-between; gap: 10px }
+.proj .links { display: flex; gap: 10px }
+.proj .links a { color: #2563eb; text-decoration: none; border-bottom: 1px solid #bfdbfe }
+.proj .links a:hover { color: #1d4ed8 }
+
+.resume-footer {
+  text-align: center;
+  color: var(--muted);
+  margin: 16px 0 10px;
+}
+
+/* Compact mode */
+.is-compact .resume-header { padding: 12px }
+.is-compact .card { padding: 12px }
+.is-compact .avatar { width: 70px; height: 70px }
+.is-compact .name { font-size: 1.3rem }
+.is-compact .resume-grid { gap: 12px; grid-template-columns: 280px 1fr }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .resume-grid { grid-template-columns: 1fr; }
+}
+
+/* Print */
+@media print {
+  body { background: #fff }
+  #description,
+  .nav-buttons-top,
+  .nav-buttons-bottom,
+  .header-actions,
+  .resume-footer { display: none !important }
+  .container { width: 100%; padding: 0 }
+  .resume-grid { grid-template-columns: 320px 1fr }
+  .card { box-shadow: none; border: 1px solid #e5e7eb }
+}
+

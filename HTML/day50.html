@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Day 50 | Resume</title>
+  <link rel="icon" type="image/svg+xml" href="../images/favicon-50.svg">
+  <link rel="stylesheet" href="../CSS/button.css" />
+  <link rel="stylesheet" href="../CSS/day50.css" />
+</head>
+<body>
+  <h1 id="description">Create a clean Resume webpage</h1>
+
+  <div class="nav-buttons-top">
+    <button class="nav-btn" onclick="location.href='day49.html'">&#8592; 49</button>
+    <button class="nav-btn" onclick="location.href='day50.html'">50</button>
+    <button class="nav-btn" onclick="location.href='day1.html'">1 &#8594;</button>
+  </div>
+
+  <main class="container">
+    <section class="resume">
+      <header class="resume-header">
+        <div class="headline">
+          <img class="avatar" src="https://randomuser.me/api/portraits/men/31.jpg" alt="Profile photo" />
+          <div>
+            <h2 class="name">John Carter</h2>
+            <p class="role">Front‑End Developer</p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">CSS</span>
+              <span class="tag">Accessibility</span>
+            </div>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="printBtn" class="nav-btn">Print / Save PDF</button>
+          <button id="compactBtn" class="nav-btn ghost">Compact</button>
+        </div>
+      </header>
+
+      <div class="resume-grid">
+        <aside class="sidebar">
+          <section class="card contact">
+            <h3>Contact</h3>
+            <ul class="plain">
+              <li><strong>Email:</strong> john.carter@example.com</li>
+              <li><strong>Phone:</strong> +1 (555) 123‑4567</li>
+              <li><strong>Location:</strong> Austin, TX</li>
+              <li><strong>Website:</strong> example.dev</li>
+              <li><strong>LinkedIn:</strong> linkedin.com/in/jcarter</li>
+              <li><strong>GitHub:</strong> github.com/jcarter</li>
+            </ul>
+          </section>
+
+          <section class="card skills">
+            <h3>Skills</h3>
+            <ul class="chips">
+              <li>JavaScript (ES202x)</li>
+              <li>React / Vite</li>
+              <li>TypeScript</li>
+              <li>HTML5</li>
+              <li>CSS / Tailwind</li>
+              <li>Testing</li>
+              <li>Git</li>
+              <li>REST / GraphQL</li>
+            </ul>
+          </section>
+
+          <section class="card education">
+            <h3>Education</h3>
+            <div class="edu-item">
+              <div class="edu-head">
+                <strong>B.S. Computer Science</strong>
+                <span>2017 – 2021</span>
+              </div>
+              <div class="edu-meta">University of Somewhere</div>
+            </div>
+          </section>
+        </aside>
+
+        <section class="content">
+          <section class="card summary">
+            <h3>Summary</h3>
+            <p>Front‑end engineer with 4+ years of experience building performant, accessible web apps. Passionate about design systems, DX, and delivering value through clean, maintainable code.</p>
+          </section>
+
+          <section class="card experience">
+            <h3>Experience</h3>
+            <article class="xp">
+              <div class="xp-head">
+                <div>
+                  <strong>Senior Front‑End Developer</strong>
+                  <span class="muted"> • Acme Corp</span>
+                </div>
+                <div class="xp-right">
+                  <span>2023 – Present</span>
+                  <span class="pill">Remote</span>
+                </div>
+              </div>
+              <ul class="bullets">
+                <li>Led migration from CRA to Vite, reducing build times by 60%.</li>
+                <li>Implemented component library with TypeScript and Storybook.</li>
+                <li>Drove performance improvements to achieve 95+ Lighthouse scores.</li>
+              </ul>
+              <div class="stack">
+                <span>React</span><span>TypeScript</span><span>Vite</span><span>Storybook</span>
+              </div>
+            </article>
+
+            <article class="xp">
+              <div class="xp-head">
+                <div>
+                  <strong>Front‑End Developer</strong>
+                  <span class="muted"> • Beta Labs</span>
+                </div>
+                <div class="xp-right">
+                  <span>2021 – 2023</span>
+                  <span class="pill">Hybrid</span>
+                </div>
+              </div>
+              <ul class="bullets">
+                <li>Built dashboards and interactive UIs for data‑heavy products.</li>
+                <li>Introduced accessibility checks into CI/CD pipeline.</li>
+                <li>Mentored juniors and documented best practices.</li>
+              </ul>
+              <div class="stack">
+                <span>React</span><span>Redux</span><span>Jest</span><span>Playwright</span>
+              </div>
+            </article>
+          </section>
+
+          <section class="card projects">
+            <h3>Projects</h3>
+            <div class="proj-grid">
+              <div class="proj">
+                <div class="proj-head">
+                  <strong>Design System</strong>
+                  <div class="links">
+                    <a href="#" target="_blank" rel="noopener">Demo</a>
+                    <a href="#" target="_blank" rel="noopener">Code</a>
+                  </div>
+                </div>
+                <p>Reusable components, tokens, and documentation for multiple apps.</p>
+              </div>
+              <div class="proj">
+                <div class="proj-head">
+                  <strong>Portfolio</strong>
+                  <div class="links">
+                    <a href="#" target="_blank" rel="noopener">Live</a>
+                    <a href="#" target="_blank" rel="noopener">Code</a>
+                  </div>
+                </div>
+                <p>Performance‑first personal site built with React and Vite.</p>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <div class="nav-buttons-bottom">
+    <button class="nav-btn" onclick="location.href='day49.html'">&#8592; 49</button>
+    <button class="nav-btn" onclick="location.href='day50.html'">50</button>
+    <button class="nav-btn" onclick="location.href='day1.html'">1  &#8594;</button>
+  </div>
+
+  <footer class="resume-footer">
+    <div class="container">
+      <small>&copy; 2025 John Carter</small>
+    </div>
+  </footer>
+
+  <script src="../JavaScript/day50.js"></script>
+  <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>
+
