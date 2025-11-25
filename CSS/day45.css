@@ -1,0 +1,54 @@
+:root{
+  --bg: #fffdf8;
+  --card: #ffffff;
+  --accent: #ff7a59;
+  --accent2: #ffd15c;
+  --muted: #6b7280;
+  --text: #042a2b;
+  --glass: rgba(255,255,255,0.8);
+  --success: #10b981;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: Inter,Segoe UI,Helvetica,Arial,sans-serif;
+  background: linear-gradient(180deg,#fffdf8 0%,#f7fcff 100%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+
+.container{max-width:1100px;margin:20px auto;padding:18px}
+.hero{text-align:center;margin-bottom:14px}
+.hero h1{margin:0;font-size:1.9rem;color:var(--accent)}
+.subtitle{color:var(--muted);margin-top:6px}
+
+/* sections */
+.explain, .examples, .playground{margin:12px 0}
+.code{background:#041726;color:#d8f3ff;padding:12px;border-radius:8px;overflow:auto;font-family:Consolas,monospace;font-size:0.95rem}
+.snippet{margin-bottom:12px;padding:12px;border-radius:10px;background:linear-gradient(90deg,#fff7f1,#ffffff);border:1px solid rgba(4,42,43,0.04)}
+.snippet-actions{margin-top:8px;display:flex;gap:8px}
+.small-btn, .ctrl, .small{border:none;padding:8px 10px;border-radius:8px;background:linear-gradient(90deg,var(--accent2),var(--accent));color:#071724;cursor:pointer}
+
+/* playground layout */
+.play-row{display:grid;grid-template-columns:1fr;gap:12px}
+.card{background:var(--card);padding:12px;border-radius:10px;border:1px solid rgba(4,42,43,0.04);box-shadow:0 8px 20px rgba(4,42,43,0.04)}
+.counter-ui{display:flex;align-items:center;gap:8px;margin-top:8px}
+.ctrl{width:42px;height:36px;font-weight:700}
+.ghost{background:transparent;border:1px solid rgba(4,42,43,0.06)}
+.row{display:flex;gap:8px;align-items:center}
+
+.form-card form{display:flex;gap:8px;margin-top:8px}
+.form-card input{flex:1;padding:8px;border-radius:8px;border:1px solid rgba(4,42,43,0.06)}
+.items{margin:8px 0 0 0;padding:0;list-style:none}
+.items li{padding:8px;border-radius:8px;margin-bottom:6px;background:linear-gradient(90deg,#fff,#fff7f1);display:flex;justify-content:space-between;align-items:center}
+
+.logs{margin-top:12px}
+.logbox{min-height:64px;padding:10px;border-radius:8px;background:#f3f9f9;border:1px dashed rgba(4,42,43,0.04);color:var(--muted);overflow:auto;font-size:0.95rem}
+
+/* responsive */
+@media(min-width:800px){
+  .play-row{grid-template-columns: 1fr 1fr}
+  .snippet{display:flex;flex-direction:column}
+}

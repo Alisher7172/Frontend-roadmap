@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Day 45 — useState & Events</title>
+  <link rel="stylesheet" href="../CSS/button.css" />
+  <link rel="stylesheet" href="../CSS/day45.css" />
+</head>
+<body>
+  <div class="nav-buttons-top">
+    <button class="nav-btn" onclick="location.href='day44.html'">&#8592; 44</button>
+    <button class="nav-btn active">45</button>
+    <button class="nav-btn" onclick="location.href='day46.html'">46 &#8594;</button>
+  </div>
+
+  <main class="container">
+    <header class="hero">
+      <h1>Day 45 — useState & Events</h1>
+      <p class="subtitle">Understand state (useState) and DOM/event handling with concise React examples and interactive playgrounds.</p>
+    </header>
+
+    <section class="explain">
+      <h2>Concept overview</h2>
+      <p>useState is the React hook to add local state to function components. Events (onClick, onChange, onSubmit) trigger updates. Key ideas:</p>
+      <ul>
+        <li>State is local to a component and persists between renders.</li>
+        <li>Never mutate state directly — use the setter returned by useState.</li>
+        <li>Event handlers receive an event object; preventDefault to stop native form submit.</li>
+      </ul>
+    </section>
+
+    <section class="examples">
+      <h2>React snippets</h2>
+      <div class="snippet">
+        <h3>Counter (useState)</h3>
+        <pre class="code" id="reactCounter">
+import React from 'react';
+
+export default function Counter() {
+  const [count, setCount] = React.useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;{count}&lt;/h2&gt;
+      &lt;button onClick={() =&gt; setCount(c =&gt; c + 1)}&gt;Increment&lt;/button&gt;
+      &lt;button onClick={() =&gt; setCount(0)}&gt;Reset&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+        </pre>
+        <div class="snippet-actions">
+          <button class="small-btn" data-action="copy" data-key="reactCounter">Copy</button>
+          <button class="small-btn" data-action="open" data-key="react">React docs</button>
+        </div>
+      </div>
+
+      <div class="snippet">
+        <h3>Controlled input (onChange)</h3>
+        <pre class="code" id="reactInput">
+function NameInput() {
+  const [name, setName] = React.useState('');
+
+  return (
+    &lt;input value={name} onChange={e =&gt; setName(e.target.value)} /&gt;
+  );
+}
+        </pre>
+        <div class="snippet-actions">
+          <button class="small-btn" data-action="copy" data-key="reactInput">Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="playground">
+      <h2>Interactive playground (vanilla JS simulating state & events)</h2>
+
+      <div class="play-row">
+        <div class="card">
+          <h4>Counter</h4>
+          <div class="counter-ui">
+            <button id="decBtn" class="ctrl">-</button>
+            <span id="countDisplay" class="count">0</span>
+            <button id="incBtn" class="ctrl">+</button>
+            <button id="resetBtn" class="ctrl ghost">Reset</button>
+          </div>
+          <p class="muted">Demonstrates local state and click events.</p>
+        </div>
+
+        <div class="card">
+          <h4>Controlled Input</h4>
+          <label class="row">
+            <input id="textInput" placeholder="Type name..." />
+            <button id="clearInput" class="ctrl small">Clear</button>
+          </label>
+          <p>Live preview: <strong id="livePreview">—</strong></p>
+        </div>
+      </div>
+
+      <div class="card form-card">
+        <h4>Add items (onSubmit)</h4>
+        <form id="itemForm">
+          <input id="itemText" placeholder="New item" required />
+          <button type="submit" class="small-btn">Add</button>
+        </form>
+        <ul id="itemsList" class="items"></ul>
+        <p class="muted">Shows event.preventDefault() and updating a list (state).</p>
+      </div>
+
+      <div class="card logs">
+        <h4>Event log</h4>
+        <div id="log" class="logbox">No events yet.</div>
+      </div>
+    </section>
+  </main>
+
+  <div class="nav-buttons-bottom">
+    <button class="nav-btn" onclick="location.href='day44.html'">&#8592; 44</button>
+    <button class="nav-btn active">45</button>
+    <button class="nav-btn" onclick="location.href='day46.html'">46 &#8594;</button>
+  </div>
+
+  <script src="../JavaScript/navigation.js"></script>
+  <script src="../JavaScript/day45.js"></script>
+</body>
+</html>
