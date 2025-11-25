@@ -1,0 +1,188 @@
+<!-- ...existing code... -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Day 48 — Create Portfolio using React</title>
+  <link rel="icon" type="image/svg+xml" href="../images/favicon-48.svg">
+  <link rel="stylesheet" href="../CSS/button.css" />
+  <link rel="stylesheet" href="../CSS/day48.css" />
+</head>
+<body>
+  <h1 id="description">Create your React portfolio or clone this template</h1>
+
+  <div class="nav-buttons-top">
+    <button class="nav-btn" onclick="location.href='day47.html'">&#8592; 47</button>
+    <button class="nav-btn" onclick="location.href='day48.html'">48</button>
+    <button class="nav-btn" onclick="location.href='day49.html'">49 &#8594;</button>
+  </div>
+
+  <header class="portfolio-header">
+    <div class="container">
+      <h1 class="portfolio-title">My React Portfolio</h1>
+      <nav class="portfolio-nav">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><button class="nav-btn" id="openInstructions">Build (React)</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="about-content">
+          <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Profile" class="profile-img">
+          <div>
+            <h2>Hello, I'm Alex Reactson</h2>
+            <p>I build component-driven UIs with React, Vite, and modern CSS. This template mirrors the Day 21 layout but focuses on a React build. Use the instructions below to scaffold and copy the starter components.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="projects-grid" id="projectsGrid"><!-- filled by JS --></div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+      <div class="container">
+        <h2>Skills</h2>
+        <ul class="skills-list">
+          <li>React</li>
+          <li>Vite</li>
+          <li>JavaScript (ES202x)</li>
+          <li>TypeScript</li>
+          <li>React Router</li>
+          <li>CSS Modules</li>
+          <li>Tailwind</li>
+          <li>Git</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2>Contact</h2>
+        <form id="contactForm">
+          <input type="text" id="name" placeholder="Your Name" required>
+          <input type="email" id="email" placeholder="Your Email" required>
+          <textarea id="message" placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+        <div id="formMessage"></div>
+      </div>
+    </section>
+
+    <!-- INSTRUCTIONS & SAMPLES -->
+    <section class="instructions-section" id="instructions">
+      <div class="container">
+        <h2>Create this portfolio using React</h2>
+        <p class="muted">Quick steps — Windows PowerShell</p>
+        <pre class="code-block">
+npm create vite@latest my-portfolio -- --template react
+cd my-portfolio
+npm install
+npm run dev
+        </pre>
+        <p class="muted">Copy these into src/. Optionally copy styles from `CSS/day48.css` into your React `src/index.css`.</p>
+
+        <details>
+          <summary class="muted">src/App.jsx (click to expand)</summary>
+          <pre class="code-block" id="appSample">
+import React from 'react'
+import ProjectsGrid from './ProjectsGrid'
+import './index.css'
+
+export default function App(){
+  return (
+    &lt;main className="container"&gt;
+      &lt;section className="about-section"&gt;
+        &lt;h2&gt;My React Portfolio&lt;/h2&gt;
+        &lt;p&gt;Built with React + Vite&lt;/p&gt;
+      &lt;/section&gt;
+      &lt;ProjectsGrid /&gt;
+    &lt;/main&gt;
+  )
+}
+          </pre>
+        </details>
+
+        <details>
+          <summary class="muted">src/ProjectsGrid.jsx</summary>
+          <pre class="code-block" id="gridSample">
+import React from 'react'
+import ProjectCard from './ProjectCard'
+
+const projects = [
+  { title: 'React Landing', desc: 'Animated landing built in React', thumb: '/assets/project-1.png' },
+  { title: 'Hooks Timer', desc: 'Timers and effects with useEffect', thumb: '/assets/project-2.png' },
+  { title: 'Forms & Filters', desc: 'Controlled forms and filtering', thumb: '/assets/project-3.png' }
+]
+
+export default function ProjectsGrid(){
+  return (
+    &lt;section className="projects-section"&gt;
+      &lt;h3&gt;Featured Projects&lt;/h3&gt;
+      &lt;div className="projects-grid"&gt;
+        {projects.map(p =&gt; (&lt;ProjectCard key={p.title} {...p} /&gt;))}
+      &lt;/div&gt;
+    &lt;/section&gt;
+  )
+}
+          </pre>
+        </details>
+
+        <details>
+          <summary class="muted">src/ProjectCard.jsx</summary>
+          <pre class="code-block" id="cardSample">
+import React from 'react'
+
+export default function ProjectCard({ title, desc, thumb }){
+  return (
+    &lt;article className="project-card"&gt;
+      &lt;img src={thumb} alt={title} /&gt;
+      &lt;h4&gt;{title}&lt;/h4&gt;
+      &lt;p&gt;{desc}&lt;/p&gt;
+      &lt;div className="project-links"&gt;
+        &lt;a href="#"&gt;Live&lt;/a&gt;
+        &lt;a href="#"&gt;Source&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+  )
+}
+          </pre>
+        </details>
+
+        <div class="controls-row">
+          <button id="copySamples" class="nav-btn">Copy Samples</button>
+          <button id="hideInstructions" class="nav-btn ghost">Hide</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="nav-buttons-bottom">
+    <button class="nav-btn" onclick="location.href='day47.html'">&#8592; 47</button>
+    <button class="nav-btn" onclick="location.href='day48.html'">48</button>
+    <button class="nav-btn" onclick="location.href='day49.html'">49  &#8594;</button>
+  </div>
+
+  <footer class="portfolio-footer">
+    <div class="container">
+      <p>&copy; 2025 Alex Reactson. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../JavaScript/day48.js"></script>
+  <script src="../JavaScript/navigation.js"></script>
+</body>
+</html>
