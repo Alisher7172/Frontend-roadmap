@@ -1,0 +1,16 @@
+.vscode/
+.cursorignore
+.DS_Store
+Thumbs.db
+/node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+/dist/
+/build/
+/out/
+.sass-cache/
+/coverage/
+.env
+.env.*
